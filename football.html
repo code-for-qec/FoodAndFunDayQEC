@@ -125,19 +125,20 @@
     </form>
   </section>
 
-  <section class="max-w-5xl mx-auto mt-12 bg-[#2b564f] p-6 md:p-8 rounded-xl border-2 border-[#d5ab6d]">
-    <h2 class="text-3xl font-semibold text-[#d5ab6d] mb-6">Group Stage Matches & Schedule</h2>
+  <section class="max-w-5xl mx-auto mt-12 bg-[#2b564f] p-6 md:p-8 rounded-xl border-2 border-[#d5ab6d] animate-slide-in">
+    <h2 class="text-2xl font-semibold text-[#d5ab6d] mb-6">Group Stage Matches & Schedule</h2>
   
     <!-- Alpine.js Tab Implementation -->
     <div x-data="{ activeTab: 1 }">
       
-      <div class="flex justify-center mb-6 space-x-6 border-b-2 border-[#d5ab6d]">
+        <div class="flex justify-center mb-6 space-x-2 md:space-x-6 border-b-2 border-[#d5ab6d]">
+
         <button :class="{ 
                 'text-[#d5ab6d] border-b-2 border-[#d5ab6d]': activeTab === 1,
                 'bg-[#1a3330] text-[#d5ab6d] font-bold': activeTab === 1 
               }" 
                 @click="activeTab = 1" 
-                class="text-white py-4 px-6 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-110 hover:underline text-lg">
+                class="text-white text-sm px-2 py-2 md:text-lg md:px-6 md:py-4 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-110 hover:underline">
           Group A
         </button>
         <button :class="{ 
@@ -145,7 +146,7 @@
                 'bg-[#1a3330] text-[#d5ab6d] font-bold': activeTab === 2 
               }" 
                 @click="activeTab = 2" 
-                class="text-white py-4 px-6 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-110 hover:underline text-lg">
+                class="text-white text-sm px-2 py-2 md:text-lg md:px-6 md:py-4 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-110 hover:underline">
           Group B
         </button>
         <button :class="{ 
@@ -153,7 +154,7 @@
                 'bg-[#1a3330] text-[#d5ab6d] font-bold': activeTab === 3 
               }" 
                 @click="activeTab = 3" 
-                class="text-white py-4 px-6 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-110 hover:underline text-lg">
+                class="text-white text-sm px-2 py-2 md:text-lg md:px-6 md:py-4 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-110 hover:underline">
           Group C
         </button>
         <button :class="{ 
@@ -161,7 +162,7 @@
                 'bg-[#1a3330] text-[#d5ab6d] font-bold': activeTab === 4 
               }" 
                 @click="activeTab = 4" 
-                class="text-white py-4 px-6 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-110 hover:underline text-lg">
+                class="text-white text-sm px-2 py-2 md:text-lg md:px-6 md:py-4 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-110 hover:underline">
           Group D
         </button>
         <button :class="{ 
@@ -169,7 +170,7 @@
                 'bg-[#1a3330] text-[#d5ab6d] font-bold': activeTab === 5 
               }" 
                 @click="activeTab = 5" 
-                class="text-white py-4 px-6 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-110 hover:underline text-lg">
+                class="text-white text-sm px-2 py-2 md:text-lg md:px-6 md:py-4 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-110 hover:underline">
           Playoffs
         </button>
       </div>
