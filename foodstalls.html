@@ -116,9 +116,12 @@
                     <h3 class="font-semibold mb-2">Menu:</h3>
                     <ul class="space-y-2">
                         ${products.map(product => `
-                            <li class="flex justify-between items-center">
-                                <span>${product.name}</span>
-                                <span class="price-tag">${product.price}</span>
+                            <li class="flex items-center">
+                                <img src="bulletpointcrown.png" alt="•" class="w-4 h-4 mr-2 flex-shrink-0">
+                                <div class="flex justify-between items-center w-full">
+                                    <span>${product.name}</span>
+                                    <span class="price-tag ml-2">${product.price}</span>
+                                </div>
                             </li>
                         `).join('')}
                     </ul>
