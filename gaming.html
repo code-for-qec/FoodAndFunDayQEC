@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gaming - School Food & Fun Day!</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
@@ -38,6 +38,15 @@
                     rgba(213, 171, 109, 0.1) 2px,
                     rgba(213, 171, 109, 0.1) 4px
                 );
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                font-size: 14px;
+                line-height: 1.6;
+            }
         }
 
         .pixel-border {
@@ -62,19 +71,127 @@
         .game-card {
             background: rgba(43, 86, 79, 0.6);
             position: relative;
-            padding: 1.5rem;
+            padding: 1rem;
             margin-bottom: 1rem;
             transition: all 0.3s ease;
             clip-path: polygon(
-                0 10px,
-                10px 0,
-                calc(100% - 10px) 0,
-                100% 10px,
-                100% calc(100% - 10px),
-                calc(100% - 10px) 100%,
-                10px 100%,
-                0 calc(100% - 10px)
+                0 5px,
+                5px 0,
+                calc(100% - 5px) 0,
+                100% 5px,
+                100% calc(100% - 5px),
+                calc(100% - 5px) 100%,
+                5px 100%,
+                0 calc(100% - 5px)
             );
+        }
+
+        .game-card.with-image {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .title-with-image {
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .title-with-image img {
+            position: static;
+            transform: none;
+        }
+
+        .title-with-image h3 {
+            margin: 0 auto;
+            display: inline-block;
+        }
+
+        .pixel-image {
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            width: 100%;
+            height: auto;
+            max-width: 40px;
+            margin: 0;
+        }
+
+        .pixel-image-flipped {
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            width: 100%;
+            height: auto;
+            max-width: 40px;
+            margin: 0;
+            transform: rotateY(180deg) !important;
+            -webkit-transform: rotateY(180deg) !important;
+            -moz-transform: rotateY(180deg) !important;
+            -ms-transform: rotateY(180deg) !important;
+            -o-transform: rotateY(180deg) !important;
+            display: inline-block;
+        }
+
+        .desktop-image {
+            display: none;
+        }
+
+        @media (min-width: 640px) {
+            .game-card.with-image {
+                grid-template-columns: 1fr 120px;
+                gap: 1.5rem;
+            }
+            .pixel-image {
+                max-width: 120px;
+                margin: 0 auto;
+            }
+            
+            .pixel-image-flipped {
+                max-width: 120px;
+                margin: 0 auto;
+            }
+
+            .title-with-image {
+                text-align: left;
+                padding-left: 0;
+                display: block;
+                position: relative;
+            }
+            .title-with-image img {
+                display: none;
+            }
+            .title-with-image h3 {
+                margin: 0;
+            }
+            .game-card .list-content,
+            .game-card .list-disc,
+            .game-card p,
+            .game-card ul,
+            .game-card h3,
+            .pixel-heading {
+                text-align: left !important;
+            }
+            .desktop-image {
+                display: block;
+                position: static;
+                transform: none;
+                margin-top: 1.5rem;
+            }
+            .title-with-image img:last-of-type {
+                display: none;
+            }
+        }
+
+        @media (max-width: 639px) {
+            .desktop-image {
+                display: none;
+            }
         }
 
         .game-card::before {
@@ -93,90 +210,147 @@
 
         .pixel-title {
             font-family: 'Press Start 2P', mono;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             background: linear-gradient(to bottom, #d5ab6d, #b38d5a);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .pixel-title {
+                font-size: 1.5rem;
+            }
         }
 
         .pixel-heading {
             font-family: 'Press Start 2P', mono;
-            font-size: 1rem;
+            text-align: center;
+            font-size: 0.875rem;
             color: #d5ab6d;
-            text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
             line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .pixel-heading {
+                font-size: 1rem;
+            }
         }
 
         .back-button {
             display: inline-block;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem;
             background: #2b564f;
             border: 2px solid #d5ab6d;
             color: #e8d5b5;
             text-decoration: none;
+            font-size: 0.75rem;
             clip-path: polygon(
-                0 5px,
-                5px 0,
-                calc(100% - 5px) 0,
-                100% 5px,
-                100% calc(100% - 5px),
-                calc(100% - 5px) 100%,
-                5px 100%,
-                0 calc(100% - 5px)
+                0 3px,
+                3px 0,
+                calc(100% - 3px) 0,
+                100% 3px,
+                100% calc(100% - 3px),
+                calc(100% - 3px) 100%,
+                3px 100%,
+                0 calc(100% - 3px)
             );
             transition: all 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            .back-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+                clip-path: polygon(
+                    0 5px,
+                    5px 0,
+                    calc(100% - 5px) 0,
+                    100% 5px,
+                    100% calc(100% - 5px),
+                    calc(100% - 5px) 100%,
+                    5px 100%,
+                    0 calc(100% - 5px)
+                );
+            }
         }
 
         .back-button:hover {
             background: #336b63;
             transform: translateY(-1px);
         }
+
+        .list-content {
+            padding-left: 1rem;
+            font-size: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .list-content {
+                font-size: 0.875rem;
+            }
+        }
     </style>
 </head>
 <body class="p-4">
-    <header class="text-center mb-8">
-        <div class="mb-6">
-            <img src="QECLogoPixelArt.png" alt="Queen Elizabeth College Logo" class="mx-auto h-24 w-auto">
+    <header class="text-center mb-6 md:mb-8">
+        <div class="mb-4 md:mb-6">
+            <img src="QECLogoPixelArt.png" alt="Queen Elizabeth College Logo" class="mx-auto h-16 md:h-24 w-auto">
         </div>
-        <h1 class="pixel-title mb-4">GAMING</h1>
-        <a href="index.html" class="back-button">← Back to Main Page</a>
+        <h1 class="pixel-title">GAMING</h1>
+        <a href="index.html" class="back-button">← BACK</a>
     </header>
 
     <main class="max-w-3xl mx-auto">
-        <div class="pixel-border p-8 rounded-lg mb-8">
-            <h2 class="pixel-heading mb-6">FEATURED GAMES</h2>
-            <div class="space-y-6">
-                <div class="game-card">
-                    <h3 class="pixel-heading mb-4">FIFA</h3>
-                    <p class="mb-3">Challenge your friends in the world's most popular football game!</p>
-                    <ul class="list-disc list-inside space-y-1 ml-4">
-                        <li>Tournament: Starts on Tuesday, May 27th</li>
-                        <li>Free play: Wednesday, May 28th</li>
-                    </ul>
+        <div class="pixel-border p-4 md:p-8 rounded-lg mb-6 md:mb-8">
+            <h2 class="pixel-heading">FEATURED GAMES</h2>
+            <div class="space-y-4 md:space-y-6">
+                <div class="game-card with-image">
+                    <div>
+                        <div class="title-with-image">
+                            <img src="FifaLogo.png" alt="FIFA Logo" class="pixel-image">
+                            <h3 class="pixel-heading">FIFA</h3>
+                            <img src="FifaLogo.png" alt="FIFA Logo" class="pixel-image">
+                        </div>
+                        <p class="mb-3 list-content">Challenge your friends in the world's most popular football game!</p>
+                        <ul class="list-disc list-inside space-y-1 list-content">
+                            <li>Tournament: Starts on Tuesday, May 27th</li>
+                            <li>Free play: Wednesday, May 28th</li>
+                        </ul>
+                    </div>
+                    <img src="FifaLogo.png" alt="FIFA Logo" class="pixel-image desktop-image">
                 </div>
-                <div class="game-card">
-                    <h3 class="pixel-heading mb-4">TEKKEN</h3>
-                    <p class="mb-3">Show off your fighting skills in intense 1v1 battles!</p>
-                    <ul class="list-disc list-inside space-y-1 ml-4">
-                        <li>Tournament: Starts on Tuesday, May 27th</li>
-                        <li>Free play: Wednesday, May 28th</li>
-                    </ul>
+                <div class="game-card with-image">
+                    <div>
+                        <div class="title-with-image">
+                            <img src="TekkenAnim.gif" alt="Tekken Animation" class="pixel-image">
+                            <h3 class="pixel-heading">TEKKEN</h3>
+                            <img src="TekkenAnim.gif" alt="Tekken Animation" class="pixel-image-flipped">
+                        </div>
+                        <p class="mb-3 list-content">Show off your fighting skills in intense 1v1 battles!</p>
+                        <ul class="list-disc list-inside space-y-1 list-content">
+                            <li>Tournament: Starts on Tuesday, May 27th</li>
+                            <li>Free play: Wednesday, May 28th</li>
+                        </ul>
+                    </div>
+                    <img src="TekkenAnim.gif" alt="Tekken Animation" class="pixel-image desktop-image">
                 </div>
             </div>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="pixel-border p-6 rounded-lg">
-                <h2 class="pixel-heading mb-4">TOURNAMENT</h2>
-                <ul class="list-disc list-inside space-y-2">
+        <div class="grid gap-4 md:gap-6 md:grid-cols-2">
+            <div class="pixel-border p-4 md:p-6 rounded-lg">
+                <h2 class="pixel-heading">TOURNAMENT</h2>
+                <ul class="list-disc list-inside space-y-2 list-content">
                     <li>Start Date: Tuesday, May 27th</li>
                 </ul>
             </div>
 
-            <div class="pixel-border p-6 rounded-lg">
-                <h2 class="pixel-heading mb-4">FREE PLAY</h2>
-                <ul class="list-disc list-inside space-y-2">
+            <div class="pixel-border p-4 md:p-6 rounded-lg">
+                <h2 class="pixel-heading">FREE PLAY</h2>
+                <ul class="list-disc list-inside space-y-2 list-content">
                     <li>Available throughout the day</li>
                     <li>Practice stations for both games</li>
                     <li>Casual matches welcome</li>
@@ -186,7 +360,7 @@
         </div>
     </main>
 
-    <footer class="text-center mt-8 pixel-heading">
+    <footer class="text-center mt-6 md:mt-8 pixel-heading text-xs md:text-sm">
         <p>&copy; 2025 Queen Elizabeth College</p>
     </footer>
 </body>
