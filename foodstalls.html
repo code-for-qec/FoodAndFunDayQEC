@@ -28,6 +28,37 @@
             background-color: #1a3330;
             color: #e8d5b5;
         }
+
+        .stall-card {
+            background: rgba(43, 86, 79, 0.6);
+            border: 2px solid #d5ab6d;
+            transition: all 0.3s ease;
+        }
+
+        .stall-card:hover {
+            background: rgba(51, 107, 99, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .price-tag {
+            background: #1a3330;
+            border: 1px solid #d5ab6d;
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            color: #d5ab6d;
+        }
+
+        #errorDetails {
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.5);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.5rem;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
     </style>
 </head>
 <body class="p-4">
@@ -39,26 +70,136 @@
         <a href="index.html" class="text-lg inline-block mb-6 hover:text-[#d5ab6d]">← Back to Main Page</a>
     </header>
 
-    <main class="max-w-2xl mx-auto bg-[#2b564f] p-8 rounded-lg border-2 border-[#d5ab6d]">
-        <h2 class="text-2xl font-bold mb-4">Discover a World of Flavors!</h2>
-        <div class="space-y-4">
-            <p class="text-lg">Our food stalls feature:</p>
-            <ul class="list-disc list-inside space-y-2 ml-4">
-                <li>International cuisine options</li>
-                <li>Sweet and savory treats</li>
-                <li>Vegetarian and vegan options</li>
-                <li>Time: All Day</li>
-                <li>Location: School Courtyard</li>
-            </ul>
-            <div class="mt-6">
-                <h3 class="text-xl font-bold mb-2">Featured Cuisines:</h3>
-                <p>Explore dishes from around the world including Italian, Mexican, Asian, and traditional British favorites. All food stalls accept both cash and card payments. Don't forget to try our special dessert section!</p>
-            </div>
+    <main class="max-w-4xl mx-auto space-y-6">
+        <!-- Food Stalls Grid -->
+        <div id="stallsGrid" class="grid gap-6 md:grid-cols-2">
+            <!-- Stalls will be dynamically inserted here -->
         </div>
+        <!-- Error details section -->
+        <div id="errorDetails" style="display: none;"></div>
     </main>
 
-    <footer class="text-center mt-8" style="color: #d5ab6d;">
+    <footer class="text-center mt-8 mb-4" style="color: #d5ab6d;">
         <p>&copy; 2025 Queen Elizabeth College. All rights reserved.</p>
     </footer>
+
+    <script>
+        async function loadStalls() {
+            const errorDetails = document.getElementById('errorDetails');
+            try {
+                console.log('Attempting to fetch stall_info.json...');
+                const response = await fetch('stall_info.json');
+                console.log('Response status:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const stalls = await response.json();
+                console.log('Successfully loaded stalls:', stalls);
+                
+                const stallsGrid = document.getElementById('stallsGrid');
+                
+                // Filter only food-related stalls
+                const foodStalls = stalls.filter(stall => {
+                    const nonFoodStalls = ['Gaming Room', 'Disco', '4D cinema', 'Escape room', 
+                        'Karaoke', 'Outdoor laser tag', 'Bouncing castle', 'Football', 
+                        'Tug of war', 'Beauty Parlour', 'Festival games'];
+                    return !nonFoodStalls.includes(stall.name);
+                });
+
+                console.log('Filtered food stalls:', foodStalls);
+
+                if (foodStalls.length === 0) {
+                    throw new Error('No food stalls found after filtering');
+                }
+
+                foodStalls.forEach(stall => {
+                    const stallCard = document.createElement('div');
+                    stallCard.className = 'stall-card rounded-lg p-6';
+                    
+                    let html = `
+                        <h2 class="text-2xl font-bold mb-3 text-[#d5ab6d]">${stall.name}</h2>
+                        <div class="space-y-4">
+                    `;
+
+                    // Products/Menu
+                    if (stall.products && stall.products.length > 0) {
+                        html += `
+                            <div>
+                                <h3 class="font-semibold mb-2">Menu:</h3>
+                                <ul class="space-y-2">
+                        `;
+                        stall.products.forEach(product => {
+                            html += `
+                                <li class="flex justify-between items-center">
+                                    <span>${product.name}</span>
+                                    <span class="price-tag">${product.price}</span>
+                                </li>
+                            `;
+                        });
+                        html += `</ul></div>`;
+                    }
+
+                    // Location
+                    if (stall.location) {
+                        html += `
+                            <div>
+                                <h3 class="font-semibold mb-1">Location:</h3>
+                                <p>${stall.location}</p>
+                            </div>
+                        `;
+                    }
+
+                    // Teachers
+                    if (stall.teachers && stall.teachers.length > 0) {
+                        html += `
+                            <div>
+                                <h3 class="font-semibold mb-1">Teachers:</h3>
+                                <p>${stall.teachers.join(', ')}</p>
+                            </div>
+                        `;
+                    }
+
+                    // Time
+                    if (stall.time) {
+                        html += `
+                            <div>
+                                <h3 class="font-semibold mb-1">Time:</h3>
+                                <p>${stall.time}</p>
+                            </div>
+                        `;
+                    }
+
+                    // Notes
+                    if (stall.notes) {
+                        html += `
+                            <div>
+                                <h3 class="font-semibold mb-1">Notes:</h3>
+                                <p>${stall.notes}</p>
+                            </div>
+                        `;
+                    }
+
+                    html += `</div>`;
+                    stallCard.innerHTML = html;
+                    stallsGrid.appendChild(stallCard);
+                });
+            } catch (error) {
+                console.error('Error loading stall information:', error);
+                errorDetails.style.display = 'block';
+                errorDetails.innerHTML = `Error loading stall information:\n${error.message}\n\nPlease try the following:\n1. Make sure you're running the Python server (python server.py)\n2. Open http://localhost:8000/foodstalls.html in your browser\n3. Check if stall_info.json exists in the same folder as foodstalls.html`;
+                
+                document.getElementById('stallsGrid').innerHTML = `
+                    <div class="col-span-2 text-center p-6 stall-card">
+                        <p class="text-xl">Unable to load stall information. Please check the error details below.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Load stalls when the page loads
+        window.addEventListener('load', loadStalls);
+    </script>
 </body>
 </html> 

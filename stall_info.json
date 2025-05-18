@@ -1,0 +1,203 @@
+[
+  {
+    "name": "Pain fourré",
+    "products": [
+      { "name": "Pain saucisse", "price": "Rs60" },
+      { "name": "Pain poulet", "price": "Rs65" }
+    ],
+    "teachers": ["Mr Raggoo", "Mrs Chung Fa"],
+    "location": "Corridor near art room",
+    "time": "",
+    "notes": ""
+  },
+  {
+    "name": "Chips",
+    "products": [
+      { "name": "Chips", "price": "Rs30" }
+    ],
+    "teachers": ["Mrs Hasowa", "Ms Ramessur", "Mrs Persunnoo"],
+    "location": "Canteen area (next to home economics lab stairs)",
+    "time": "",
+    "notes": ""
+  },
+  {
+    "name": "Fried noodles",
+    "products": [
+      { "name": "Fried noodles", "price": "Rs80/portion" }
+    ],
+    "teachers": ["Mr Gurriah", "Mrs Simpson"],
+    "location": "Canteen",
+    "time": "",
+    "notes": ""
+  },
+  {
+    "name": "Ti Puri and curry",
+    "products": [
+      { "name": "Puri with curry", "price": "Rs20" },
+      { "name": "Snacks (Samosa, Gato pomme de terre)", "price": "2 for Rs10" }
+    ],
+    "teachers": ["Mrs L.Badal", "Mrs Gopaul", "Mrs Maroam"],
+    "location": "Canteen",
+    "time": "",
+    "notes": "Fresh puri with gros pois, giraumon, rougaille, achard piment; Snacks available"
+  },
+  {
+    "name": "Juice (panacon), soft drinks and Alouda",
+    "products": [
+      { "name": "Alouda", "price": "Rs30" },
+      { "name": "Mojito", "price": "Rs25" }
+    ],
+    "teachers": ["Mr Kowal", "Mrs Appavoo"],
+    "location": "In front of administration",
+    "time": "",
+    "notes": ""
+  },
+  {
+    "name": "Ice Cream",
+    "products": [
+      { "name": "1 scoop + cone", "price": "Rs30" },
+      { "name": "2 scoops", "price": "Rs50" }
+    ],
+    "teachers": ["Mrs Ramlakhan", "Dr Curpen", "Dr Mathur"],
+    "location": "In front of art room",
+    "time": "8.30 - 13.45",
+    "notes": "Flavours: Vanille, Dame Blanche, Chocolat, Amande, Fraise"
+  },
+  {
+    "name": "Snacks (la boutik sinwa)",
+    "products": [
+      { "name": "Plain mine bouille", "price": "Rs50" },
+      { "name": "Add-ons", "price": "Incur additional cost" }
+    ],
+    "teachers": ["Mrs Chu Moy Sang", "Mrs Chumun"],
+    "location": "In the art room. Serve food through the window",
+    "time": "",
+    "notes": ""
+  },
+  {
+    "name": "Pastries",
+    "products": [],
+    "teachers": ["Mrs Marimootoo", "Mrs Pittea", "Mrs Ramsoondur", "Mrs Gowrappa"],
+    "location": "Canteen",
+    "time": "",
+    "notes": ""
+  },
+  {
+    "name": "Disco",
+    "products": [
+      { "name": "Single gender session", "price": "Rs60" },
+      { "name": "Mixed session", "price": "Rs70" }
+    ],
+    "teachers": ["Mrs Gungabissoon", "Multimedia Club"],
+    "location": "Hall",
+    "team_members": ["Jia", "Nikhilesh", "Mayuri"],
+    "time": "",
+    "notes": ""
+  },
+  {
+    "name": "Gaming Room",
+    "products": [
+      { "name": "Freeplay", "price": "Rs100/pair (Rs50/pax)" },
+      { "name": "Last min tickets", "price": "Rs200/pair" },
+      { "name": "Tournament", "price": "Rs200/person" }
+    ],
+    "teachers": ["Mr Ramlochun", "Code For QEC Club"],
+    "location": "Physics lab",
+    "team_members": ["Jake"],
+    "time": "",
+    "notes": ""
+  },
+  {
+    "name": "4D cinema",
+    "products": [],
+    "teachers": ["Mr Moochooram"],
+    "location": "Field",
+    "team_members": ["Mayuri"],
+    "time": "",
+    "notes": ""
+  },
+  {
+    "name": "Escape room",
+    "products": [
+      { "name": "Entry", "price": "Rs100/person" }
+    ],
+    "teachers": ["Mrs Bauhadoor", "STEM Club"],
+    "location": "Classes in block B",
+    "team_members": ["Amy", "Andrew"],
+    "time": "",
+    "notes": ""
+  },
+  {
+    "name": "Karaoke",
+    "products": [
+      { "name": "30 mins session", "price": "Rs40/person" }
+    ],
+    "teachers": ["Mrs Bissesur"],
+    "location": "Physics lab",
+    "team_members": ["Shristi"],
+    "time": "",
+    "notes": ""
+  },
+  {
+    "name": "Outdoor laser tag",
+    "products": [
+      { "name": "Laser tag", "price": "Rs150-200" }
+    ],
+    "teachers": ["Business' personnel"],
+    "location": "Zen Garden",
+    "team_members": ["Adiyan"],
+    "time": "",
+    "notes": ""
+  },
+  {
+    "name": "Bouncing castle",
+    "products": [
+      { "name": "15 mins", "price": "Rs40/person (6-7 per session)" }
+    ],
+    "teachers": [],
+    "location": "Area in front of block A",
+    "team_members": ["Jia"],
+    "time": "",
+    "notes": ""
+  },
+  {
+    "name": "Football",
+    "products": [
+      { "name": "Team entry (6 players)", "price": "Rs150/team" }
+    ],
+    "teachers": ["Mr Budhoo"],
+    "location": "Football field",
+    "team_members": ["Shamba", "Kamlesh"],
+    "time": "",
+    "notes": ""
+  },
+  {
+    "name": "Tug of war",
+    "products": [
+      { "name": "Entry (5 people per side)", "price": "Rs10/person" }
+    ],
+    "teachers": ["Mr Budhoo", "Mr Luchmun"],
+    "location": "Football field",
+    "team_members": ["Matteo", "Zayyan"],
+    "time": "",
+    "notes": ""
+  },
+  {
+    "name": "Beauty Parlour",
+    "products": [],
+    "teachers": ["Mrs Seeburun", "Mrs Budaly", "Mrs Dessaye"],
+    "location": "Art room",
+    "team_members": ["Kelly"],
+    "time": "",
+    "notes": ""
+  },
+  {
+    "name": "Festival games",
+    "products": [],
+    "teachers": ["First Aid Club"],
+    "location": "Recreational Area",
+    "team_members": ["Tya", "Kimberly"],
+    "time": "",
+    "notes": ""
+  }
+]
