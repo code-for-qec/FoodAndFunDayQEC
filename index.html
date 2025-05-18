@@ -6,6 +6,7 @@
     <title>School Food & Fun Day!</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
@@ -38,10 +39,80 @@
             border: 2px solid #d5ab6d; /* Original gold */
             cursor: pointer;
         }
+        .gaming-section {
+            background-image: url('GamingBanner.png');
+            background-position: center 15%;
+            position: relative;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .gaming-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            filter: blur(1px);
+            margin: -5px;
+        }
+
+        .gaming-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(43, 86, 79, 0.6);
+            z-index: 1;
+        }
+
+        .gaming-section > * {
+            position: relative;
+            z-index: 2;
+        }
+
         .activity-section:hover {
             transform: scale(1.01); /* Slight scale effect on hover/tap */
             background-color: #336b63; /* Lighter teal on hover */
             border-color: #e8d5b5; /* Lighter gold on hover */
+        }
+        .gaming-section:hover::after {
+            background-color: rgba(51, 107, 99, 0.6);
+        }
+        .gaming-title {
+            font-family: 'Press Start 2P', mono;
+            -webkit-font-smoothing: none;
+            font-smooth: never;
+            font-size: 1.5rem;
+            line-height: 1.5;
+            background: linear-gradient(to bottom, white, white);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            text-shadow: none;
+        }
+
+        .activity-section:active .gaming-title,
+        .activity-section:hover:active .gaming-title {
+            background: linear-gradient(to bottom, #d5ab6d, #d5ab6d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: none;
+        }
+
+        @media (hover: none) {
+            .activity-section:hover {
+                transform: none;
+            }
+            
+            .activity-section:active {
+                transform: scale(0.98);
+            }
         }
     </style>
 </head>
@@ -64,8 +135,8 @@
         </a>
 
         <a href="gaming.html" class="block">
-            <section class="activity-section rounded-lg p-6">
-                <h2 class="text-3xl font-bold mb-2">Gaming</h2>
+            <section class="activity-section gaming-section rounded-lg p-6">
+                <h2 class="gaming-title">GAMING</h2>
                 <p class="text-lg mb-4">Click to discover our gaming activities!</p>
             </section>
         </a>
