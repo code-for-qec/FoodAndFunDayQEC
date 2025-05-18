@@ -34,12 +34,13 @@
     "name": "Ti Puri and curry",
     "products": [
       { "name": "Puri with curry", "price": "Rs20" },
-      { "name": "Snacks (Samosa, Gato pomme de terre)", "price": "2 for Rs10" }
+      { "name": "Samosa", "price": "Rs10 for 2" },
+	{ "name": "Gato pomme de terre", "price": "Rs10 for 2" }
     ],
     "teachers": ["Mrs L.Badal", "Mrs Gopaul", "Mrs Maroam"],
     "location": "Canteen",
     "time": "",
-    "notes": "Fresh puri with gros pois, giraumon, rougaille, achard piment; Snacks available"
+    "curries_available": "Gros pois, Giraumon, Rougaille, Achard piment"
   },
   {
     "name": "Juice (panacon), soft drinks and Alouda",
@@ -61,7 +62,7 @@
     "teachers": ["Mrs Ramlakhan", "Dr Curpen", "Dr Mathur"],
     "location": "In front of art room",
     "time": "8.30 - 13.45",
-    "notes": "Flavours: Vanille, Dame Blanche, Chocolat, Amande, Fraise"
+    "flavours": "Vanille, Dame Blanche, Chocolat, Amande, Fraise"
   },
   {
     "name": "Snacks (la boutik sinwa)",

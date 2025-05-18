@@ -84,6 +84,48 @@
     </footer>
 
     <script>
+        // Function to format field name for display
+        function formatFieldName(fieldName) {
+            // Handle special cases
+            if (fieldName === 'team_members') return 'Team Members';
+            
+            // Convert camelCase or snake_case to Title Case with spaces
+            return fieldName
+                .replace(/_/g, ' ')
+                .replace(/([A-Z])/g, ' $1')
+                .replace(/^./, str => str.toUpperCase());
+        }
+
+        // Function to render a field's value based on its type
+        function renderFieldValue(value) {
+            if (Array.isArray(value)) {
+                return value.join(', ');
+            } else if (typeof value === 'object' && value !== null) {
+                return JSON.stringify(value);
+            } else {
+                return value.toString();
+            }
+        }
+
+        // Function to render products/menu items
+        function renderProducts(products) {
+            if (!products || products.length === 0) return '';
+            
+            return `
+                <div>
+                    <h3 class="font-semibold mb-2">Menu:</h3>
+                    <ul class="space-y-2">
+                        ${products.map(product => `
+                            <li class="flex justify-between items-center">
+                                <span>${product.name}</span>
+                                <span class="price-tag">${product.price}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
         async function loadStalls() {
             const errorDetails = document.getElementById('errorDetails');
             try {
@@ -119,67 +161,30 @@
                     stallCard.className = 'stall-card rounded-lg p-6';
                     
                     let html = `
-                        <h2 class="text-2xl font-bold mb-3 text-[#d5ab6d]">${stall.name}</h2>
+                        <h2 class="text-2xl font-bold mb-3 text-[#d5ab6d] text-center">${stall.name}</h2>
                         <div class="space-y-4">
                     `;
 
-                    // Products/Menu
-                    if (stall.products && stall.products.length > 0) {
-                        html += `
-                            <div>
-                                <h3 class="font-semibold mb-2">Menu:</h3>
-                                <ul class="space-y-2">
-                        `;
-                        stall.products.forEach(product => {
-                            html += `
-                                <li class="flex justify-between items-center">
-                                    <span>${product.name}</span>
-                                    <span class="price-tag">${product.price}</span>
-                                </li>
-                            `;
-                        });
-                        html += `</ul></div>`;
+                    // Handle products/menu items specially
+                    if (stall.products) {
+                        html += renderProducts(stall.products);
                     }
 
-                    // Location
-                    if (stall.location) {
-                        html += `
-                            <div>
-                                <h3 class="font-semibold mb-1">Location:</h3>
-                                <p>${stall.location}</p>
-                            </div>
-                        `;
-                    }
+                    // Dynamically render all other fields
+                    Object.entries(stall).forEach(([field, value]) => {
+                        // Skip name and products as they're handled separately
+                        if (field === 'name' || field === 'products') return;
+                        
+                        // Skip empty values
+                        if (!value || (Array.isArray(value) && value.length === 0) || value === '') return;
 
-                    // Teachers
-                    if (stall.teachers && stall.teachers.length > 0) {
                         html += `
                             <div>
-                                <h3 class="font-semibold mb-1">Teachers:</h3>
-                                <p>${stall.teachers.join(', ')}</p>
+                                <h3 class="font-semibold mb-1">${formatFieldName(field)}:</h3>
+                                <p>${renderFieldValue(value)}</p>
                             </div>
                         `;
-                    }
-
-                    // Time
-                    if (stall.time) {
-                        html += `
-                            <div>
-                                <h3 class="font-semibold mb-1">Time:</h3>
-                                <p>${stall.time}</p>
-                            </div>
-                        `;
-                    }
-
-                    // Notes
-                    if (stall.notes) {
-                        html += `
-                            <div>
-                                <h3 class="font-semibold mb-1">Notes:</h3>
-                                <p>${stall.notes}</p>
-                            </div>
-                        `;
-                    }
+                    });
 
                     html += `</div>`;
                     stallCard.innerHTML = html;
@@ -188,7 +193,7 @@
             } catch (error) {
                 console.error('Error loading stall information:', error);
                 errorDetails.style.display = 'block';
-                errorDetails.innerHTML = `Error loading stall information:\n${error.message}\n\nPlease try the following:\n1. Make sure you're running the Python server (python server.py)\n2. Open http://localhost:8000/foodstalls.html in your browser\n3. Check if stall_info.json exists in the same folder as foodstalls.html`;
+                errorDetails.innerHTML = `Error loading stall information:\n${error.message}\n\nPlease try the following:\n1. Make sure stall_info.json exists in the same folder as foodstalls.html\n2. Check if the JSON file is properly formatted\n3. Try refreshing the page`;
                 
                 document.getElementById('stallsGrid').innerHTML = `
                     <div class="col-span-2 text-center p-6 stall-card">
