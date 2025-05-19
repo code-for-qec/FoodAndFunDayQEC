@@ -23,6 +23,26 @@
             background: #336b63;
         }
         
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-fade-in {
+            opacity: 0;
+            animation: fade-in 0.6s ease forwards;
+        }
+
+        @keyframes slide-in {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .animate-slide-in {
+            opacity: 0;
+            animation: slide-in 0.6s ease forwards;
+        }
+        
         body {
             font-family: 'Press Start 2P', mono;
             -webkit-font-smoothing: none;
@@ -296,7 +316,7 @@
     </style>
 </head>
 <body class="p-4">
-    <header class="text-center mb-6 md:mb-8">
+    <header class="text-center mb-6 md:mb-8 animate-fade-in">
         <div class="mb-4 md:mb-6">
             <img src="QECLogoPixelArt.png" alt="Queen Elizabeth College Logo" class="mx-auto h-16 md:h-24 w-auto">
         </div>
@@ -305,10 +325,10 @@
     </header>
 
     <main class="max-w-3xl mx-auto">
-        <div class="pixel-border p-4 md:p-8 rounded-lg mb-6 md:mb-8">
+        <div class="pixel-border p-4 md:p-8 rounded-lg mb-6 md:mb-8 animate-slide-in">
             <h2 class="pixel-heading">FEATURED GAMES</h2>
             <div class="space-y-4 md:space-y-6">
-                <div class="game-card with-image">
+                <div class="game-card with-image animate-slide-in" style="animation-delay: 0.1s;">
                     <div>
                         <div class="title-with-image">
                             <img src="FifaLogo.png" alt="FIFA Logo" class="pixel-image">
@@ -323,7 +343,7 @@
                     </div>
                     <img src="FifaLogo.png" alt="FIFA Logo" class="pixel-image desktop-image">
                 </div>
-                <div class="game-card with-image">
+                <div class="game-card with-image animate-slide-in" style="animation-delay: 0.2s;">
                     <div>
                         <div class="title-with-image">
                             <img src="TekkenAnim.gif" alt="Tekken Animation" class="pixel-image">
@@ -342,14 +362,14 @@
         </div>
 
         <div class="grid gap-4 md:gap-6 md:grid-cols-2">
-            <div class="pixel-border p-4 md:p-6 rounded-lg">
+            <div class="pixel-border p-4 md:p-6 rounded-lg animate-slide-in" style="animation-delay: 0.3s;">
                 <h2 class="pixel-heading">TOURNAMENT</h2>
                 <ul class="list-disc list-inside space-y-2 list-content">
                     <li>Start Date: Tuesday, May 27th</li>
                 </ul>
             </div>
 
-            <div class="pixel-border p-4 md:p-6 rounded-lg">
+            <div class="pixel-border p-4 md:p-6 rounded-lg animate-slide-in" style="animation-delay: 0.4s;">
                 <h2 class="pixel-heading">FREE PLAY</h2>
                 <ul class="list-disc list-inside space-y-2 list-content">
                     <li>Available throughout the day</li>
@@ -361,7 +381,7 @@
         </div>
     </main>
 
-    <footer class="text-center mt-6 md:mt-8 pixel-heading text-xs md:text-sm">
+    <footer class="text-center mt-6 md:mt-8 pixel-heading text-xs md:text-sm animate-fade-in" style="animation-delay: 0.5s;">
         <p>&copy; 2025 Queen Elizabeth College</p>
     </footer>
 </body>

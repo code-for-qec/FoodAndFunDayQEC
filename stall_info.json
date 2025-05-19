@@ -48,7 +48,7 @@
     "name": "Ice Cream",
     "products": [
       { "name": "1 scoop + cone", "price": "Rs30" },
-      { "name": "2 scoops", "price": "Rs50" }
+      { "name": "2 scoops + cone", "price": "Rs50" }
     ],
     "flavours": "Vanille, Dame Blanche, Chocolat, Amande, Fraise",
     "location": "In front of art room",
