@@ -7,6 +7,65 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script>
+
+        let dest = new Date("may 28, 2025 00:01:00").getTime();
+        let x = setInterval(function () {
+            let now = new Date().getTime();
+
+            let diff = dest - now;
+
+            // Check if the countdown has reached zero or negative
+            if (diff <= 0) {
+                clearInterval(x); // Stop the countdown
+                return; // Exit the function
+            }
+
+            let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            if (days < 10) {
+                days = `0${days}`;
+            }
+            if (hours < 10) {
+                hours = `0${hours}`;
+            }
+            if (minutes < 10) {
+                minutes = `0${minutes}`;
+            }
+            if (seconds < 10) {
+                seconds = `0${seconds}`;
+            }
+
+            // Get elements by class name
+            let countdownElements = document.getElementsByClassName("countdown-element");
+
+            // Loop through the elements and update their content
+            for (let i = 0; i < countdownElements.length; i++) {
+                let className = countdownElements[i].classList[1]; // Get the second class name
+                switch (className) {
+                    case "days":
+                        countdownElements[i].innerHTML = days;
+                        break;
+                    case "hours":
+                        countdownElements[i].innerHTML = hours;
+                        break;
+                    case "minutes":
+                        countdownElements[i].innerHTML = minutes;
+                        break;
+                    case "seconds":
+                        countdownElements[i].innerHTML = seconds;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }, 1000);
+
+
+    </script>
     <style>
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
@@ -116,6 +175,50 @@
                 transform: scale(0.98);
             }
         }
+        .count-down-center {
+            margin: auto;
+            border: 3px solid green;
+            padding: 10px;
+            width: fit-content;
+            margin-bottom: 30px;
+
+        }
+
+
+
+        .count-down-values-container {
+            display: flex;
+        }
+
+        .timer {
+            margin: auto;
+            /* border: 3px solid green; */
+            padding: 10px;
+            /* width: fit-content; */
+            text-align: center;
+        }
+
+        .text-centering {
+            text-align: center;
+            margin-top: 200px;
+
+
+
+        }
+        .pixel-heading {
+            font-family: 'Press Start 2P', mono;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #d5ab6d;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        .size-font {
+            padding: 2rem;
+            font-size: 25px;
+        }
+
+
     </style>
 </head>
 <body class="p-4">
@@ -129,6 +232,46 @@
     </header>
 
     <main class="space-y-6">
+
+        <div class="pixel-border p-4 md:p-8 rounded-lg mb-6 md:mb-8 size-font">
+            <h2 class="pixel-heading count-down-center">COUNTDOWN UNTIL THE FUN BEGINS</h2>
+            <div class="space-y-4 md:space-y-6b max-w-xl mx-auto">
+
+                <div class="count-down-values-container ">
+                    <div class="timer">
+                        <div class="xx">
+                            <h3 class="countdown-element days">
+                            </h3>
+
+                        </div>
+                        <p>days</p>
+                    </div>
+                    <div class="timer">
+                        <div>
+                            <h3 class="countdown-element hours"></h3>
+                        </div>
+                        <p>hours</p>
+                    </div>
+                    <div class="timer">
+                        <div>
+                            <h3 class="countdown-element minutes"></h3>
+                        </div>
+
+                        <p>minutes</p>
+                    </div>
+                    <div class="timer">
+                        <div>
+                            <h3 class="countdown-element seconds">
+                            </h3>
+
+                        </div>
+                        <p>seconds</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
         <a href="discotheque.html" class="block">
             <section class="activity-section rounded-lg p-6">
                 <h2 class="text-3xl font-bold mb-2">Discotheque</h2>
