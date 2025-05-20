@@ -23,41 +23,194 @@
             background: #336b63;
         }
         
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes discoPulse {
+            0% { 
+                box-shadow: 0 0 5px rgba(213, 171, 109, 0.3),
+                           0 0 10px rgba(213, 171, 109, 0.2),
+                           0 0 15px rgba(213, 171, 109, 0.1);
+            }
+            50% { 
+                box-shadow: 0 0 10px rgba(213, 171, 109, 0.4),
+                           0 0 20px rgba(213, 171, 109, 0.3),
+                           0 0 30px rgba(213, 171, 109, 0.2);
+            }
+            100% { 
+                box-shadow: 0 0 5px rgba(213, 171, 109, 0.3),
+                           0 0 10px rgba(213, 171, 109, 0.2),
+                           0 0 15px rgba(213, 171, 109, 0.1);
+            }
+        }
+
+        @keyframes titleGlow {
+            0% { 
+                text-shadow: 0 0 5px rgba(213, 171, 109, 0.3),
+                            0 0 10px rgba(213, 171, 109, 0.2);
+            }
+            50% { 
+                text-shadow: 0 0 10px rgba(213, 171, 109, 0.5),
+                            0 0 20px rgba(213, 171, 109, 0.3),
+                            0 0 30px rgba(213, 171, 109, 0.2);
+            }
+            100% { 
+                text-shadow: 0 0 5px rgba(213, 171, 109, 0.3),
+                            0 0 10px rgba(213, 171, 109, 0.2);
+            }
+        }
+
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .animate-slide-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.8s ease-out forwards;
+        }
+
+        .disco-card {
+            background: rgba(26, 51, 48, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(213, 171, 109, 0.3);
+            animation: discoPulse 2s ease-in-out infinite;
+            opacity: 1;
+        }
+
+        .disco-title {
+            animation: titleGlow 2s ease-in-out infinite;
+            opacity: 1;
+            color: #d5ab6d;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1a3330;
+            background-color: #0a1413;
             color: #e8d5b5;
+            background-image: 
+                linear-gradient(rgba(10, 20, 19, 0.97), rgba(10, 20, 19, 0.97)),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(213, 171, 109, 0.05) 2px,
+                    rgba(213, 171, 109, 0.05) 4px
+                );
+        }
+
+        .disco-text {
+            color: #f0e0c5;
+        }
+
+        .back-button {
+            background: rgba(26, 51, 48, 0.5);
+            border: 1px solid rgba(213, 171, 109, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(213, 171, 109, 0.2);
+            border-color: #d5ab6d;
+        }
+
+        .main-content {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.8s ease-out 0.4s forwards;
+        }
+
+        .header-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .header-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .disco-banner {
+            position: relative;
+            background-image: url('DiscoPic2.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            overflow: hidden;
+        }
+        .disco-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: inherit;
+            filter: blur(2px);
+            z-index: 1;
+        }
+        .disco-banner::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(120deg, rgba(40,0,50,0.85), rgba(20,40,35,0.8));
+            filter: blur(2px);
+            z-index: 2;
+        }
+        .disco-banner > * {
+            position: relative;
+            z-index: 3;
         }
     </style>
 </head>
 <body class="p-4">
-    <header class="text-center mb-8">
-        <div class="mb-6">
-            <img src="QECLogo.png" alt="Queen Elizabeth College Logo" class="mx-auto h-24 w-auto">
+    <header class="text-center mb-12">
+        <div class="header-item animate-slide-up delay-100">
+            <img src="QECLogoDisco.gif" alt="Queen Elizabeth College Logo" class="mx-auto h-24 w-auto">
         </div>
-        <h1 class="text-4xl font-bold mb-2" style="color: #d5ab6d;">Discotech</h1>
-        <a href="index.html" class="inline-block px-4 py-1.5 text-[#e8d5b5] border border-[#d5ab6d] rounded-md hover:bg-[#d5ab6d] hover:text-[#1a3330] transition duration-300">← Back to Main Page</a>
+        <div class="header-item animate-slide-up delay-200">
+            <h1 class="text-4xl font-bold disco-title">Discotech</h1>
+        </div>
+        <div class="header-item animate-slide-up delay-300">
+            <a href="index.html" class="back-button inline-block px-4 py-1.5 text-[#e8d5b5] rounded-md">← Back to Main Page</a>
+        </div>
     </header>
 
-    <main class="max-w-2xl mx-auto bg-[#2b564f] p-8 rounded-lg border-2 border-[#d5ab6d]">
-        <h2 class="text-2xl font-bold mb-4">Join us for an incredible disco experience!</h2>
-        <div class="space-y-4">
-            <p class="text-lg">Get ready for an unforgettable night featuring:</p>
-            <ul class="list-disc list-inside space-y-2 ml-4">
-                <li>Professional DJ playing the latest hits</li>
-                <li>Amazing light show and effects</li>
-                <li>Dance competitions with prizes</li>
-                <li>Time: 7 PM - 10 PM</li>
-                <li>Location: Main Hall</li>
-            </ul>
-            <div class="mt-6">
-                <h3 class="text-xl font-bold mb-2">What to Expect:</h3>
-                <p>Our disco features state-of-the-art sound systems, professional lighting, and plenty of space to show off your best moves. Whether you're a dancing pro or just want to enjoy the music, there's something for everyone!</p>
+    <main class="max-w-2xl mx-auto disco-card disco-banner p-8 rounded-lg">
+        <div class="main-content">
+            <h2 class="text-2xl font-bold mb-4 disco-title">Join us for an incredible disco experience!</h2>
+            <div class="space-y-4">
+                <p class="text-lg disco-text">Get ready for an unforgettable night featuring:</p>
+                <ul class="list-disc list-inside space-y-2 ml-4 disco-text">
+                    <li>Professional DJ playing the latest hits</li>
+                    <li>Amazing light show and effects</li>
+                    <li>Dance competitions with prizes</li>
+                    <li>Time: 7 PM - 10 PM</li>
+                    <li>Location: Main Hall</li>
+                </ul>
+                <div class="mt-6">
+                    <h3 class="text-xl font-bold mb-2 disco-title">What to Expect:</h3>
+                    <p class="disco-text">Our disco features state-of-the-art sound systems, professional lighting, and plenty of space to show off your best moves. Whether you're a dancing pro or just want to enjoy the music, there's something for everyone!</p>
+                </div>
             </div>
         </div>
     </main>
 
-    <footer class="text-center mt-8" style="color: #d5ab6d;">
+    <footer class="text-center mt-8 animate-fade-in delay-500" style="color: #d5ab6d;">
         <p>&copy; 2025 Queen Elizabeth College. All rights reserved.</p>
     </footer>
 </body>
