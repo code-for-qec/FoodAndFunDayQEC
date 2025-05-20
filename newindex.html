@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>School Food & Fun Day!</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #1a3330;
+        color: #e8d5b5;
+    }
+    /* Countdown  */
+    .count-down-values-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .timer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(213, 171, 109, 0.1);
+        padding: 1rem;
+        border-radius: 9999px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        backdrop-filter: blur(4px);
+        border: 2px solid #d5ab6d;
+        width: 90px;
+        height: 90px;
+        justify-content: center;
+        transition: transform 0.3s ease;
+    }
+    .timer:hover {
+        transform: scale(1.05);
+    }
+    .timer h3 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #d5ab6d;
+        animation: pulseGlow 2s infinite;
+    }
+    .timer p {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        margin-top: 0.25rem;
+        color: #e8d5b5;
+    }
+    @keyframes pulseGlow {
+        0% { text-shadow: 0 0 5px #d5ab6d; }
+        50% { text-shadow: 0 0 20px #d5ab6d; }
+        100% { text-shadow: 0 0 5px #d5ab6d; }
+    }
+    /* Swiper container */
+    .swiper {
+        max-width: 900px;
+        height: 450px; 
+        margin: 0 auto;
+        position: relative;
+    }
+    /* Slide link wrapper */
+    .slide-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+        user-select: none;
+    }
+    /* Slide images */
+    .swiper-slide img {
+        width: 100%;
+        height: 400px; 
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        transition: transform 0.3s ease;
+    }
+    .slide-link:hover img {
+        transform: scale(1.05);
+    }
+    /* Label styling */
+    .slide-label {
+        font-family: 'Press Start 2P', monospace;
+        color: #d5ab6d;
+        text-align: center;
+        margin-top: 12px;
+        font-size: 1rem;
+        letter-spacing: 0.05em;
+        user-select: none;
+        transition: color 0.3s ease;
+    }
+    .slide-link:hover .slide-label {
+        color: #fff3b0;
+    }
+    /* Pagination lines/dots */
+    .swiper-pagination {
+      position: absolute;
+      top: 10px; 
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      padding: 0;
+      margin: 0;
+      z-index: 10;
+    }
+    .swiper-pagination-bullet {
+      width: 40px !important;
+      height: 4px !important;
+      background-color: #d5ab6d !important;
+      opacity: 0.3 !important;
+      border-radius: 2px !important;
+      margin: 0 !important;
+      transition: opacity 0.3s ease;
+      box-shadow: none !important;
+    }
+    .swiper-pagination-bullet-active {
+      opacity: 1 !important;
+    }
+    
+    .swiper-button-prev,
+    .swiper-button-next {
+      width: 48px !important;
+      height: 48px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      position: absolute !important;
+      z-index: 100 !important;
+      cursor: pointer;
+      border-radius: 9999px !important;
+      background: rgba(213, 171, 109, 0.3) !important;
+      box-shadow: 0 0 12px 2px rgba(213, 171, 109, 0.75) !important;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease !important;
+      fill: #d5ab6d !important;
+    }
+    .swiper-button-prev:hover,
+    .swiper-button-next:hover {
+      background: rgba(213, 171, 109, 0.6) !important;
+      box-shadow: 0 0 20px 4px rgba(213, 171, 109, 1) !important;
+    }
+    .swiper-button-prev {
+      left: -60px !important;
+    }
+    .swiper-button-next {
+      right: -60px !important;
+    }
+    
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+      content: "";
+      display: block;
+      width: 18px;
+      height: 18px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    .swiper-button-prev::after {
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23d5ab6d" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg>');
+      margin-left: 3px;
+    }
+    .swiper-button-next::after {
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23d5ab6d" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>');
+      margin-right: 3px;
+    }
+    
+    @media (max-width: 768px) {
+      .swiper {
+        height: 360px;
+      }
+      .swiper-slide img {
+        height: 280px;
+      }
+      .slide-label {
+        font-size: 0.9rem;
+      }
+      .swiper-button-prev {
+        left: -40px !important;
+      }
+      .swiper-button-next {
+        right: -40px !important;
+      }
+    }
+    @media (max-width: 480px) {
+      .swiper {
+        height: 280px;
+      }
+      .swiper-slide img {
+        height: 210px;
+      }
+      .slide-label {
+        font-size: 0.8rem;
+      }
+      .swiper-button-prev {
+        left: -30px !important;
+      }
+      .swiper-button-next {
+        right: -30px !important;
+      }
+    }
+</style>
+<script>
+    let dest = new Date("May 28, 2025 00:01:00").getTime();
+    let x = setInterval(function () {
+        let now = new Date().getTime();
+        let diff = dest - now;
+        if (diff <= 0) {
+            clearInterval(x);
+            return;
+        }
+        let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        days = days < 10 ? `0${days}` : days;
+        hours = hours < 10 ? `0${hours}` : hours;
+        minutes = minutes < 10 ? `0${minutes}` : minutes;
+        seconds = seconds < 10 ? `0${seconds}` : seconds;
+
+        let countdownElements = document.getElementsByClassName("countdown-element");
+        for (let i = 0; i < countdownElements.length; i++) {
+            let className = countdownElements[i].classList[1];
+            switch (className) {
+                case "days":
+                    countdownElements[i].innerHTML = days;
+                    break;
+                case "hours":
+                    countdownElements[i].innerHTML = hours;
+                    break;
+                case "minutes":
+                    countdownElements[i].innerHTML = minutes;
+                    break;
+                case "seconds":
+                    countdownElements[i].innerHTML = seconds;
+                    break;
+            }
+        }
+    }, 1000);
+</script>
+</head>
+<body class="p-4">
+<header class="text-center mb-8">
+    <img src="QECLogo.png" alt="Queen Elizabeth College Logo" class="mx-auto h-24 w-auto mb-6" />
+    <h1 class="text-4xl font-bold mb-2 text-[#d5ab6d]">Food & Fun Day!</h1>
+    <p class="text-lg text-[#e8d5b5]">Join us for a day of excitement and delicious treats!</p>
+</header>
+<main class="mb-12">
+    <div class="text-center mb-6">
+        <h2 class="pixel-heading text-2xl md:text-3xl mb-4">COUNTDOWN UNTIL THE FUN BEGINS</h2>
+        <div class="count-down-values-container">
+            <div class="timer"><h3 class="countdown-element days"></h3><p>days</p></div>
+            <div class="timer"><h3 class="countdown-element hours"></h3><p>hours</p></div>
+            <div class="timer"><h3 class="countdown-element minutes"></h3><p>minutes</p></div>
+            <div class="timer"><h3 class="countdown-element seconds"></h3><p>seconds</p></div>
+        </div>
+    </div>
+
+    <!-- Carousel -->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="discotheque.html" class="slide-link" aria-label="Discotheque">
+                    <img src="placeholder.png" alt="Discotheque" />
+                    <span class="slide-label">Discotheque</span>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="gaming.html" class="slide-link" aria-label="Gaming">
+                    <img src="placeholder.png" alt="Gaming" />
+                    <span class="slide-label">Gaming</span>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="football.html" class="slide-link" aria-label="Football Tournament">
+                    <img src="placeholder.png" alt="Football Tournament" />
+                    <span class="slide-label">Football Tournament</span>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="foodstalls.html" class="slide-link" aria-label="Food Stalls">
+                    <img src="placeholder.png" alt="Food Stalls" />
+                    <span class="slide-label">Food Stalls</span>
+                </a>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</main>
+<footer class="text-center mt-8 text-[#d5ab6d]">
+    <p>&copy; 2025 Queen Elizabeth College. All rights reserved.</p>
+</footer>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.mySwiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+        speed: 600,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        effect: 'slide',
+    });
+</script>
+</body>
+</html>
