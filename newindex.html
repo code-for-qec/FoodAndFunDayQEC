@@ -7,7 +7,6 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
-<!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <style>
     body {
@@ -15,13 +14,14 @@
         background-color: #1a3330;
         color: #e8d5b5;
     }
-    /* Countdown  */
+
     .count-down-values-container {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 1rem;
     }
+
     .timer {
         display: flex;
         flex-direction: column;
@@ -37,34 +37,38 @@
         justify-content: center;
         transition: transform 0.3s ease;
     }
+
     .timer:hover {
         transform: scale(1.05);
     }
+
     .timer h3 {
         font-size: 1.75rem;
         font-weight: 700;
         color: #d5ab6d;
         animation: pulseGlow 2s infinite;
     }
+
     .timer p {
         font-size: 0.75rem;
         text-transform: uppercase;
         margin-top: 0.25rem;
         color: #e8d5b5;
     }
+
     @keyframes pulseGlow {
         0% { text-shadow: 0 0 5px #d5ab6d; }
         50% { text-shadow: 0 0 20px #d5ab6d; }
         100% { text-shadow: 0 0 5px #d5ab6d; }
     }
-    /* Swiper container */
+
     .swiper {
         max-width: 900px;
         height: 450px; 
         margin: 0 auto;
         position: relative;
     }
-    /* Slide link wrapper */
+
     .slide-link {
         display: flex;
         flex-direction: column;
@@ -73,7 +77,7 @@
         color: inherit;
         user-select: none;
     }
-    /* Slide images */
+
     .swiper-slide img {
         width: 100%;
         height: 400px; 
@@ -82,10 +86,11 @@
         box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         transition: transform 0.3s ease;
     }
+
     .slide-link:hover img {
         transform: scale(1.05);
     }
-    /* Label styling */
+
     .slide-label {
         font-family: 'Press Start 2P', monospace;
         color: #d5ab6d;
@@ -96,117 +101,162 @@
         user-select: none;
         transition: color 0.3s ease;
     }
+
     .slide-link:hover .slide-label {
         color: #fff3b0;
     }
-    /* Pagination lines/dots */
+
     .swiper-pagination {
-      position: absolute;
-      top: 10px; 
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      padding: 0;
-      margin: 0;
-      z-index: 10;
+        position: absolute;
+        top: 10px; 
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        padding: 0;
+        margin: 0;
+        z-index: 10;
     }
+
     .swiper-pagination-bullet {
-      width: 40px !important;
-      height: 4px !important;
-      background-color: #d5ab6d !important;
-      opacity: 0.3 !important;
-      border-radius: 2px !important;
-      margin: 0 !important;
-      transition: opacity 0.3s ease;
-      box-shadow: none !important;
+        width: 40px !important;
+        height: 4px !important;
+        background-color: #d5ab6d !important;
+        opacity: 0.3 !important;
+        border-radius: 2px !important;
+        margin: 0 !important;
+        transition: opacity 0.3s ease;
+        box-shadow: none !important;
     }
+
     .swiper-pagination-bullet-active {
-      opacity: 1 !important;
+        opacity: 1 !important;
     }
-    
+
     .swiper-button-prev,
     .swiper-button-next {
-      width: 48px !important;
-      height: 48px !important;
-      top: 50% !important;
-      transform: translateY(-50%) !important;
-      position: absolute !important;
-      z-index: 100 !important;
-      cursor: pointer;
-      border-radius: 9999px !important;
-      background: rgba(213, 171, 109, 0.3) !important;
-      box-shadow: 0 0 12px 2px rgba(213, 171, 109, 0.75) !important;
-      display: flex !important;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.3s ease !important;
-      fill: #d5ab6d !important;
+        width: 48px !important;
+        height: 48px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        position: absolute !important;
+        z-index: 100 !important;
+        cursor: pointer;
+        border-radius: 9999px !important;
+        background: rgba(213, 171, 109, 0.3) !important;
+        box-shadow: 0 0 12px 2px rgba(213, 171, 109, 0.75) !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease !important;
+        fill: #d5ab6d !important;
     }
+
     .swiper-button-prev:hover,
     .swiper-button-next:hover {
-      background: rgba(213, 171, 109, 0.6) !important;
-      box-shadow: 0 0 20px 4px rgba(213, 171, 109, 1) !important;
+        background: rgba(213, 171, 109, 0.6) !important;
+        box-shadow: 0 0 20px 4px rgba(213, 171, 109, 1) !important;
     }
+
     .swiper-button-prev {
-      left: -60px !important;
+        left: -60px !important;
     }
+
     .swiper-button-next {
-      right: -60px !important;
+        right: -60px !important;
     }
-    
+
     .swiper-button-prev::after,
     .swiper-button-next::after {
-      content: "";
-      display: block;
-      width: 18px;
-      height: 18px;
-      background-size: contain;
-      background-repeat: no-repeat;
+        content: "";
+        display: block;
+        width: 18px;
+        height: 18px;
+        background-size: contain;
+        background-repeat: no-repeat;
     }
+
     .swiper-button-prev::after {
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%23d5ab6d" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg>');
-      margin-left: 3px;
+        background-image: url('data:image/svg+xml;utf8,<svg fill="%23d5ab6d" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg>');
+        margin-left: 3px;
     }
+
     .swiper-button-next::after {
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%23d5ab6d" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>');
-      margin-right: 3px;
+        background-image: url('data:image/svg+xml;utf8,<svg fill="%23d5ab6d" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>');
+        margin-right: 3px;
     }
-    
+
     @media (max-width: 768px) {
-      .swiper {
-        height: 360px;
-      }
-      .swiper-slide img {
-        height: 280px;
-      }
-      .slide-label {
-        font-size: 0.9rem;
-      }
-      .swiper-button-prev {
-        left: -40px !important;
-      }
-      .swiper-button-next {
-        right: -40px !important;
-      }
+        .swiper {
+            height: 360px;
+        }
+
+        .swiper-slide img {
+            height: 280px;
+        }
+
+        .slide-label {
+            font-size: 0.9rem;
+        }
+
+        .swiper-button-prev {
+            left: -40px !important;
+        }
+
+        .swiper-button-next {
+            right: -40px !important;
+        }
+
+        .timer {
+            width: 70px;
+            height: 70px;
+            padding: 0.5rem;
+        }
+
+        .timer h3 {
+            font-size: 1.25rem;
+        }
+
+        .timer p {
+            font-size: 0.6rem;
+        }
     }
+
     @media (max-width: 480px) {
-      .swiper {
-        height: 280px;
-      }
-      .swiper-slide img {
-        height: 210px;
-      }
-      .slide-label {
-        font-size: 0.8rem;
-      }
-      .swiper-button-prev {
-        left: -30px !important;
-      }
-      .swiper-button-next {
-        right: -30px !important;
-      }
+        .swiper {
+            height: 280px;
+        }
+
+        .swiper-slide img {
+            height: 210px;
+        }
+
+        .slide-label {
+            font-size: 0.8rem;
+        }
+
+        .swiper-button-prev {
+            left: -30px !important;
+        }
+
+        .swiper-button-next {
+            right: -30px !important;
+        }
+
+        .timer {
+            width: 60px;
+            height: 60px;
+            padding: 0.4rem;
+        }
+
+        .timer h3 {
+            font-size: 1rem;
+        }
+
+        .timer p {
+            font-size: 0.5rem;
+        }
     }
 </style>
 <script>
@@ -266,7 +316,6 @@
         </div>
     </div>
 
-    <!-- Carousel -->
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
@@ -302,7 +351,6 @@
 <footer class="text-center mt-8 text-[#d5ab6d]">
     <p>&copy; 2025 Queen Elizabeth College. All rights reserved.</p>
 </footer>
-<!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
     const swiper = new Swiper('.mySwiper', {
