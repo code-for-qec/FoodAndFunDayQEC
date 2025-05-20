@@ -79,10 +79,10 @@
 <body class="p-4">
     <header class="text-center mb-8">
         <div class="mb-6">
-            <img src="QECLogo.png" alt="Queen Elizabeth College Logo" class="mx-auto h-24 w-auto">
+            <img src="QECLogoFood.png" alt="Queen Elizabeth College Logo" class="mx-auto h-24 w-auto">
         </div>
         <h1 class="text-4xl font-extrabold tracking-wide mb-2" style="color: #d5ab6d;">Food Stalls</h1>
-        <a href="index.html" class="text-lg inline-block mb-6 hover:text-[#d5ab6d]">← Back to Main Page</a>
+        <a href="index.html" class="inline-block px-4 py-1.5 text-[#e8d5b5] border border-[#d5ab6d] rounded-md hover:bg-[#d5ab6d] hover:text-[#1a3330] transition duration-300">← Back to Main Page</a>
     </header>
 
     <main class="max-w-4xl mx-auto space-y-6">
@@ -127,7 +127,7 @@
                                 <img src="bulletpointcrown.png" alt="•" class="w-4 h-4 mr-2 flex-shrink-0" style="filter: brightness(1.2);">
                                 <div class="flex justify-between items-center w-full">
                                     <span>${product.name}</span>
-                                    <span class="price-tag ml-2">${product.price}</span>
+                                    <span class="price-tag ml-2 text-center">${product.price}</span>
                                 </div>
                             </li>
                         `).join('')}
@@ -140,8 +140,15 @@
             const errorDetails = document.getElementById('errorDetails');
             try {
                 console.log('Attempting to fetch stall_info.json...');
-                const response = await fetch('stall_info.json');
+                const response = await fetch('stall_info.json?' + new Date().getTime(), {
+                    headers: {
+                        'Cache-Control': 'no-cache, no-store, must-revalidate',
+                        'Pragma': 'no-cache',
+                        'Expires': '0'
+                    }
+                });
                 console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -149,19 +156,27 @@
 
                 const stalls = await response.json();
                 console.log('Successfully loaded stalls:', stalls);
+                console.log('Number of stalls loaded:', stalls.length);
 
                 const stallsGrid = document.getElementById('stallsGrid');
+                console.log('Stalls grid element found:', !!stallsGrid);
 
                 const nonFoodStalls = ['Gaming Room', 'Disco', '4D cinema', 'Escape room', 
                     'Karaoke', 'Outdoor laser tag', 'Bouncing castle', 'Football', 
                     'Tug of war', 'Beauty Parlour', 'Festival games'];
                 const foodStalls = stalls.filter(stall => !nonFoodStalls.includes(stall.name));
+                console.log('Number of food stalls after filtering:', foodStalls.length);
+                console.log('Food stalls:', foodStalls);
 
                 if (foodStalls.length === 0) {
                     throw new Error('No food stalls found after filtering');
                 }
 
-                foodStalls.forEach(stall => {
+                // Clear existing content
+                stallsGrid.innerHTML = '';
+
+                foodStalls.forEach((stall, index) => {
+                    console.log(`Processing stall ${index + 1}:`, stall.name);
                     const stallCard = document.createElement('div');
                     stallCard.className = 'stall-card rounded-lg p-6 fade-in';
 
@@ -170,13 +185,19 @@
                         <div class="space-y-4">
                     `;
 
+                    // Add products and other info above the line
                     if (stall.products) {
+                        console.log(`Adding products for ${stall.name}:`, stall.products);
                         html += renderProducts(stall.products);
                     }
 
+                    // Add other fields except location and time
+                    let hasExtraInfo = false;
                     Object.entries(stall).forEach(([field, value]) => {
-                        if (field === 'name' || field === 'products') return;
+                        if (field === 'name' || field === 'products' || field === 'location' || field === 'time') return;
                         if (!value || (Array.isArray(value) && value.length === 0) || value === '') return;
+                        hasExtraInfo = true;
+                        console.log(`Adding extra info for ${stall.name}:`, field, value);
 
                         html += `
                             <div>
@@ -186,9 +207,35 @@
                         `;
                     });
 
+                    // Add separation line only if there's content above and below
+                    if ((stall.products || hasExtraInfo) && (stall.location || stall.time)) {
+                        html += `<div class="border-t border-[#d5ab6d] my-4 opacity-50"></div>`;
+                    }
+
+                    // Add time and location below the line (time always first)
+                    if (stall.time) {
+                        console.log(`Adding time for ${stall.name}:`, stall.time);
+                        html += `
+                            <div>
+                                <h3 class="font-semibold mb-1">Time:</h3>
+                                <p>${stall.time}</p>
+                            </div>
+                        `;
+                    }
+                    if (stall.location) {
+                        console.log(`Adding location for ${stall.name}:`, stall.location);
+                        html += `
+                            <div>
+                                <h3 class="font-semibold mb-1">Location:</h3>
+                                <p>${stall.location}</p>
+                            </div>
+                        `;
+                    }
+
                     html += `</div>`;
                     stallCard.innerHTML = html;
                     stallsGrid.appendChild(stallCard);
+                    console.log(`Finished processing stall ${index + 1}:`, stall.name);
                 });
             } catch (error) {
                 console.error('Error loading stall information:', error);
@@ -203,7 +250,13 @@
             }
         }
 
-        window.addEventListener('load', loadStalls);
+        // Add error handling for the load event
+        window.addEventListener('load', () => {
+            console.log('Page loaded, attempting to load stalls...');
+            loadStalls().catch(error => {
+                console.error('Error in load event:', error);
+            });
+        });
     </script>
 </body>
 </html>

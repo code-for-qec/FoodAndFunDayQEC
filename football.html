@@ -59,9 +59,9 @@
 
   
   <header class="text-center mb-10 transition-opacity duration-700 ease-in opacity-0 animate-fade-in">
-    <img src="QECLogo.png" alt="Queen Elizabeth College Logo" class="mx-auto h-20 md:h-24 w-auto mb-4">
+    <img src="QECLogoFootball.webp" alt="Queen Elizabeth College Logo" class="mx-auto h-20 md:h-24 w-auto mb-4">
     <h1 class="text-4xl md:text-5xl font-bold text-[#d5ab6d] mb-2 tracking-tight">Football Tournament</h1>
-    <a href="index.html" class="text-base md:text-lg text-[#e8d5b5] hover:text-[#d5ab6d] transition duration-300">← Back to Main Page</a>
+    <a href="index.html" class="inline-block px-4 py-1.5 text-[#e8d5b5] border border-[#d5ab6d] rounded-md hover:bg-[#d5ab6d] hover:text-[#1a3330] transition duration-300">← Back to Main Page</a>
   </header>
 
   
@@ -71,7 +71,7 @@
     <section class="mb-8">
       <h2 class="text-2xl md:text-3xl font-semibold text-[#d5ab6d] mb-4">Get Ready to Compete</h2>
       <p class="text-base md:text-lg leading-relaxed">
-        Join us on the pitch for an action-packed tournament. Whether you're a fierce striker or a casual kicker, everyone’s welcome.
+        Join us on the pitch for an action-packed tournament. Whether you're a fierce striker or a casual kicker, everyone's welcome.
       </p>
     </section>
 
@@ -79,11 +79,9 @@
     <section class="mb-8">
       <h3 class="text-xl font-semibold text-[#e8d5b5] mb-3">Event Details:</h3>
       <ul class="list-disc list-inside text-sm md:text-base space-y-2 ml-4">
-        <li><strong>Team Format:</strong> 5-a-side</li>
-        <li><strong>Age Groups:</strong> Multiple categories</li>
-        <li><strong>Prizes:</strong> Trophies and medals</li>
-        <li><strong>Time:</strong> 1 PM – 5 PM</li>
-        <li><strong>Location:</strong> College Sports Field</li>
+        <li><strong>Team Format:</strong> 6 players per team</li>
+        <li><strong>Registration Fee:</strong> Rs150 per team</li>
+        <li><strong>Location:</strong> Football Field</li>
       </ul>
     </section>
 
@@ -101,7 +99,7 @@
   <section class="max-w-3xl mx-auto bg-[#2b564f] p-6 md:p-8 rounded-xl border-2 border-[#d5ab6d] shadow-xl transition-transform duration-700 ease-in-out transform animate-slide-in">
     <h2 class="text-2xl md:text-3xl font-semibold text-[#d5ab6d] mb-6">Register Your Team</h2>
 
-    <form action="#" method="POST" class="space-y-6">
+    <form action="https://formspree.io/f/mnndrpzg" method="POST" class="space-y-6">
       <div>
         <label for="teamName" class="block mb-2 text-sm font-medium text-[#e8d5b5]">Team Name</label>
         <input type="text" id="teamName" name="teamName" required class="w-full p-2 rounded-md bg-[#1a3330] text-[#e8d5b5] border border-[#d5ab6d] focus:outline-none focus:ring-2 focus:ring-[#d5ab6d]"/>
@@ -117,28 +115,26 @@
         <input type="email" id="email" name="email" required class="w-full p-2 rounded-md bg-[#1a3330] text-[#e8d5b5] border border-[#d5ab6d] focus:outline-none focus:ring-2 focus:ring-[#d5ab6d]"/>
       </div>
 
-      
-
       <button type="submit" class="mt-4 w-full bg-[#d5ab6d] text-[#1a3330] font-semibold py-2 rounded-md hover:bg-[#e8d5b5] transition duration-300">
         Submit Registration
       </button>
     </form>
   </section>
 
-  <section class="max-w-5xl mx-auto mt-12 bg-[#2b564f] p-6 md:p-8 rounded-xl border-2 border-[#d5ab6d] animate-slide-in">
-    <h2 class="text-2xl font-semibold text-[#d5ab6d] mb-6">Group Stage Matches & Schedule</h2>
+  <section class="max-w-5xl mx-auto mt-12 bg-[#2b564f] p-4 md:p-8 rounded-xl border-2 border-[#d5ab6d]">
+    <h2 class="text-2xl md:text-3xl font-semibold text-[#d5ab6d] mb-6">Group Stage Matches & Schedule</h2>
   
     <!-- Alpine.js Tab Implementation -->
     <div x-data="{ activeTab: 1 }">
-      
-        <div class="flex justify-center mb-6 space-x-2 md:space-x-6 border-b-2 border-[#d5ab6d]">
-
+  
+      <!-- Tab Buttons -->
+      <div class="flex flex-row flex-wrap justify-center mb-6 gap-2 sm:gap-3 border-b-2 border-[#d5ab6d] overflow-x-auto">
         <button :class="{ 
                 'text-[#d5ab6d] border-b-2 border-[#d5ab6d]': activeTab === 1,
                 'bg-[#1a3330] text-[#d5ab6d] font-bold': activeTab === 1 
               }" 
                 @click="activeTab = 1" 
-                class="text-white text-sm px-2 py-2 md:text-lg md:px-6 md:py-4 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-110 hover:underline">
+                class="text-white py-1 px-3 sm:py-2 sm:px-4 md:py-4 md:px-6 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-105 hover:underline text-sm sm:text-base md:text-lg">
           Group A
         </button>
         <button :class="{ 
@@ -146,7 +142,7 @@
                 'bg-[#1a3330] text-[#d5ab6d] font-bold': activeTab === 2 
               }" 
                 @click="activeTab = 2" 
-                class="text-white text-sm px-2 py-2 md:text-lg md:px-6 md:py-4 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-110 hover:underline">
+                class="text-white py-1 px-3 sm:py-2 sm:px-4 md:py-4 md:px-6 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-105 hover:underline text-sm sm:text-base md:text-lg">
           Group B
         </button>
         <button :class="{ 
@@ -154,7 +150,7 @@
                 'bg-[#1a3330] text-[#d5ab6d] font-bold': activeTab === 3 
               }" 
                 @click="activeTab = 3" 
-                class="text-white text-sm px-2 py-2 md:text-lg md:px-6 md:py-4 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-110 hover:underline">
+                class="text-white py-1 px-3 sm:py-2 sm:px-4 md:py-4 md:px-6 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-105 hover:underline text-sm sm:text-base md:text-lg">
           Group C
         </button>
         <button :class="{ 
@@ -162,7 +158,7 @@
                 'bg-[#1a3330] text-[#d5ab6d] font-bold': activeTab === 4 
               }" 
                 @click="activeTab = 4" 
-                class="text-white text-sm px-2 py-2 md:text-lg md:px-6 md:py-4 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-110 hover:underline">
+                class="text-white py-1 px-3 sm:py-2 sm:px-4 md:py-4 md:px-6 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-105 hover:underline text-sm sm:text-base md:text-lg">
           Group D
         </button>
         <button :class="{ 
@@ -170,94 +166,94 @@
                 'bg-[#1a3330] text-[#d5ab6d] font-bold': activeTab === 5 
               }" 
                 @click="activeTab = 5" 
-                class="text-white text-sm px-2 py-2 md:text-lg md:px-6 md:py-4 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-110 hover:underline">
+                class="text-white py-1 px-3 sm:py-2 sm:px-4 md:py-4 md:px-6 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-105 hover:underline text-sm sm:text-base md:text-lg">
           Playoffs
         </button>
       </div>
   
-      <!-- Tab Content for Group A  -->
-      <div x-show="activeTab === 1" x-transition:enter="transition transform duration-500" x-transition:enter-start="opacity-0 translate-y-10" x-transition:enter-end="opacity-100 translate-y-0" class="space-y-4">
-        <div class="flex justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg transition duration-300 ease-in-out hover:scale-105">
-          <div class="font-semibold">Team A vs Team B</div>
-          <div>09:00</div>
+      <!-- Tab Contents -->
+      <!-- Group A -->
+      <div x-show="activeTab === 1" x-transition class="space-y-3">
+        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
+          <div class="font-semibold text-sm md:text-base">Team A vs Team B</div>
+          <div class="text-sm md:text-base mt-1 sm:mt-0">09:00</div>
         </div>
-        <div class="flex justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg transition duration-300 ease-in-out hover:scale-105">
-          <div class="font-semibold">Team C vs Team D</div>
-          <div>09:20</div>
+        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
+          <div class="font-semibold text-sm md:text-base">Team C vs Team D</div>
+          <div class="text-sm md:text-base mt-1 sm:mt-0">09:20</div>
         </div>
-        <div class="flex justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg transition duration-300 ease-in-out hover:scale-105">
-          <div class="font-semibold">Team A vs Team D</div>
-          <div>09:40</div>
-        </div>
-      </div>
-  
-      <!-- Tab Content for Group B -->
-      <div x-show="activeTab === 2" x-transition:enter="transition transform duration-500" x-transition:enter-start="opacity-0 translate-y-10" x-transition:enter-end="opacity-100 translate-y-0" class="space-y-4">
-        <div class="flex justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg transition duration-300 ease-in-out hover:scale-105">
-          <div class="font-semibold">Team E vs Team F</div>
-          <div>10:00</div>
-        </div>
-        <div class="flex justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg transition duration-300 ease-in-out hover:scale-105">
-          <div class="font-semibold">Team G vs Team H</div>
-          <div>10:20</div>
-        </div>
-        <div class="flex justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg transition duration-300 ease-in-out hover:scale-105">
-          <div class="font-semibold">Team E vs Team H</div>
-          <div>10:40</div>
+        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
+          <div class="font-semibold text-sm md:text-base">Team A vs Team D</div>
+          <div class="text-sm md:text-base mt-1 sm:mt-0">09:40</div>
         </div>
       </div>
   
-      <!-- Tab Content for Group C -->
-      <div x-show="activeTab === 3" x-transition:enter="transition transform duration-500" x-transition:enter-start="opacity-0 translate-y-10" x-transition:enter-end="opacity-100 translate-y-0" class="space-y-4">
-        <div class="flex justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg transition duration-300 ease-in-out hover:scale-105">
-          <div class="font-semibold">Team I vs Team J</div>
-          <div>11:00</div>
+      <!-- Group B -->
+      <div x-show="activeTab === 2" x-transition class="space-y-3">
+        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
+          <div class="font-semibold text-sm md:text-base">Team E vs Team F</div>
+          <div class="text-sm md:text-base mt-1 sm:mt-0">10:00</div>
         </div>
-        <div class="flex justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg transition duration-300 ease-in-out hover:scale-105">
-          <div class="font-semibold">Team K vs Team L</div>
-          <div>11:20</div>
+        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
+          <div class="font-semibold text-sm md:text-base">Team G vs Team H</div>
+          <div class="text-sm md:text-base mt-1 sm:mt-0">10:20</div>
         </div>
-        <div class="flex justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg transition duration-300 ease-in-out hover:scale-105">
-          <div class="font-semibold">Team I vs Team L</div>
-          <div>11:40</div>
+        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
+          <div class="font-semibold text-sm md:text-base">Team E vs Team H</div>
+          <div class="text-sm md:text-base mt-1 sm:mt-0">10:40</div>
         </div>
       </div>
   
-      <!-- Tab Content for Group D -->
-      <div x-show="activeTab === 4" x-transition:enter="transition transform duration-500" x-transition:enter-start="opacity-0 translate-y-10" x-transition:enter-end="opacity-100 translate-y-0" class="space-y-4">
-        <div class="flex justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg transition duration-300 ease-in-out hover:scale-105">
-          <div class="font-semibold">Team M vs Team N</div>
-          <div>12:00</div>
+      <!-- Group C -->
+      <div x-show="activeTab === 3" x-transition class="space-y-3">
+        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
+          <div class="font-semibold text-sm md:text-base">Team I vs Team J</div>
+          <div class="text-sm md:text-base mt-1 sm:mt-0">11:00</div>
         </div>
-        <div class="flex justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg transition duration-300 ease-in-out hover:scale-105">
-          <div class="font-semibold">Team O vs Team P</div>
-          <div>12:20</div>
+        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
+          <div class="font-semibold text-sm md:text-base">Team K vs Team L</div>
+          <div class="text-sm md:text-base mt-1 sm:mt-0">11:20</div>
         </div>
-        <div class="flex justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg transition duration-300 ease-in-out hover:scale-105">
-          <div class="font-semibold">Team M vs Team P</div>
-          <div>12:40</div>
+        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
+          <div class="font-semibold text-sm md:text-base">Team I vs Team L</div>
+          <div class="text-sm md:text-base mt-1 sm:mt-0">11:40</div>
         </div>
       </div>
-
-      <!-- Tab Content for Playoffs -->
-      <div x-show="activeTab === 5" x-transition:enter="transition transform duration-500" x-transition:enter-start="opacity-0 translate-y-10" x-transition:enter-end="opacity-100 translate-y-0" class="space-y-4">
-        <div class="flex justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg transition duration-300 ease-in-out hover:scale-105">
-          <div class="font-semibold">Group A Winner vs Group B Winner</div>
-          <div>13:00</div>
+  
+      <!-- Group D -->
+      <div x-show="activeTab === 4" x-transition class="space-y-3">
+        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
+          <div class="font-semibold text-sm md:text-base">Team M vs Team N</div>
+          <div class="text-sm md:text-base mt-1 sm:mt-0">12:00</div>
         </div>
-        <div class="flex justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg transition duration-300 ease-in-out hover:scale-105">
-          <div class="font-semibold">Group C Winner vs Group D Winner</div>
-          <div>13:20</div>
+        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
+          <div class="font-semibold text-sm md:text-base">Team O vs Team P</div>
+          <div class="text-sm md:text-base mt-1 sm:mt-0">12:20</div>
         </div>
-        <div class="flex justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg transition duration-300 ease-in-out hover:scale-105">
-          <div class="font-semibold">Finalist 1 vs Finalist 2</div>
-          <div>13:40</div>
+        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
+          <div class="font-semibold text-sm md:text-base">Team M vs Team P</div>
+          <div class="text-sm md:text-base mt-1 sm:mt-0">12:40</div>
         </div>
-        
       </div>
-      
+  
+      <!-- Playoffs -->
+      <div x-show="activeTab === 5" x-transition class="space-y-3">
+        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
+          <div class="font-semibold text-sm md:text-base">Group A Winner vs Group B Winner</div>
+          <div class="text-sm md:text-base mt-1 sm:mt-0">13:00</div>
+        </div>
+        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
+          <div class="font-semibold text-sm md:text-base">Group C Winner vs Group D Winner</div>
+          <div class="text-sm md:text-base mt-1 sm:mt-0">13:20</div>
+        </div>
+        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
+          <div class="font-semibold text-sm md:text-base">Finalist 1 vs Finalist 2</div>
+          <div class="text-sm md:text-base mt-1 sm:mt-0">13:40</div>
+        </div>
+      </div>
     </div>
   </section>
+  
   
 
   <!-- Footer -->
