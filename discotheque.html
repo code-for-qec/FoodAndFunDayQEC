@@ -6,6 +6,7 @@
     <title>Discotech - School Food & Fun Day!</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
     <style>
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
@@ -36,24 +37,6 @@
             to { 
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        @keyframes discoPulse {
-            0% { 
-                box-shadow: 0 0 5px rgba(213, 171, 109, 0.3),
-                           0 0 10px rgba(213, 171, 109, 0.2),
-                           0 0 15px rgba(213, 171, 109, 0.1);
-            }
-            50% { 
-                box-shadow: 0 0 10px rgba(213, 171, 109, 0.4),
-                           0 0 20px rgba(213, 171, 109, 0.3),
-                           0 0 30px rgba(213, 171, 109, 0.2);
-            }
-            100% { 
-                box-shadow: 0 0 5px rgba(213, 171, 109, 0.3),
-                           0 0 10px rgba(213, 171, 109, 0.2),
-                           0 0 15px rgba(213, 171, 109, 0.1);
             }
         }
 
@@ -88,14 +71,13 @@
             background: rgba(26, 51, 48, 0.3);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(213, 171, 109, 0.3);
-            animation: discoPulse 2s ease-in-out infinite;
             opacity: 1;
         }
 
         .disco-title {
-            animation: titleGlow 2s ease-in-out infinite;
             opacity: 1;
             color: #d5ab6d;
+            text-shadow: 0 0 10px rgba(213, 171, 109, 0.5), 0 0 20px rgba(213, 171, 109, 0.3), 0 0 30px rgba(213, 171, 109, 0.2);
         }
 
         .delay-100 { animation-delay: 0.1s; }
@@ -117,6 +99,10 @@
                     rgba(213, 171, 109, 0.05) 2px,
                     rgba(213, 171, 109, 0.05) 4px
                 );
+        }
+
+        h1, h2, h3 {
+            font-family: 'Righteous', 'Inter', sans-serif;
         }
 
         .disco-text {
@@ -183,7 +169,7 @@
             <img src="QECLogoDisco.gif" alt="Queen Elizabeth College Logo" class="mx-auto h-24 w-auto">
         </div>
         <div class="header-item animate-slide-up delay-200">
-            <h1 class="text-4xl font-bold disco-title">Discotech</h1>
+            <h1 class="text-4xl font-bold disco-title">Discotheque</h1>
         </div>
         <div class="header-item animate-slide-up delay-300">
             <a href="index.html" class="back-button inline-block px-4 py-1.5 text-[#e8d5b5] rounded-md">← Back to Main Page</a>
