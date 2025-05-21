@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Stalls - School Food & Fun Day!</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Caveat:wght@400;700&family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
@@ -24,9 +24,16 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Caveat', cursive;
+            font-weight: 700;
             background-color: #1a3330;
             color: #e8d5b5;
+            font-size: 1.1em;
+        }
+
+        h1, h2, h3, .font-bold {
+            font-family: 'Caveat', cursive;
+            font-weight: 700;
         }
 
         .stall-card {
@@ -81,7 +88,7 @@
         <div class="mb-6">
             <img src="QECLogoFood.png" alt="Queen Elizabeth College Logo" class="mx-auto h-24 w-auto">
         </div>
-        <h1 class="text-4xl font-extrabold tracking-wide mb-2" style="color: #d5ab6d;">Food Stalls</h1>
+        <h1 class="text-4xl font-bold tracking-wide mb-2" style="color: #d5ab6d;">Food Stalls</h1>
         <a href="index.html" class="inline-block px-4 py-1.5 text-[#e8d5b5] border border-[#d5ab6d] rounded-md hover:bg-[#d5ab6d] hover:text-[#1a3330] transition duration-300">← Back to Main Page</a>
     </header>
 
@@ -93,7 +100,7 @@
     </main>
 
     <footer class="text-center mt-8 mb-4" style="color: #d5ab6d;">
-        <p>&copy; 2025 Queen Elizabeth College. All rights reserved.</p>
+        <p class="font-bold">&copy; 2025 Queen Elizabeth College. All rights reserved.</p>
     </footer>
 
     <script>
@@ -120,7 +127,7 @@
 
             return `
                 <div>
-                    <h3 class="font-semibold mb-2">Menu:</h3>
+                    <h3 class="font-bold mb-2">Menu:</h3>
                     <ul class="space-y-2">
                         ${products.map(product => `
                             <li class="flex items-center">
@@ -201,7 +208,7 @@
 
                         html += `
                             <div>
-                                <h3 class="font-semibold mb-1">${formatFieldName(field)}:</h3>
+                                <h3 class="font-bold mb-1">${formatFieldName(field)}:</h3>
                                 <p>${renderFieldValue(value)}</p>
                             </div>
                         `;
@@ -217,7 +224,7 @@
                         console.log(`Adding time for ${stall.name}:`, stall.time);
                         html += `
                             <div>
-                                <h3 class="font-semibold mb-1">Time:</h3>
+                                <h3 class="font-bold mb-1">Time:</h3>
                                 <p>${stall.time}</p>
                             </div>
                         `;
@@ -226,7 +233,7 @@
                         console.log(`Adding location for ${stall.name}:`, stall.location);
                         html += `
                             <div>
-                                <h3 class="font-semibold mb-1">Location:</h3>
+                                <h3 class="font-bold mb-1">Location:</h3>
                                 <p>${stall.location}</p>
                             </div>
                         `;

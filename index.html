@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <script>
 
         let dest = new Date("may 28, 2025 00:01:00").getTime();
@@ -273,6 +274,108 @@
             z-index: 2;
         }
 
+        .food-stalls-title {
+            font-family: 'Caveat', cursive;
+            font-weight: 700;
+            background: linear-gradient(to bottom, white, white);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+
+        .activity-section:active .food-stalls-title,
+        .activity-section:hover:active .food-stalls-title {
+            background: linear-gradient(to bottom, #d5ab6d, #d5ab6d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: none;
+        }
+
+        .food-stalls-section {
+            background-image: url('FoodBanner.jpeg');
+            background-position: center 15%;
+            position: relative;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .food-stalls-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            filter: blur(1px);
+            margin: -5px;
+        }
+
+        .food-stalls-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(43, 86, 79, 0.6);
+            z-index: 1;
+        }
+
+        .food-stalls-section > * {
+            position: relative;
+            z-index: 2;
+            text-shadow: none;
+        }
+
+        .food-stalls-section:hover::after {
+            background-color: rgba(51, 107, 99, 0.6);
+        }
+
+        .football-section {
+            background-image: url('FootballBanner.jpg');
+            background-position: center 15%;
+            position: relative;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .football-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            filter: blur(1px);
+            margin: -5px;
+        }
+
+        .football-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(43, 86, 79, 0.6);
+            z-index: 1;
+        }
+
+        .football-section > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .football-section:hover::after {
+            background-color: rgba(51, 107, 99, 0.6);
+        }
+
     </style>
 </head>
 <body class="p-4">
@@ -341,7 +444,7 @@
         </a>
 
         <a href="football.html" class="block">
-            <section class="activity-section rounded-lg p-6">
+            <section class="activity-section football-section rounded-lg p-6">
                 <h2 class="text-3xl font-bold mb-2">Football Tournament</h2>
                 <p class="text-lg mb-4">Click to see tournament details!</p>
             </section>
@@ -349,8 +452,8 @@
 
 
         <a href="foodstalls.html" class="block">
-            <section class="activity-section rounded-lg p-6">
-                <h2 class="text-3xl font-bold mb-2">Food Stalls</h2>
+            <section class="activity-section food-stalls-section rounded-lg p-6">
+                <h2 class="text-4xl font-bold mb-2 food-stalls-title" style="font-size: 2.5rem;">Food Stalls</h2>
                 <p class="text-lg mb-4">Click to explore our delicious offerings!</p>
             </section>
         </a>
