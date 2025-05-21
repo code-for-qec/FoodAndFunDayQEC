@@ -1,467 +1,377 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Food & Fun Day!</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
-    <script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>School Food & Fun Day!</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #1a3330;
+        color: #e8d5b5;
+    }
 
-        let dest = new Date("may 28, 2025 00:01:00").getTime();
-        let x = setInterval(function () {
-            let now = new Date().getTime();
+    .count-down-values-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
 
-            let diff = dest - now;
+    .timer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(213, 171, 109, 0.1);
+        padding: 1rem;
+        border-radius: 9999px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        backdrop-filter: blur(4px);
+        border: 2px solid #d5ab6d;
+        width: 90px;
+        height: 90px;
+        justify-content: center;
+        transition: transform 0.3s ease;
+    }
 
-            // Check if the countdown has reached zero or negative
-            if (diff <= 0) {
-                clearInterval(x); // Stop the countdown
-                return; // Exit the function
-            }
+    .timer:hover {
+        transform: scale(1.05);
+    }
 
-            let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    .timer h3 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #d5ab6d;
+        animation: pulseGlow 2s infinite;
+    }
 
-            if (days < 10) {
-                days = `0${days}`;
-            }
-            if (hours < 10) {
-                hours = `0${hours}`;
-            }
-            if (minutes < 10) {
-                minutes = `0${minutes}`;
-            }
-            if (seconds < 10) {
-                seconds = `0${seconds}`;
-            }
+    .timer p {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        margin-top: 0.25rem;
+        color: #e8d5b5;
+    }
 
-            // Get elements by class name
-            let countdownElements = document.getElementsByClassName("countdown-element");
+    @keyframes pulseGlow {
+        0% { text-shadow: 0 0 5px #d5ab6d; }
+        50% { text-shadow: 0 0 20px #d5ab6d; }
+        100% { text-shadow: 0 0 5px #d5ab6d; }
+    }
 
-            // Loop through the elements and update their content
-            for (let i = 0; i < countdownElements.length; i++) {
-                let className = countdownElements[i].classList[1]; // Get the second class name
-                switch (className) {
-                    case "days":
-                        countdownElements[i].innerHTML = days;
-                        break;
-                    case "hours":
-                        countdownElements[i].innerHTML = hours;
-                        break;
-                    case "minutes":
-                        countdownElements[i].innerHTML = minutes;
-                        break;
-                    case "seconds":
-                        countdownElements[i].innerHTML = seconds;
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }, 1000);
+    .swiper {
+        max-width: 900px;
+        height: 450px; 
+        margin: 0 auto;
+        position: relative;
+    }
 
+    .slide-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+        user-select: none;
+    }
 
-    </script>
-    <style>
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 12px;
+    .swiper-slide img {
+        width: 100%;
+        height: 400px; 
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        transition: transform 0.3s ease;
+    }
+
+    .slide-link:hover img {
+        transform: scale(1.05);
+    }
+
+    .slide-label {
+        font-family: 'Press Start 2P', monospace;
+        color: #d5ab6d;
+        text-align: center;
+        margin-top: 12px;
+        font-size: 1rem;
+        letter-spacing: 0.05em;
+        user-select: none;
+        transition: color 0.3s ease;
+    }
+
+    .slide-link:hover .slide-label {
+        color: #fff3b0;
+    }
+
+    .swiper-pagination {
+        position: absolute;
+        top: 10px; 
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        padding: 0;
+        margin: 0;
+        z-index: 10;
+    }
+
+    .swiper-pagination-bullet {
+        width: 40px !important;
+        height: 4px !important;
+        background-color: #d5ab6d !important;
+        opacity: 0.3 !important;
+        border-radius: 2px !important;
+        margin: 0 !important;
+        transition: opacity 0.3s ease;
+        box-shadow: none !important;
+    }
+
+    .swiper-pagination-bullet-active {
+        opacity: 1 !important;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        width: 48px !important;
+        height: 48px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        position: absolute !important;
+        z-index: 100 !important;
+        cursor: pointer;
+        border-radius: 9999px !important;
+        background: rgba(213, 171, 109, 0.3) !important;
+        box-shadow: 0 0 12px 2px rgba(213, 171, 109, 0.75) !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease !important;
+        fill: #d5ab6d !important;
+    }
+
+    .swiper-button-prev:hover,
+    .swiper-button-next:hover {
+        background: rgba(213, 171, 109, 0.6) !important;
+        box-shadow: 0 0 20px 4px rgba(213, 171, 109, 1) !important;
+    }
+
+    .swiper-button-prev {
+        left: -60px !important;
+    }
+
+    .swiper-button-next {
+        right: -60px !important;
+    }
+
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+        content: "";
+        display: block;
+        width: 18px;
+        height: 18px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .swiper-button-prev::after {
+        background-image: url('data:image/svg+xml;utf8,<svg fill="%23d5ab6d" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg>');
+        margin-left: 3px;
+    }
+
+    .swiper-button-next::after {
+        background-image: url('data:image/svg+xml;utf8,<svg fill="%23d5ab6d" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>');
+        margin-right: 3px;
+    }
+
+    @media (max-width: 768px) {
+        .swiper {
+            height: 360px;
         }
-        ::-webkit-scrollbar-track {
-            background: #1a3330;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #2b564f;
-            border: 2px solid #d5ab6d;
-            border-radius: 6px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #336b63;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #1a3330; /* Darker version of the teal */
-            color: #e8d5b5; /* Lighter version of the gold for better contrast */
-        }
-        .activity-section {
-            background-size: cover;
-            background-position: center;
-            color: white; /* White text for readability on background images */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for readability */
-            transition: all 0.3s ease-in-out;
-            background-color: #2b564f; /* Original teal */
-            border: 2px solid #d5ab6d; /* Original gold */
-            cursor: pointer;
-        }
-        .gaming-section {
-            background-image: url('GamingBanner.png');
-            background-position: center 15%;
-            position: relative;
-            overflow: hidden;
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
+
+        .swiper-slide img {
+            height: 280px;
         }
 
-        .gaming-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: inherit;
-            filter: blur(1px);
-            margin: -5px;
+        .slide-label {
+            font-size: 0.9rem;
         }
 
-        .gaming-section::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(43, 86, 79, 0.6);
-            z-index: 1;
+        .swiper-button-prev {
+            left: -40px !important;
         }
 
-        .gaming-section > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        .activity-section:hover {
-            transform: scale(1.01); /* Slight scale effect on hover/tap */
-            background-color: #336b63; /* Lighter teal on hover */
-            border-color: #e8d5b5; /* Lighter gold on hover */
-        }
-        .gaming-section:hover::after {
-            background-color: rgba(51, 107, 99, 0.6);
-        }
-        .gaming-title {
-            font-family: 'Press Start 2P', mono;
-            -webkit-font-smoothing: none;
-            font-smooth: never;
-            font-size: 1.5rem;
-            line-height: 1.5;
-            background: linear-gradient(to bottom, white, white);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-            text-shadow: none;
-        }
-
-        .activity-section:active .gaming-title,
-        .activity-section:hover:active .gaming-title {
-            background: linear-gradient(to bottom, #d5ab6d, #d5ab6d);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: none;
-        }
-
-        @media (hover: none) {
-            .activity-section:hover {
-                transform: none;
-            }
-            
-            .activity-section:active {
-                transform: scale(0.98);
-            }
-        }
-        .count-down-center {
-            margin: auto;
-            padding: 10px;
-            width: fit-content;
-            margin-bottom: 30px;
-        }
-
-
-
-        .count-down-values-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
+        .swiper-button-next {
+            right: -40px !important;
         }
 
         .timer {
-            margin: 0;
+            width: 70px;
+            height: 70px;
             padding: 0.5rem;
-            text-align: center;
-            min-width: 60px;
         }
 
         .timer h3 {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            margin: 0;
+            font-size: 1.25rem;
         }
 
         .timer p {
-            font-size: clamp(0.75rem, 2vw, 1rem);
-            margin: 0.25rem 0 0 0;
+            font-size: 0.6rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .swiper {
+            height: 280px;
         }
 
-        .text-centering {
-            text-align: center;
-            margin-top: 200px;
-
-
-
-        }
-        .pixel-heading {
-            font-family: 'Press Start 2P', mono;
-            text-align: center;
-            font-size: 0.875rem;
-            color: #d5ab6d;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-        }
-        .size-font {
-            padding: 1rem;
-            font-size: clamp(1rem, 3vw, 1.5rem);
+        .swiper-slide img {
+            height: 210px;
         }
 
-        @media (max-width: 640px) {
-            .count-down-values-container {
-                gap: 0.5rem;
+        .slide-label {
+            font-size: 0.8rem;
+        }
+
+        .swiper-button-prev {
+            left: -30px !important;
+        }
+
+        .swiper-button-next {
+            right: -30px !important;
+        }
+
+        .timer {
+            width: 60px;
+            height: 60px;
+            padding: 0.4rem;
+        }
+
+        .timer h3 {
+            font-size: 1rem;
+        }
+
+        .timer p {
+            font-size: 0.5rem;
+        }
+    }
+</style>
+<script>
+    let dest = new Date("May 28, 2025 00:01:00").getTime();
+    let x = setInterval(function () {
+        let now = new Date().getTime();
+        let diff = dest - now;
+        if (diff <= 0) {
+            clearInterval(x);
+            return;
+        }
+        let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        days = days < 10 ? `0${days}` : days;
+        hours = hours < 10 ? `0${hours}` : hours;
+        minutes = minutes < 10 ? `0${minutes}` : minutes;
+        seconds = seconds < 10 ? `0${seconds}` : seconds;
+
+        let countdownElements = document.getElementsByClassName("countdown-element");
+        for (let i = 0; i < countdownElements.length; i++) {
+            let className = countdownElements[i].classList[1];
+            switch (className) {
+                case "days":
+                    countdownElements[i].innerHTML = days;
+                    break;
+                case "hours":
+                    countdownElements[i].innerHTML = hours;
+                    break;
+                case "minutes":
+                    countdownElements[i].innerHTML = minutes;
+                    break;
+                case "seconds":
+                    countdownElements[i].innerHTML = seconds;
+                    break;
             }
-            
-            .timer {
-                padding: 0.25rem;
-            }
         }
-
-        .discotheque-section {
-            background-image: url('DiscoPic1.jpg');
-            background-size: cover;
-            background-position: center 30%;
-            position: relative;
-            overflow: hidden;
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-        }
-        .discotheque-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: inherit;
-            filter: blur(1px);
-            margin: -5px;
-        }
-        .discotheque-section::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(120deg, rgba(60,0,80,0.5), rgba(43,86,79,0.4));
-            z-index: 1;
-        }
-        .discotheque-section > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        .food-stalls-title {
-            font-family: 'Caveat', cursive;
-            font-weight: 700;
-            background: linear-gradient(to bottom, white, white);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: none;
-        }
-
-        .activity-section:active .food-stalls-title,
-        .activity-section:hover:active .food-stalls-title {
-            background: linear-gradient(to bottom, #d5ab6d, #d5ab6d);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: none;
-        }
-
-        .food-stalls-section {
-            background-image: url('FoodBanner.jpeg');
-            background-position: center 15%;
-            position: relative;
-            overflow: hidden;
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-        }
-
-        .food-stalls-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: inherit;
-            filter: blur(1px);
-            margin: -5px;
-        }
-
-        .food-stalls-section::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(43, 86, 79, 0.6);
-            z-index: 1;
-        }
-
-        .food-stalls-section > * {
-            position: relative;
-            z-index: 2;
-            text-shadow: none;
-        }
-
-        .food-stalls-section:hover::after {
-            background-color: rgba(51, 107, 99, 0.6);
-        }
-
-        .football-section {
-            background-image: url('FootballBanner.jpg');
-            background-position: center 15%;
-            position: relative;
-            overflow: hidden;
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-        }
-
-        .football-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: inherit;
-            filter: blur(1px);
-            margin: -5px;
-        }
-
-        .football-section::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(43, 86, 79, 0.6);
-            z-index: 1;
-        }
-
-        .football-section > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        .football-section:hover::after {
-            background-color: rgba(51, 107, 99, 0.6);
-        }
-
-    </style>
+    }, 1000);
+</script>
 </head>
 <body class="p-4">
-
-    <header class="text-center mb-8">
-        <div class="mb-6">
-            <img src="QECLogo.png" alt="Queen Elizabeth College Logo" class="mx-auto h-24 w-auto">
+<header class="text-center mb-8">
+    <img src="QECLogo.png" alt="Queen Elizabeth College Logo" class="mx-auto h-24 w-auto mb-6" />
+    <h1 class="text-4xl font-bold mb-2 text-[#d5ab6d]">Food & Fun Day!</h1>
+    <p class="text-lg text-[#e8d5b5]">Join us for a day of excitement and delicious treats!</p>
+</header>
+<main class="mb-12">
+    <div class="text-center mb-6">
+        <h2 class="pixel-heading text-2xl md:text-3xl mb-4">COUNTDOWN UNTIL THE FUN BEGINS</h2>
+        <div class="count-down-values-container">
+            <div class="timer"><h3 class="countdown-element days"></h3><p>days</p></div>
+            <div class="timer"><h3 class="countdown-element hours"></h3><p>hours</p></div>
+            <div class="timer"><h3 class="countdown-element minutes"></h3><p>minutes</p></div>
+            <div class="timer"><h3 class="countdown-element seconds"></h3><p>seconds</p></div>
         </div>
-        <h1 class="text-4xl font-bold mb-2" style="color: #d5ab6d;">Food & Fun Day!</h1>
-        <p class="text-lg" style="color: #e8d5b5;">Join us for a day of excitement and delicious treats!</p>
-    </header>
+    </div>
 
-    <main class="space-y-6">
-
-        <div class="pixel-border p-4 md:p-8 rounded-lg mb-6 md:mb-8 size-font">
-            <h2 class="pixel-heading count-down-center">COUNTDOWN UNTIL THE FUN BEGINS</h2>
-            <div class="space-y-4 md:space-y-6b max-w-xl mx-auto">
-
-                <div class="count-down-values-container ">
-                    <div class="timer">
-                        <div class="xx">
-                            <h3 class="countdown-element days">
-                            </h3>
-
-                        </div>
-                        <p>days</p>
-                    </div>
-                    <div class="timer">
-                        <div>
-                            <h3 class="countdown-element hours"></h3>
-                        </div>
-                        <p>hours</p>
-                    </div>
-                    <div class="timer">
-                        <div>
-                            <h3 class="countdown-element minutes"></h3>
-                        </div>
-
-                        <p>minutes</p>
-                    </div>
-                    <div class="timer">
-                        <div>
-                            <h3 class="countdown-element seconds">
-                            </h3>
-
-                        </div>
-                        <p>seconds</p>
-                    </div>
-                </div>
-
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="discotheque.html" class="slide-link" aria-label="Discotheque">
+                    <img src="DiscoPic1.jpg" alt="Discotheque" />
+                    <span class="slide-label">Discotheque</span>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="gaming.html" class="slide-link" aria-label="Gaming">
+                    <img src="GamingBanner.jpg" alt="Gaming" />
+                    <span class="slide-label">Gaming</span>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="football.html" class="slide-link" aria-label="Football Tournament">
+                    <img src="FootballBanner.jpg" alt="Football Tournament" />
+                    <span class="slide-label">Football Tournament</span>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="foodstalls.html" class="slide-link" aria-label="Food Stalls">
+                    <img src="FoodBanner.jpeg" alt="Food Stalls" />
+                    <span class="slide-label">Food Stalls</span>
+                </a>
             </div>
         </div>
-
-        <a href="discotheque.html" class="block">
-            <section class="activity-section discotheque-section rounded-lg p-6">
-                <h2 class="text-3xl font-bold mb-2">Discotheque</h2>
-                <p class="text-lg mb-4">Click to learn more about our amazing disco!</p>
-            </section>
-        </a>
-
-        <a href="gaming.html" class="block">
-            <section class="activity-section gaming-section rounded-lg p-6">
-                <h2 class="gaming-title">GAMING</h2>
-                <p class="text-lg mb-4">Click to discover our gaming activities!</p>
-            </section>
-        </a>
-
-        <a href="football.html" class="block">
-            <section class="activity-section football-section rounded-lg p-6">
-                <h2 class="text-3xl font-bold mb-2">Football Tournament</h2>
-                <p class="text-lg mb-4">Click to see tournament details!</p>
-            </section>
-        </a>
-
-
-        <a href="foodstalls.html" class="block">
-            <section class="activity-section food-stalls-section rounded-lg p-6">
-                <h2 class="text-4xl font-bold mb-2 food-stalls-title" style="font-size: 2.5rem;">Food Stalls</h2>
-                <p class="text-lg mb-4">Click to explore our delicious offerings!</p>
-            </section>
-        </a>
-    </main>
-
-    <footer class="text-center mt-8" style="color: #d5ab6d;">
-        <p>&copy; 2025 Queen Elizabeth College. All rights reserved.</p>
-    </footer>
-
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</main>
+<footer class="text-center mt-8 text-[#d5ab6d]">
+    <p>&copy; 2025 Queen Elizabeth College. All rights reserved.</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.mySwiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+        speed: 600,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        effect: 'slide',
+    });
+</script>
 </body>
 </html>
