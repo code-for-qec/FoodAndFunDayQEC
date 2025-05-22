@@ -319,7 +319,7 @@
         <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6">
             <button class="vote-btn px-3 py-1 text-sm sm:px-4 sm:py-2 sm:text-base rounded-lg text-white" style="background-color:#a855f7;" data-option="Discotheque">Discotheque</button>
             <button class="vote-btn px-3 py-1 text-sm sm:px-4 sm:py-2 sm:text-base rounded-lg text-white" style="background-color:#34d399;" data-option="Gaming">Gaming</button>
-            <button class="vote-btn px-3 py-1 text-sm sm:px-4 sm:py-2 sm:text-base rounded-lg text-white" style="background-color:#60a5fa;" data-option="Football Tournament">Football</button>
+            <button class="vote-btn px-3 py-1 text-sm sm:px-4 sm:py-2 sm:text-base rounded-lg text-white" style="background-color:#60a5fa;" data-option="Football Tournament">Football Tournament</button>
             <button class="vote-btn px-3 py-1 text-sm sm:px-4 sm:py-2 sm:text-base rounded-lg text-white" style="background-color:#d6a75d;" data-option="Food Stalls">Food Stalls</button>
         </div>
       
@@ -411,6 +411,10 @@
                 beginAtZero: true,
                 ticks: {
                     color: '#e8d5b5',
+                    autoSkip: false,           
+                    maxRotation: 0,            
+                    minRotation: 0,            
+                    align: 'center',
                     font: {
                         size: window.innerWidth < 640 ? 10 : 14 // Responsive label size
                     }
