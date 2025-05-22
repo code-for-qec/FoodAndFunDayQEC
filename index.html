@@ -4,17 +4,27 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>School Food & Fun Day!</title>
+
+<!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+<!-- Swiper -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
+
 <style>
     body {
         font-family: 'Inter', sans-serif;
         background-color: #1a3330;
         color: #e8d5b5;
     }
-
+    
     .count-down-values-container {
         display: flex;
         flex-wrap: wrap;
@@ -258,54 +268,27 @@
             font-size: 0.5rem;
         }
     }
+        }
+
+    @media (max-width: 640px) {
+        #resultsChart {
+            height: 300px !important;
+        }
+    }
+    
 </style>
-<script>
-    let dest = new Date("May 28, 2025 07:00:00").getTime();
-    let x = setInterval(function () {
-        let now = new Date().getTime();
-        let diff = dest - now;
-        if (diff <= 0) {
-            clearInterval(x);
-            return;
-        }
-        let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-        days = days < 10 ? `0${days}` : days;
-        hours = hours < 10 ? `0${hours}` : hours;
-        minutes = minutes < 10 ? `0${minutes}` : minutes;
-        seconds = seconds < 10 ? `0${seconds}` : seconds;
-
-        let countdownElements = document.getElementsByClassName("countdown-element");
-        for (let i = 0; i < countdownElements.length; i++) {
-            let className = countdownElements[i].classList[1];
-            switch (className) {
-                case "days":
-                    countdownElements[i].innerHTML = days;
-                    break;
-                case "hours":
-                    countdownElements[i].innerHTML = hours;
-                    break;
-                case "minutes":
-                    countdownElements[i].innerHTML = minutes;
-                    break;
-                case "seconds":
-                    countdownElements[i].innerHTML = seconds;
-                    break;
-            }
-        }
-    }, 1000);
-</script>
 </head>
+
 <body class="p-4">
 <header class="text-center mb-8">
     <img src="QECLogo.png" alt="Queen Elizabeth College Logo" class="mx-auto h-24 w-auto mb-6" />
     <h1 class="text-4xl font-bold mb-2 text-[#d5ab6d]">Food & Fun Day!</h1>
     <p class="text-lg text-[#e8d5b5]">Join us for a day of excitement and delicious treats!</p>
 </header>
+
 <main class="mb-12">
+
+    <!-- Countdown -->
     <div class="text-center mb-6">
         <h2 class="pixel-heading text-2xl md:text-3xl mb-4">COUNTDOWN UNTIL THE FUN BEGINS</h2>
         <div class="count-down-values-container">
@@ -316,61 +299,173 @@
         </div>
     </div>
 
-    <div class="swiper mySwiper">
+    <!-- Swiper Slideshow -->
+    <div class="swiper mySwiper mb-12">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <a href="discotheque.html" class="slide-link" aria-label="Discotheque">
-                    <img src="DiscoPic1.jpg" alt="Discotheque" />
-                    <span class="slide-label">Discotheque</span>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="gaming.html" class="slide-link" aria-label="Gaming">
-                    <img src="GamingBanner.png" alt="Gaming" />
-                    <span class="slide-label">Gaming</span>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="football.html" class="slide-link" aria-label="Football Tournament">
-                    <img src="FootballBanner.jpg" alt="Football Tournament" />
-                    <span class="slide-label">Football Tournament</span>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="foodstalls.html" class="slide-link" aria-label="Food Stalls">
-                    <img src="FoodBanner.jpeg" alt="Food Stalls" />
-                    <span class="slide-label">Food Stalls</span>
-                </a>
-            </div>
+            <div class="swiper-slide"><a href="discotheque.html" class="slide-link"><img src="DiscoPic1.jpg" alt="Discotheque" /><span class="slide-label">Discotheque</span></a></div>
+            <div class="swiper-slide"><a href="gaming.html" class="slide-link"><img src="GamingBanner.png" alt="Gaming" /><span class="slide-label">Gaming</span></a></div>
+            <div class="swiper-slide"><a href="football.html" class="slide-link"><img src="FootballBanner.jpg" alt="Football Tournament" /><span class="slide-label">Football Tournament</span></a></div>
+            <div class="swiper-slide"><a href="foodstalls.html" class="slide-link"><img src="FoodBanner.jpeg" alt="Food Stalls" /><span class="slide-label">Food Stalls</span></a></div>
         </div>
         <div class="swiper-pagination"></div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
     </div>
+
+
+    <!-- Voting Section -->
+    <section class="text-center mb-12 max-w-4xl mx-auto bg-[#26443d] border border-[#d5ab6d] rounded-2xl p-6 shadow-lg">
+        <h2 class="text-2xl font-bold text-[#d5ab6d] mb-4">What Are You Most Excited For?</h2>
+        
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6">
+            <button class="vote-btn px-3 py-1 text-sm sm:px-4 sm:py-2 sm:text-base rounded-lg text-white" style="background-color:#a855f7;" data-option="Discotheque">Discotheque</button>
+            <button class="vote-btn px-3 py-1 text-sm sm:px-4 sm:py-2 sm:text-base rounded-lg text-white" style="background-color:#34d399;" data-option="Gaming">Gaming</button>
+            <button class="vote-btn px-3 py-1 text-sm sm:px-4 sm:py-2 sm:text-base rounded-lg text-white" style="background-color:#60a5fa;" data-option="Football Tournament">Football Tournament</button>
+            <button class="vote-btn px-3 py-1 text-sm sm:px-4 sm:py-2 sm:text-base rounded-lg text-white" style="background-color:#d6a75d;" data-option="Food Stalls">Food Stalls</button>
+        </div>
+      
+        <p id="vote-message" class="text-sm text-[#e8d5b5] mb-4"></p>
+      
+        <div class="relative w-full overflow-x-auto h-[400px] sm:h-[300px]">
+            <canvas id="resultsChart" class="w-full h-full"></canvas>
+        </div>          
+    </section>
+      
+
+
 </main>
+
 <footer class="text-center mt-8 text-[#d5ab6d]">
     <p>&copy; 2025 Queen Elizabeth College. All rights reserved.</p>
 </footer>
+
+<!-- Swiper and Countdown Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
     const swiper = new Swiper('.mySwiper', {
         slidesPerView: 1,
         spaceBetween: 20,
         loop: true,
-        autoplay: {
-            delay: 4000,
-            disableOnInteraction: false,
-        },
+        autoplay: { delay: 4000, disableOnInteraction: false },
         speed: 600,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
         effect: 'slide',
+    });
+
+    let dest = new Date("May 28, 2025 07:00:00").getTime();
+    setInterval(() => {
+        let now = new Date().getTime();
+        let diff = dest - now;
+        if (diff <= 0) return;
+        let d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        let h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        let s = Math.floor((diff % (1000 * 60)) / 1000);
+        let elements = document.getElementsByClassName("countdown-element");
+        ["days", "hours", "minutes", "seconds"].forEach((label, i) => {
+            elements[i].innerHTML = [d, h, m, s][i].toString().padStart(2, '0');
+        });
+    }, 1000);
+</script>
+
+<!-- Firebase Voting and Chart -->
+<script>
+    // Firebase config
+    const firebaseConfig = {
+        apiKey: "AIzaSyDuy-_Hc8j5DN2obgUT3YZr3tzZqCwgPDI",
+        authDomain: "food-and-fun-day-qec.firebaseapp.com",
+        projectId: "food-and-fun-day-qec",
+        storageBucket: "food-and-fun-day-qec.appspot.com",
+        messagingSenderId: "671943551617",
+        appId: "1:671943551617:web:d6100074046c1f114e3b80"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const chartCtx = document.getElementById('resultsChart').getContext('2d');
+    const voteMessage = document.getElementById('vote-message');
+
+    const voteChart = new Chart(chartCtx, {
+        type: 'bar',
+        data: {
+            labels: ["Discotheque", "Gaming", "Football", "Food Stalls"],
+            datasets: [{
+                label: '',
+                data: [0, 0, 0, 0],
+                backgroundColor: ['#a855f7', '#34d399', '#60a5fa', '#d6a75d'],
+            }]
+        },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            x: {
+                ticks: {
+                    color: '#e8d5b5',
+                    font: {
+                        size: window.innerWidth < 640 ? 10 : 14 // Responsive label size
+                    }
+                }
+            },
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    color: '#e8d5b5',
+                    font: {
+                        size: window.innerWidth < 640 ? 10 : 14 // Responsive label size
+                    }
+                },
+                grid: {
+                    color: '#35554f'
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                display: false
+            }
+        }
+    }
+
+    });
+
+    function updateChart() {
+        db.collection("votes").get().then(snapshot => {
+            let counts = { "Discotheque": 0, "Gaming": 0, "Football Tournament": 0, "Food Stalls": 0 };
+            snapshot.forEach(doc => { counts[doc.id] = doc.data().count; });
+            voteChart.data.datasets[0].data = [
+                counts["Discotheque"], counts["Gaming"], counts["Football Tournament"], counts["Food Stalls"]
+            ];
+            voteChart.update();
+        });
+    }
+
+    updateChart();
+    setInterval(updateChart, 5000); // live update every 5 seconds
+
+    document.querySelectorAll('.vote-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const option = button.dataset.option;
+            if (localStorage.getItem('hasVoted')) {
+                voteMessage.textContent = "You have already voted!";
+                return;
+            }
+            const voteRef = db.collection("votes").doc(option);
+            db.runTransaction(tx => {
+                return tx.get(voteRef).then(doc => {
+                    const newCount = doc.exists ? doc.data().count + 1 : 1;
+                    tx.set(voteRef, { count: newCount });
+                });
+            }).then(() => {
+                voteMessage.textContent = "Thanks for voting!";
+                localStorage.setItem('hasVoted', 'true');
+                updateChart();
+            }).catch(err => {
+                console.error("Vote failed", err);
+                voteMessage.textContent = "Something went wrong. Try again.";
+            });
+        });
     });
 </script>
 </body>
