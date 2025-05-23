@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities - School Food & Fun Day!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a3330;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2b564f;
+            border: 2px solid #d5ab6d;
+            border-radius: 6px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #336b63;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 150;
+            background-color: #1a3330;
+            color: #e8d5b5;
+            font-size: 1.1em;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+        }
+
+        .stall-card {
+            background: rgba(43, 86, 79, 0.6);
+            border: 2px solid #d5ab6d;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stall-card:hover {
+            background: rgba(51, 107, 99, 0.85);
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .price-tag {
+            background: #d5ab6d;
+            color: #1a3330;
+            font-weight: 600;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #errorDetails {
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.5);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.5rem;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body class="p-4">
+    <header class="text-center mb-8">
+        <div class="mb-6">
+            <img src="QECLogoActivities.webp" alt="Queen Elizabeth College Logo" class="mx-auto h-24 w-auto">
+        </div>
+        <h1 class="text-4xl font-bold tracking-wide mb-2" style="color: #d5ab6d;">Activities</h1>
+        <a href="index.html" class="inline-block px-4 py-1.5 text-[#e8d5b5] border border-[#d5ab6d] rounded-md hover:bg-[#d5ab6d] hover:text-[#1a3330] transition duration-300">← Back to Main Page</a>
+    </header>
+
+    <main class="max-w-4xl mx-auto space-y-6">
+        <div id="stallsGrid" class="grid gap-6 md:grid-cols-2">
+            <!-- Stalls will be dynamically inserted here -->
+        </div>
+        <div id="errorDetails" style="display: none;"></div>
+    </main>
+
+    <footer class="text-center mt-8 mb-4" style="color: #d5ab6d;">
+        <p class="font-bold">&copy; 2025 Queen Elizabeth College. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function formatFieldName(fieldName) {
+            if (fieldName === 'team_members') return 'Team Members';
+            return fieldName
+                .replace(/_/g, ' ')
+                .replace(/([A-Z])/g, ' $1')
+                .replace(/^./, str => str.toUpperCase());
+        }
+
+        function renderFieldValue(value) {
+            if (Array.isArray(value)) {
+                return value.join(', ');
+            } else if (typeof value === 'object' && value !== null) {
+                return JSON.stringify(value);
+            } else {
+                return value.toString();
+            }
+        }
+
+        function renderProducts(products) {
+            if (!products || products.length === 0) return '';
+
+            return `
+                <div>
+                    <h3 class="font-bold mb-2">Prices:</h3>
+                    <ul class="space-y-2">
+                        ${products.map(product => `
+                            <li class="flex items-center">
+                                <img src="bulletpointcrown.png" alt="•" class="w-4 h-4 mr-2 flex-shrink-0" style="filter: brightness(1.2);">
+                                <div class="flex justify-between items-center w-full">
+                                    <span>${product.name}</span>
+                                    <span class="price-tag ml-2 text-center">${product.price}</span>
+                                </div>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
+        async function loadStalls() {
+            const errorDetails = document.getElementById('errorDetails');
+            try {
+                console.log('Attempting to fetch stall_info.json...');
+                const response = await fetch('stall_info.json?' + new Date().getTime(), {
+                    headers: {
+                        'Cache-Control': 'no-cache, no-store, must-revalidate',
+                        'Pragma': 'no-cache',
+                        'Expires': '0'
+                    }
+                });
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const stalls = await response.json();
+                console.log('Successfully loaded stalls:', stalls);
+                console.log('Number of stalls loaded:', stalls.length);
+
+                const stallsGrid = document.getElementById('stallsGrid');
+                console.log('Stalls grid element found:', !!stallsGrid);
+
+                const nonFoodStalls = ['Gaming Room', 'Disco', '4D cinema', 'Escape room', 
+                    'Karaoke', 'Outdoor laser tag', 'Bouncing castle', 'Football', 
+                    'Tug of war', 'Beauty Parlour', 'Festival games'];
+                const foodStalls = stalls.filter(stall => nonFoodStalls.includes(stall.name));
+                console.log('Number of food stalls after filtering:', foodStalls.length);
+                console.log('Food stalls:', foodStalls);
+
+                if (foodStalls.length === 0) {
+                    throw new Error('No food stalls found after filtering');
+                }
+
+                // Clear existing content
+                stallsGrid.innerHTML = '';
+
+                foodStalls.forEach((stall, index) => {
+                    console.log(`Processing stall ${index + 1}:`, stall.name);
+                    const stallCard = document.createElement('div');
+                    stallCard.className = 'stall-card rounded-lg p-6 fade-in';
+
+                    let html = `
+                        <h2 class="text-2xl font-bold mb-3 text-[#d5ab6d] text-center">${stall.name}</h2>
+                        <div class="space-y-4">
+                    `;
+
+                    // Add products and other info above the line
+                    if (stall.products) {
+                        console.log(`Adding products for ${stall.name}:`, stall.products);
+                        html += renderProducts(stall.products);
+                    }
+
+                    // Add other fields except location and time
+                    let hasExtraInfo = false;
+                    Object.entries(stall).forEach(([field, value]) => {
+                        if (field === 'name' || field === 'products' || field === 'location' || field === 'time') return;
+                        if (!value || (Array.isArray(value) && value.length === 0) || value === '') return;
+                        hasExtraInfo = true;
+                        console.log(`Adding extra info for ${stall.name}:`, field, value);
+
+                        html += `
+                            <div>
+                                <h3 class="font-bold mb-1">${formatFieldName(field)}:</h3>
+                                <p>${renderFieldValue(value)}</p>
+                            </div>
+                        `;
+                    });
+
+                    // Add separation line only if there's content above and below
+                    if ((stall.products || hasExtraInfo) && (stall.location || stall.time)) {
+                        html += `<div class="border-t border-[#d5ab6d] my-4 opacity-50"></div>`;
+                    }
+
+                    // Add time and location below the line (time always first)
+                    if (stall.time) {
+                        console.log(`Adding time for ${stall.name}:`, stall.time);
+                        html += `
+                            <div>
+                                <h3 class="font-bold mb-1">Time:</h3>
+                                <p>${stall.time}</p>
+                            </div>
+                        `;
+                    }
+                    if (stall.location) {
+                        console.log(`Adding location for ${stall.name}:`, stall.location);
+                        html += `
+                            <div>
+                                <h3 class="font-bold mb-1">Location:</h3>
+                                <p>${stall.location}</p>
+                            </div>
+                        `;
+                    }
+
+                    html += `</div>`;
+                    stallCard.innerHTML = html;
+                    stallsGrid.appendChild(stallCard);
+                    console.log(`Finished processing stall ${index + 1}:`, stall.name);
+                });
+            } catch (error) {
+                console.error('Error loading stall information:', error);
+                errorDetails.style.display = 'block';
+                errorDetails.innerHTML = `Error loading stall information:\n${error.message}\n\nPlease try the following:\n1. Make sure stall_info.json exists in the same folder as foodstalls.html\n2. Check if the JSON file is properly formatted\n3. Try refreshing the page`;
+
+                document.getElementById('stallsGrid').innerHTML = `
+                    <div class="col-span-2 text-center p-6 stall-card">
+                        <p class="text-xl">Unable to load stall information. Please check the error details below.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Add error handling for the load event
+        window.addEventListener('load', () => {
+            console.log('Page loaded, attempting to load stalls...');
+            loadStalls().catch(error => {
+                console.error('Error in load event:', error);
+            });
+        });
+    </script>
+</body>
+</html>

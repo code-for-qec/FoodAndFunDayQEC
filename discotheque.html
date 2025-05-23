@@ -74,6 +74,18 @@
             opacity: 1;
         }
 
+        .disco-info-box {
+            background: rgba(43, 86, 79, 0.4);
+            border: 1px solid rgba(213, 171, 109, 0.4);
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .disco-info-box:last-child {
+            margin-bottom: 0;
+        }
+
         .disco-title {
             opacity: 1;
             color: #d5ab6d;
@@ -179,18 +191,45 @@
     <main class="max-w-2xl mx-auto disco-card disco-banner p-8 rounded-lg">
         <div class="main-content">
             <h2 class="text-2xl font-bold mb-4 disco-title">Join us for an incredible disco experience!</h2>
-            <div class="space-y-4">
-                <p class="text-lg disco-text">Get ready for an unforgettable night featuring:</p>
-                <ul class="list-disc list-inside space-y-2 ml-4 disco-text">
+            <div class="space-y-6 disco-text">
+                <p class="text-lg mb-4">Get ready for an unforgettable dance featuring:</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
                     <li>Professional DJ playing the latest hits</li>
                     <li>Amazing light show and effects</li>
-                    <li>Dance competitions with prizes</li>
-                    <li>Time: 7 PM - 10 PM</li>
-                    <li>Location: Main Hall</li>
                 </ul>
-                <div class="mt-6">
-                    <h3 class="text-xl font-bold mb-2 disco-title">What to Expect:</h3>
-                    <p class="disco-text">Our disco features state-of-the-art sound systems, professional lighting, and plenty of space to show off your best moves. Whether you're a dancing pro or just want to enjoy the music, there's something for everyone!</p>
+
+                <div class="mt-6 disco-info-box flex items-start">
+                    <span class="h-6 w-6 mr-3 text-[#d5ab6d] flex-shrink-0 flex items-center justify-center text-xl font-bold">
+                        €
+                    </span>
+                    <div>
+                        <h3 class="font-bold text-[#d5ab6d] mb-2">Prices:</h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Rs60 (single gender session)</li>
+                            <li>Rs70 (mixed session)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex items-center disco-info-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-[#d5ab6d] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <div class="flex items-center w-full">
+                        <h3 class="font-bold text-[#d5ab6d] mr-2">Time:</h3>
+                        <p>TBD</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center disco-info-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-[#d5ab6d] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <div class="flex items-center w-full">
+                        <h3 class="font-bold text-[#d5ab6d] mr-2">Location:</h3>
+                        <p>Hall</p>
+                    </div>
                 </div>
             </div>
         </div>

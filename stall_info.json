@@ -69,32 +69,10 @@
     "location": "Canteen",
     "time": ""
   },
-  {
-    "name": "Disco",
-    "products": [
-      { "name": "Single gender session", "price": "Rs60" },
-      { "name": "Mixed session", "price": "Rs70" }
-    ],
-    "location": "Hall",
-    "team_members": ["Jia", "Nikhilesh", "Mayuri"],
-    "time": ""
-  },
-  {
-    "name": "Gaming Room",
-    "products": [
-      { "name": "Freeplay", "price": "Rs100/pair (Rs50/pax)" },
-      { "name": "Last min tickets", "price": "Rs200/pair" },
-      { "name": "Tournament", "price": "Rs200/person" }
-    ],
-    "location": "Physics lab",
-    "team_members": ["Jake"],
-    "time": ""
-  },
-  {
+    {
     "name": "4D cinema",
     "products": [],
     "location": "Field",
-    "team_members": ["Mayuri"],
     "time": ""
   },
   {
@@ -103,7 +81,6 @@
       { "name": "Entry", "price": "Rs100/person" }
     ],
     "location": "Classes in block B",
-    "team_members": ["Amy", "Andrew"],
     "time": ""
   },
   {
@@ -112,7 +89,6 @@
       { "name": "30 mins session", "price": "Rs40/person" }
     ],
     "location": "Physics lab",
-    "team_members": ["Shristi"],
     "time": ""
   },
   {
@@ -121,7 +97,6 @@
       { "name": "Laser tag", "price": "Rs150-200" }
     ],
     "location": "Zen Garden",
-    "team_members": ["Adiyan"],
     "time": ""
   },
   {
@@ -130,39 +105,26 @@
       { "name": "15 mins", "price": "Rs40/person (6-7 per session)" }
     ],
     "location": "Area in front of block A",
-    "team_members": ["Jia"],
     "time": ""
   },
-  {
-    "name": "Football",
-    "products": [
-      { "name": "Team entry (6 players)", "price": "Rs150/team" }
-    ],
-    "location": "Football field",
-    "team_members": ["Shamba", "Kamlesh"],
-    "time": ""
-  },
-  {
+    {
     "name": "Tug of war",
     "products": [
       { "name": "Entry (5 people per side)", "price": "Rs10/person" }
     ],
     "location": "Football field",
-    "team_members": ["Matteo", "Zayyan"],
     "time": ""
   },
   {
     "name": "Beauty Parlour",
     "products": [],
     "location": "Art room",
-    "team_members": ["Kelly"],
     "time": ""
   },
   {
     "name": "Festival games",
     "products": [],
     "location": "Recreational Area",
-    "team_members": ["Tya", "Kimberly"],
     "time": ""
   }
 ]
