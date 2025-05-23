@@ -396,58 +396,65 @@
                 backgroundColor: ['#a855f7', '#34d399', '#60a5fa', '#d6a75d'],
             }]
         },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-            x: {
-                ticks: {
-                    color: '#e8d5b5',
-                    font: {
-                        size: window.innerWidth < 640 ? 10 : 14 // Responsive label size
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    ticks: {
+                        color: '#e8d5b5',
+                        font: {
+                            size: window.innerWidth < 640 ? 10 : 14
+                        }
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: '#e8d5b5',
+                        autoSkip: false,
+                        maxRotation: 0,
+                        minRotation: 0,
+                        align: 'center',
+                        font: {
+                            size: window.innerWidth < 640 ? 10 : 14
+                        }
+                    },
+                    grid: {
+                        color: '#35554f'
                     }
                 }
             },
-            y: {
-                beginAtZero: true,
-                ticks: {
-                    color: '#e8d5b5',
-                    autoSkip: false,           
-                    maxRotation: 0,            
-                    minRotation: 0,            
-                    align: 'center',
-                    font: {
-                        size: window.innerWidth < 640 ? 10 : 14 // Responsive label size
-                    }
-                },
-                grid: {
-                    color: '#35554f'
-                }
-            }
-        },
-        plugins: {
-            legend: {
-                display: false
+            plugins: {
+                legend: { display: false }
             }
         }
-    }
-
     });
 
     function updateChart() {
         db.collection("votes").get().then(snapshot => {
             let counts = { "Discotheque": 0, "Gaming": 0, "Football Tournament": 0, "Food Stalls": 0 };
-            snapshot.forEach(doc => { counts[doc.id] = doc.data().count; });
+            snapshot.forEach(doc => {
+                counts[doc.id] = doc.data().count || 0;
+            });
             voteChart.data.datasets[0].data = [
-                counts["Discotheque"], counts["Gaming"], counts["Football Tournament"], counts["Food Stalls"]
+                counts["Discotheque"],
+                counts["Gaming"],
+                counts["Football Tournament"],
+                counts["Food Stalls"]
             ];
             voteChart.update();
+        }).catch(err => {
+            console.error("Failed to fetch vote data:", err);
         });
     }
 
-    updateChart();
-    setInterval(updateChart, 5000); // live update every 5 seconds
+    // Only update chart if user has voted
+    if (localStorage.getItem('hasVoted')) {
+        updateChart();
+    }
 
+    // Vote button event listeners
     document.querySelectorAll('.vote-btn').forEach(button => {
         button.addEventListener('click', () => {
             const option = button.dataset.option;
@@ -455,6 +462,7 @@
                 voteMessage.textContent = "You have already voted!";
                 return;
             }
+
             const voteRef = db.collection("votes").doc(option);
             db.runTransaction(tx => {
                 return tx.get(voteRef).then(doc => {
