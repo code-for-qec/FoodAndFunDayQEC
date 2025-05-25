@@ -6,7 +6,8 @@
       { "name": "Pain poulet", "price": "Rs65" }
     ],
     "location": "Corridor near art room",
-    "time": "TBD"
+    "time": "TBD",
+    "section": ""
   },
   {
     "name": "Chips",
@@ -14,7 +15,8 @@
       { "name": "Chips", "price": "Rs30" }
     ],
     "location": "Canteen area (next to home economics lab stairs)",
-    "time": "TBD"
+    "time": "TBD",
+    "section": ""
   },
   {
     "name": "Fried noodles",
@@ -22,7 +24,8 @@
       { "name": "Fried noodles", "price": "Rs80/portion" }
     ],
     "location": "Canteen",
-    "time": "TBD"
+    "time": "TBD",
+    "section": ""
   },
   {
     "name": "Ti Puri and curry",
@@ -33,7 +36,8 @@
     ],
     "curries_available": ["Gros pois", "Giraumon", "Rougaille", "Achard piment"],
     "location": "Canteen",
-    "time": ""
+    "time": "",
+    "section": ""
   },
   {
     "name": "Juice (panacon), soft drinks and Alouda",
@@ -42,7 +46,8 @@
       { "name": "Mojito", "price": "Rs25" }
     ],
     "location": "In front of administration",
-    "time": ""
+    "time": "",
+    "section": ""
   },
   {
     "name": "Ice Cream",
@@ -52,7 +57,8 @@
     ],
     "flavours": "Vanille, Dame Blanche, Chocolat, Amande, Fraise",
     "location": "In front of art room",
-    "time": "8.30 - 13.45"
+    "time": "08:30 - 13:45",
+    "section": ""
   },
   {
     "name": "Snacks (la boutik sinwa)",
@@ -61,27 +67,55 @@
       { "name": "Add-ons", "price": "Incur additional cost" }
     ],
     "location": "In the art room. Serve food through the window",
-    "time": ""
+    "time": "",
+    "section": ""
   },
   {
     "name": "Pastries",
     "products": [],
     "location": "Canteen",
-    "time": ""
+    "time": "",
+    "section": ""
   },
-    {
-    "name": "4D cinema",
-    "products": [],
+  {
+    "name": "9D cinema",
+    "products": [{ "name": "Entry", "price": "Rs100" }],
+    "note": "Entry tickets have to be bought in advance with cash and not tokens during the 26-27th May in the canteen area.",
     "location": "Field",
-    "time": ""
+    "time": "08:00 - 14:00",
+    "section": "Amusement Park",
+    "image": "images/9dcinema.png",
+    "image_position": "50% 30%"
+  },
+  {
+    "name": "Ball Pit",
+    "products": [{ "name": "Entry", "price": "Rs75" }],
+    "note": "Entry tickets have to be bought in advance with cash and not tokens during the 26-27th May in the canteen area.",
+    "location": "Field",
+    "time": "08:00 - 14:00",
+    "section": "Amusement Park",
+    "image": "images/ballpit.png",
+    "image_position": "50% 30%"
+  },
+  {
+    "name": "Gyroscope",
+    "products": [{ "name": "Entry", "price": "Rs125" }],
+    "note": "Entry tickets have to be bought in advance with cash and not tokens during the 26-27th May in the canteen area.",
+    "location": "Field",
+    "time": "08:00 - 14:00",
+    "section": "Amusement Park",
+    "image": "images/gyroscope.jpg",
+    "image_position": "50% 30%"
   },
   {
     "name": "Escape room",
     "products": [
-      { "name": "Entry", "price": "Rs100/person" }
+      { "name": "Entry", "price": "Rs80/person (4-6 per team)" }
     ],
-    "location": "Classes in block B",
-    "time": ""
+    "note": "Entry tickets will be available as from Monday 25th May but will still be sold on the 28th May.",
+    "location": "Block B",
+    "time": "",
+    "section": "Team Games"
   },
   {
     "name": "Karaoke",
@@ -89,7 +123,8 @@
       { "name": "30 mins session", "price": "Rs40/person" }
     ],
     "location": "Physics lab",
-    "time": ""
+    "time": "",
+    "section": "Creativity & Relaxation"
   },
   {
     "name": "Outdoor laser tag",
@@ -97,7 +132,8 @@
       { "name": "Laser tag", "price": "Rs150-200" }
     ],
     "location": "Zen Garden",
-    "time": ""
+    "time": "",
+    "section": "Team Games"
   },
   {
     "name": "Bouncing castle",
@@ -105,26 +141,30 @@
       { "name": "15 mins", "price": "Rs40/person (6-7 per session)" }
     ],
     "location": "Area in front of block A",
-    "time": ""
+    "time": "",
+    "section": "Creativity & Relaxation"
   },
-    {
+  {
     "name": "Tug of war",
     "products": [
       { "name": "Entry (5 people per side)", "price": "Rs10/person" }
     ],
     "location": "Football field",
-    "time": ""
+    "time": "",
+    "section": "Team Games"
   },
   {
     "name": "Beauty Parlour",
     "products": [],
     "location": "Art room",
-    "time": ""
+    "time": "",
+    "section": "Creativity & Relaxation"
   },
   {
     "name": "Festival games",
     "products": [],
     "location": "Recreational Area",
-    "time": ""
+    "time": "",
+    "section": "Team Games"
   }
 ]
