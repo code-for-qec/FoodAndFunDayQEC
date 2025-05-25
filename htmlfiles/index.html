@@ -74,9 +74,29 @@
 
     .swiper {
         max-width: 900px;
-        height: 450px; 
+        height: 550px;
         margin: 0 auto;
         position: relative;
+    }
+
+    .swiper-container {
+        background-color: #26443d;
+        border: 2px solid #d5ab6d;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        margin-bottom: 2rem;
+        max-width: 64rem; /* This matches Tailwind's max-w-4xl */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .swiper-container h2 {
+        color: #d5ab6d;
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 1.5rem;
     }
 
     .slide-link {
@@ -86,6 +106,7 @@
         text-decoration: none;
         color: inherit;
         user-select: none;
+        height: 100%;
     }
 
     .swiper-slide img {
@@ -97,8 +118,21 @@
         transition: transform 0.3s ease;
     }
 
-    .slide-link:hover img {
-        transform: scale(1.05);
+    .slide-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .slide-info-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: 12px;
+        gap: 1rem;
     }
 
     .slide-label {
@@ -110,6 +144,40 @@
         letter-spacing: 0.05em;
         user-select: none;
         transition: color 0.3s ease;
+    }
+
+    .slide-description {
+        color: #e8d5b5;
+        font-size: 0.9rem;
+        max-width: 60%;
+        line-height: 1.4;
+        text-align: left;
+        margin: 0;
+    }
+
+    .slide-button {
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        background-color: #d5ab6d;
+        color: #1a3330;
+        text-decoration: none;
+        border-radius: 9999px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        border: 2px solid #d5ab6d;
+        white-space: nowrap;
+    }
+
+    .slide-button:hover {
+        background-color: transparent;
+        color: #d5ab6d;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(213, 171, 109, 0.3);
+    }
+
+    .slide-link:hover img {
+        transform: scale(1.05);
     }
 
     .slide-link:hover .slide-label {
@@ -199,7 +267,7 @@
 
     @media (max-width: 768px) {
         .swiper {
-            height: 360px;
+            height: 460px; /* Adjusted for mobile */
         }
 
         .swiper-slide img {
@@ -208,6 +276,22 @@
 
         .slide-label {
             font-size: 0.9rem;
+        }
+
+        .slide-info-container {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .slide-description {
+            max-width: 100%;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .slide-button {
+            padding: 0.4rem 1.2rem;
+            font-size: 0.8rem;
         }
 
         .swiper-button-prev {
@@ -235,7 +319,7 @@
 
     @media (max-width: 480px) {
         .swiper {
-            height: 280px;
+            height: 380px; /* Adjusted for smaller screens */
         }
 
         .swiper-slide img {
@@ -244,6 +328,11 @@
 
         .slide-label {
             font-size: 0.8rem;
+        }
+
+        .slide-button {
+            padding: 0.3rem 1rem;
+            font-size: 0.7rem;
         }
 
         .swiper-button-prev {
@@ -309,18 +398,76 @@
     </div>
 
     <!-- Swiper Slideshow -->
-    <div class="swiper mySwiper mb-12">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><a href="../htmlfiles/discotheque.html" class="slide-link"><img src="../images/DiscoPic1.jpg" alt="Discotheque" /><span class="slide-label">Discotheque</span></a></div>
-            <div class="swiper-slide"><a href="../htmlfiles/gaming.html" class="slide-link"><img src="../images/GamingBanner.png" alt="Gaming" /><span class="slide-label">Gaming</span></a></div>
-            <div class="swiper-slide"><a href="../htmlfiles/football.html" class="slide-link"><img src="../images/FootballBanner.jpg" alt="Football Tournament" /><span class="slide-label">Football Tournament</span></a></div>
-            <div class="swiper-slide"><a href="../htmlfiles/foodstalls.html" class="slide-link"><img src="../images/FoodBanner.jpeg" alt="Food Stalls" /><span class="slide-label">Food Stalls</span></a></div>
-            <div class="swiper-slide"><a href="../htmlfiles/activities.html" class="slide-link"><img src="../images/ActivitiesBanner.jpg" alt="Activities" /><span class="slide-label">Activities</span></a></div>
+    <section class="swiper-container max-w-4xl mx-auto">
+        <h2>Featured Events</h2>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="slide-link">
+                        <img src="../images/DiscoPic1.jpg" alt="Discotheque" />
+                        <div class="slide-content">
+                            <span class="slide-label">Discotheque</span>
+                            <div class="slide-info-container">
+                                <p class="slide-description">Get ready to dance the night away with amazing music, lights, and entertainment!</p>
+                                <a href="../htmlfiles/discotheque.html" class="slide-button">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-link">
+                        <img src="../images/GamingBanner.png" alt="Gaming" />
+                        <div class="slide-content">
+                            <span class="slide-label">Gaming</span>
+                            <div class="slide-info-container">
+                                <p class="slide-description">Compete in exciting gaming tournaments and win amazing prizes!</p>
+                                <a href="../htmlfiles/gaming.html" class="slide-button">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-link">
+                        <img src="../images/FootballBanner.jpg" alt="Football Tournament" />
+                        <div class="slide-content">
+                            <span class="slide-label">Football Tournament</span>
+                            <div class="slide-info-container">
+                                <p class="slide-description">Show your skills in our competitive football tournament!</p>
+                                <a href="../htmlfiles/football.html" class="slide-button">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-link">
+                        <img src="../images/FoodBanner.jpeg" alt="Food Stalls" />
+                        <div class="slide-content">
+                            <span class="slide-label">Food Stalls</span>
+                            <div class="slide-info-container">
+                                <p class="slide-description">Enjoy delicious treats from various food stalls!</p>
+                                <a href="../htmlfiles/foodstalls.html" class="slide-button">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-link">
+                        <img src="../images/ActivitiesBanner.jpg" alt="Activities" />
+                        <div class="slide-content">
+                            <span class="slide-label">Activities</span>
+                            <div class="slide-info-container">
+                                <p class="slide-description">Participate in fun activities and win exciting prizes!</p>
+                                <a href="../htmlfiles/activities.html" class="slide-button">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-    </div>
+    </section>
 
 
     <!-- Voting Section -->
