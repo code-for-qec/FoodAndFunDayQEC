@@ -279,7 +279,76 @@
 </head>
 
 <body class="p-4">
-<header class="text-center mb-8">
+
+<!-- Navbar -->
+<nav class="bg-[#26443d] text-[#e8d5b5] px-4 py-3 shadow-md fixed top-0 left-0 w-full z-50 overflow-hidden">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="#" class="text-xl font-bold text-[#d5ab6d]">Food & Fun Day</a>
+      <button id="menu-toggle" class="md:hidden text-[#d5ab6d] focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <ul class="hidden md:flex space-x-2 text-sm font-semibold">
+        <a href="discotheque.html" class="flex items-center gap-2 px-2 py-2 hover:text-white rounded-md hover:bg-[#1f3c35] transition-colors">
+          <img src="QECLogoDisco.gif" alt="Discotheque Icon" class="h-10 w-10" />
+          Discotheque
+        </a>
+        <a href="gaming.html" class="flex items-center gap-2 px-2 py-2 hover:text-white rounded-md hover:bg-[#1f3c35] transition-colors">
+          <img src="QECLogoPixelArt.png" alt="Gaming Icon" class="h-10 w-10" />
+          Gaming
+        </a>
+        <a href="football.html" class="flex items-center gap-2 px-2 py-2 hover:text-white rounded-md hover:bg-[#1f3c35] transition-colors">
+          <img src="QECLogoFootball.webp" alt="Football Icon" class="h-10 w-10" />
+          Football Tournament
+        </a>
+        <a href="foodstalls.html" class="flex items-center gap-2 px-2 py-2 hover:text-white rounded-md hover:bg-[#1f3c35] transition-colors">
+          <img src="QECLogoFood.png" alt="Food Stalls Icon" class="h-10 w-10" />
+          Food Stalls
+        </a>
+        <a href="activities.html" class="flex items-center gap-2 px-2 py-2 hover:text-white rounded-md hover:bg-[#1f3c35] transition-colors">
+          <img src="QECLogoActivities.webp" alt="Activities Icon" class="h-10 w-10" />
+          Activities
+        </a>
+      </ul>          
+    </div>
+    <!-- Mobile Menu -->
+    <ul id="mobile-menu" class="md:hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out mt-3 space-y-2 text-sm font-semibold">
+        <li>
+          <a href="discotheque.html" class="flex items-center gap-2 px-2 py-1 hover:text-white rounded-md hover:bg-[#1f3c35] transition-colors">
+            <img src="QECLogoDisco.gif" alt="Discotheque Icon" class="h-10 w-10" />
+            Discotheque
+          </a>
+        </li>
+        <li>
+          <a href="gaming.html" class="flex items-center gap-2 px-2 py-1 hover:text-white rounded-md hover:bg-[#1f3c35] transition-colors">
+            <img src="QECLogoPixelArt.png" alt="Gaming Icon" class="h-10 w-10" />
+            Gaming
+          </a>
+        </li>
+        <li>
+          <a href="football.html" class="flex items-center gap-2 px-2 py-1 hover:text-white rounded-md hover:bg-[#1f3c35] transition-colors">
+            <img src="QECLogoFootball.webp" alt="Football Icon" class="h-10 w-10" />
+            Football Tournament
+          </a>
+        </li>
+        <li>
+          <a href="foodstalls.html" class="flex items-center gap-2 px-2 py-1 hover:text-white rounded-md hover:bg-[#1f3c35] transition-colors">
+            <img src="QECLogoFood.png" alt="Food Stalls Icon" class="h-10 w-10" />
+            Food Stalls
+          </a>
+        </li>
+        <li>
+          <a href="activities.html" class="flex items-center gap-2 px-2 py-1 hover:text-white rounded-md hover:bg-[#1f3c35] transition-colors">
+            <img src="QECLogoActivities.webp" alt="Activities Icon" class="h-10 w-10" />
+            Activities
+          </a>
+        </li>
+    </ul>   
+</nav>
+  
+<header class="text-center mb-8 pt-20">
     <img src="QECLogo.png" alt="Queen Elizabeth College Logo" class="mx-auto h-24 w-auto mb-6" />
     <h1 class="text-4xl font-bold mb-2 text-[#d5ab6d]">Food & Fun Day!</h1>
     <p class="text-lg text-[#e8d5b5]">Join us for a day of excitement and delicious treats!</p>
@@ -484,5 +553,26 @@
         });
     });
 </script>
+
+<!-- Mobile Menu Script-->
+<script>
+    const toggleBtn = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+  
+    let isOpen = false;
+  
+    toggleBtn.addEventListener('click', () => {
+      isOpen = !isOpen;
+      if (isOpen) {
+        mobileMenu.classList.remove('max-h-0');
+        mobileMenu.classList.add('max-h-96');
+      } else {
+        mobileMenu.classList.remove('max-h-96');
+        mobileMenu.classList.add('max-h-0');
+      }
+    });
+  </script>
+  
+  
 </body>
 </html>
