@@ -1,6 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Check the current page path
+    const currentPage = window.location.pathname;
+    const isDiscothequePage = currentPage.includes('/htmlfiles/discotheque.html');
+
+    // Determine the background color class based on the page
+    const navbarBgClass = isDiscothequePage ? 'bg-[#0d1c1b]' : 'bg-[#26443d]';
+
     const navbarHTML = `
-    <nav class="bg-[#26443d] text-[#e8d5b5] px-4 py-3 shadow-md fixed top-0 left-0 w-full z-50 overflow-hidden text-sm">
+    <nav class="${navbarBgClass} text-[#e8d5b5] px-4 py-3 shadow-md fixed top-0 left-0 w-full z-50 overflow-hidden text-sm">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
           <a href="../htmlfiles/index.html" class="text-xl font-bold text-[#d5ab6d]">Food & Fun Day</a>
           <button id="menu-toggle" class="md:hidden text-[#d5ab6d] focus:outline-none">
