@@ -387,11 +387,11 @@
         <h2 class="text-2xl font-bold text-[#d5ab6d] mb-4">What Are You Most Excited For?</h2>
         
         <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6">
-            <button class="vote-btn px-3 py-1 text-sm sm:px-4 sm:py-2 sm:text-base rounded-lg text-white" style="background-color:#a855f7;" data-option="Discotheque">Discotheque</button>
+            <button class="vote-btn px-3 py-1 text-sm sm:px-4 sm:py-2 sm:text-base rounded-lg text-white" style="background-color:#a855f7;" data-option="Discotheque">Disco</button>
             <button class="vote-btn px-3 py-1 text-sm sm:px-4 sm:py-2 sm:text-base rounded-lg text-white" style="background-color:#34d399;" data-option="Gaming">Gaming</button>
             <button class="vote-btn px-3 py-1 text-sm sm:px-4 sm:py-2 sm:text-base rounded-lg text-white" style="background-color:#60a5fa;" data-option="Football Tournament">Football Tournament</button>
             <button class="vote-btn px-3 py-1 text-sm sm:px-4 sm:py-2 sm:text-base rounded-lg text-white" style="background-color:#d6a75d;" data-option="Food Stalls">Food Stalls</button>
-            <button class="vote-btn px-3 py-1 text-sm sm:px-4 sm:py-2 sm:text-base rounded-lg text-white" style="background-color:#f472b6;" data-option="Amusement Park">Amusement Park</button>
+            <button class="vote-btn px-3 py-1 text-sm sm:px-4 sm:py-2 sm:text-base rounded-lg text-white" style="background-color:#880808;" data-option="Amusement Park">Amusement Park</button>
             <button class="vote-btn px-3 py-1 text-sm sm:px-4 sm:py-2 sm:text-base rounded-lg text-white" style="background-color:#facc15;" data-option="Team Games">Team Games</button>
         </div>
       
@@ -462,7 +462,7 @@
             datasets: [{
                 label: '',
                 data: [0, 0, 0, 0, 0, 0],
-                backgroundColor: ['#a855f7', '#34d399', '#60a5fa', '#d6a75d', '#f472b6', '#facc15'],
+                backgroundColor: ['#a855f7', '#34d399', '#60a5fa', '#d6a75d', '#880808', '#facc15'],
         }]
 
         },
@@ -487,7 +487,28 @@
                         color: '#e8d5b5',
                         font: {
                             size: window.innerWidth < 640 ? 10 : 14
-                        }
+                        },
+                        callback: function(value) {
+                        const label = this.getLabelForValue(value);
+                        const maxLineLength = 12; // Adjust per your chart width
+                        if (label.length <= maxLineLength) return label;
+                        
+                        // Split long labels into chunks
+                        const words = label.split(' ');
+                        let lines = [];
+                        let currentLine = '';
+
+                        words.forEach(word => {
+                            if ((currentLine + word).length > maxLineLength) {
+                                lines.push(currentLine.trim());
+                                currentLine = word + ' ';
+                            } else {
+                                currentLine += word + ' ';
+                            }
+                        });
+                        lines.push(currentLine.trim());
+                        return lines;
+                    }
                     }
                 }
             },
