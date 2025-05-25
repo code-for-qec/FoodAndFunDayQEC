@@ -108,42 +108,21 @@
   </main>
 
   <!--Register your team-->
-  <section class="max-w-3xl mx-auto bg-[#2b564f] p-6 md:p-8 rounded-xl border-2 border-[#d5ab6d] shadow-xl transition-transform duration-700 ease-in-out transform animate-slide-in">
-    <h2 class="text-2xl md:text-3xl font-semibold text-[#d5ab6d] mb-6">Register Your Team</h2>
-
-    <form id="teamForm" class="space-y-6">
-      <div>
-        <label for="teamName" class="block mb-2 text-sm font-medium text-[#e8d5b5]">Team Name</label>
-        <input type="text" id="teamName" name="teamName" required minlength="3" maxlength="50" class="w-full p-2 rounded-md bg-[#1a3330] text-[#e8d5b5] border border-[#d5ab6d] focus:outline-none focus:ring-2 focus:ring-[#d5ab6d]" />
-        <p class="mt-1 text-sm text-[#e8d5b5]">Enter a team name (3-50 characters)</p>
-      </div>
+  <section class="max-w-3xl mx-auto bg-[#2b564f] p-8 md:p-10 rounded-xl border-2 border-[#d5ab6d] shadow-xl transition-transform duration-700 ease-in-out transform animate-slide-in">
+    <h2 class="text-2xl md:text-3xl font-semibold text-[#d5ab6d] mb-8 text-center">Register Your Team</h2>
     
-      <div>
-        <label for="captainName" class="block mb-2 text-sm font-medium text-[#e8d5b5]">Captain's Name</label>
-        <input type="text" id="captainName" name="captainName" required minlength="2" maxlength="50" class="w-full p-2 rounded-md bg-[#1a3330] text-[#e8d5b5] border border-[#d5ab6d] focus:outline-none focus:ring-2 focus:ring-[#d5ab6d]" />
-        <p class="mt-1 text-sm text-[#e8d5b5]">Enter captain's full name</p>
-      </div>
-    
-      <div>
-        <label for="phoneNumber" class="block mb-2 text-sm font-medium text-[#e8d5b5]">Captain's Phone Number</label>
-        <input type="tel" id="phoneNumber" name="phoneNumber" required pattern="5[0-9]{7}" placeholder="5XXXXXXX" class="w-full p-2 rounded-md bg-[#1a3330] text-[#e8d5b5] border border-[#d5ab6d] focus:outline-none focus:ring-2 focus:ring-[#d5ab6d]" />
-        <p class="mt-1 text-sm text-[#e8d5b5]">Enter your 8-digit phone number starting with 5</p>
-      </div>
-
-      <!-- Additional Players Section -->
-      <div class="mt-6">
-        <h3 class="text-lg font-semibold text-[#d5ab6d] mb-4">Team Members</h3>
-        <p class="text-sm text-[#e8d5b5] mb-4">Add 5 more players to complete your team (6 players total including captain)</p>
-        
-        <div id="playersContainer" class="space-y-4">
-          <!-- Player fields will be added here -->
-        </div>
-      </div>
-
-      <button type="submit" id="submitBtn" class="mt-4 w-full bg-[#d5ab6d] text-[#1a3330] font-semibold py-2 rounded-md hover:bg-[#e8d5b5] transition duration-300">
-        Submit Registration
-      </button>
-    </form>
+    <div class="flex flex-col md:flex-row items-center gap-6">
+      <p class="text-[#e8d5b5] text-lg leading-relaxed flex-1">
+        Ready to showcase your team's skills? Click the button to register for the football tournament. 
+        You'll be taken to a Google Form where you can provide your team details.
+      </p>
+      
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4R9flbFLRYlhWioT5SjqJWeZzWigF5SpOO6duQFvuDIbWFg/viewform" 
+         target="_blank" 
+         class="inline-block bg-[#d5ab6d] text-[#1a3330] font-semibold py-4 px-10 rounded-lg hover:bg-[#e8d5b5] transition duration-300 transform hover:scale-105 hover:shadow-lg text-lg whitespace-nowrap">
+        Register Now →
+      </a>
+    </div>
   </section>
 
   <section class="max-w-3xl mx-auto mt-12 bg-[#2b564f] p-4 md:p-8 rounded-xl border-2 border-[#d5ab6d]">
@@ -255,21 +234,6 @@
 
 <!-- Form script -->
 <script>
-  // Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyDuy-_Hc8j5DN2obgUT3YZr3tzZqCwgPDI",
-    authDomain: "food-and-fun-day-qec.firebaseapp.com",
-    projectId: "food-and-fun-day-qec",
-    storageBucket: "food-and-fun-day-qec.appspot.com",
-    messagingSenderId: "671943551617",
-    appId: "1:671943551617:web:d6100074046c1f114e3b80",
-    databaseURL: "https://food-and-fun-day-qec-default-rtdb.firebaseio.com"
-  };
-
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  const database = firebase.database();
-
   const form = document.getElementById("teamForm");
   const submitBtn = document.getElementById("submitBtn");
   const playersContainer = document.getElementById("playersContainer");
@@ -322,27 +286,47 @@
 
     isSubmitting = true;
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<span class="inline-block animate-spin mr-2">⟳</span> Submitting...';
+    submitBtn.innerHTML = '<span class="inline-block animate-spin mr-2">⟳</span> Preparing...';
 
     const formData = {
       teamName: document.getElementById("teamName").value.trim(),
       captainName: document.getElementById("captainName").value.trim(),
       phoneNumber: phoneNumber,
       players: players,
-      registrationDate: new Date().toISOString(),
-      status: 'pending'
+      registrationDate: new Date().toLocaleString()
     };
 
     try {
-      // Add to Realtime Database
-      const newRegistrationRef = database.ref('football_registrations').push();
-      await newRegistrationRef.set(formData);
+      // Create the Google Form URL with pre-filled data
+      const googleFormUrl = new URL('https://docs.google.com/forms/d/e/1FAIpQLSd4R9flbFLRYlhWioT5SjqJWeZzWigF5SpOO6duQFvuDIbWFg/viewform?usp=dialog/');
       
-      alert("Registration submitted successfully! We'll contact you soon.");
+      // Log the form data for debugging
+      console.log('Form Data:', formData);
+      
+      // Add the pre-filled data as URL parameters
+      googleFormUrl.searchParams.append('entry.1126285018', formData.teamName); 
+      googleFormUrl.searchParams.append('entry.763680894', formData.captainName);
+      googleFormUrl.searchParams.append('entry.853776659', formData.phoneNumber);
+      googleFormUrl.searchParams.append('entry.1734828375', formData.players.join(', '));
+      googleFormUrl.searchParams.append('entry.1569200132', formData.registrationDate);
+      
+      // Log the final URL for debugging
+      console.log('Google Form URL:', googleFormUrl.toString());
+      
+      // Open the pre-filled Google Form in a new tab
+      const newWindow = window.open(googleFormUrl.toString(), '_blank');
+      
+      if (!newWindow) {
+        throw new Error('Popup was blocked. Please allow popups for this site.');
+      }
+      
+      // Show success message
+      alert("Please review and submit the pre-filled registration form.");
       form.reset();
+      
     } catch (error) {
-      console.error("Form submission error:", error);
-      alert(`Error: ${error.message || "Failed to submit registration. Please try again later."}`);
+      console.error("Form preparation error:", error);
+      alert(`Error: ${error.message || "Failed to prepare registration. Please try again later."}`);
     } finally {
       isSubmitting = false;
       submitBtn.disabled = false;
