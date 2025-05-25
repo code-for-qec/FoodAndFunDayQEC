@@ -514,7 +514,15 @@
     setInterval(() => {
         let now = new Date().getTime();
         let diff = dest - now;
-        if (diff <= 0) return;
+        if (diff <= 0) {
+            // Hide the countdown container
+            document.querySelector('.count-down-values-container').style.display = 'none';
+            // Show the event started message
+            document.querySelector('.text-center.mb-6').innerHTML = `
+                <h2 class="pixel-heading text-2xl md:text-3xl mb-4">THE EVENT HAS STARTED!</h2>
+            `;
+            return;
+        }
         let d = Math.floor(diff / (1000 * 60 * 60 * 24));
         let h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         let m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
