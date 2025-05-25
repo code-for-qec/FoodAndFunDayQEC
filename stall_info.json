@@ -36,7 +36,7 @@
     ],
     "curries_available": ["Gros pois", "Giraumon", "Rougaille", "Achard piment"],
     "location": "Canteen",
-    "time": "",
+    "time": "TBD",
     "section": ""
   },
   {
@@ -46,7 +46,7 @@
       { "name": "Mojito", "price": "Rs25" }
     ],
     "location": "In front of administration",
-    "time": "",
+    "time": "TBD",
     "section": ""
   },
   {
@@ -67,14 +67,14 @@
       { "name": "Add-ons", "price": "Incur additional cost" }
     ],
     "location": "In the art room. Serve food through the window",
-    "time": "",
+    "time": "TBD",
     "section": ""
   },
   {
     "name": "Pastries",
-    "products": [],
+    "products": [{ "name": "TBD", "price": "Rs69" }],
     "location": "Canteen",
-    "time": "",
+    "time": "TBD",
     "section": ""
   },
   {
@@ -114,7 +114,7 @@
     ],
     "note": "Entry tickets will be available as from Monday 25th May but will still be sold on the 28th May.",
     "location": "Block B",
-    "time": "",
+    "time": "TBD",
     "section": "Team Games"
   },
   {
@@ -123,7 +123,7 @@
       { "name": "30 mins session", "price": "Rs40/person" }
     ],
     "location": "Physics lab",
-    "time": "",
+    "time": "TBD",
     "section": "Creativity & Relaxation"
   },
   {
@@ -132,7 +132,7 @@
       { "name": "Laser tag", "price": "Rs150-200" }
     ],
     "location": "Zen Garden",
-    "time": "",
+    "time": "TBD",
     "section": "Team Games"
   },
   {
@@ -141,7 +141,7 @@
       { "name": "15 mins", "price": "Rs40/person (6-7 per session)" }
     ],
     "location": "Area in front of block A",
-    "time": "",
+    "time": "TBD",
     "section": "Creativity & Relaxation"
   },
   {
@@ -150,21 +150,21 @@
       { "name": "Entry (5 people per side)", "price": "Rs10/person" }
     ],
     "location": "Football field",
-    "time": "",
+    "time": "TBD",
     "section": "Team Games"
   },
   {
     "name": "Beauty Parlour",
-    "products": [],
+    "products": [{ "name": "TBD", "price": "Rs420" }],
     "location": "Art room",
-    "time": "",
+    "time": "TBD",
     "section": "Creativity & Relaxation"
   },
   {
     "name": "Festival games",
-    "products": [],
+    "products": [{ "name": "TBD", "price": "Rs42" }],
     "location": "Recreational Area",
-    "time": "",
+    "time": "TBD",
     "section": "Team Games"
   }
 ]
