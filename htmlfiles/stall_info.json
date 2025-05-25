@@ -84,7 +84,7 @@
     "location": "Field",
     "time": "08:00 - 14:00",
     "section": "Amusement Park",
-    "image": "images/9dcinema.png",
+    "image": "../images/9dcinema.png",
     "image_position": "50% 30%"
   },
   {
@@ -94,7 +94,7 @@
     "location": "Field",
     "time": "08:00 - 14:00",
     "section": "Amusement Park",
-    "image": "images/ballpit.png",
+    "image": "../images/ballpit.png",
     "image_position": "50% 30%"
   },
   {
@@ -104,7 +104,7 @@
     "location": "Field",
     "time": "08:00 - 14:00",
     "section": "Amusement Park",
-    "image": "images/gyroscope.jpg",
+    "image": "../images/gyroscope.jpg",
     "image_position": "50% 30%"
   },
   {
