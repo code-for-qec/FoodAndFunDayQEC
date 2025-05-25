@@ -1,9 +1,9 @@
 [
   {
-    "name": "Pain fourré",
+    "name": "Pain Fourré",
     "products": [
-      { "name": "Pain saucisse", "price": "Rs60" },
-      { "name": "Pain poulet", "price": "Rs65" }
+      { "name": "Pain Saucisse (Hot Dog)", "price": "Rs60" },
+      { "name": "Pain Poulet", "price": "Rs60" }
     ],
     "location": "Corridor near art room",
     "time": "TBD",
@@ -12,25 +12,25 @@
   {
     "name": "Chips",
     "products": [
-      { "name": "Chips", "price": "Rs30" }
+      { "name": "Chips", "price": "Rs25" }
     ],
     "location": "Canteen area (next to home economics lab stairs)",
     "time": "TBD",
     "section": ""
   },
   {
-    "name": "Fried noodles",
+    "name": "Fried Noodles",
     "products": [
-      { "name": "Fried noodles", "price": "Rs80/portion" }
+      { "name": "Fried Noodles", "price": "Rs80/portion" }
     ],
     "location": "Canteen",
     "time": "TBD",
     "section": ""
   },
   {
-    "name": "Ti Puri and curry",
+    "name": "Ti Puri and Curry",
     "products": [
-      { "name": "Puri with curry", "price": "Rs20" },
+      { "name": "Puri with Curry", "price": "Rs20" },
       { "name": "Samosa", "price": "Rs10 for 2" },
       { "name": "Gato pomme de terre", "price": "Rs10 for 2" }
     ],
@@ -40,7 +40,7 @@
     "section": ""
   },
   {
-    "name": "Juice (panacon), soft drinks and Alouda",
+    "name": "Juice (Panacon), Soft Drinks and Alouda",
     "products": [
       { "name": "Alouda", "price": "Rs30" },
       { "name": "Mojito", "price": "Rs25" }
@@ -79,19 +79,19 @@
   },
   {
     "name": "9D cinema",
-    "products": [{ "name": "Entry", "price": "Rs100" }],
-    "note": "Entry tickets have to be bought in advance with cash and not tokens during the 26-27th May in the canteen area.",
-    "location": "Field",
-    "time": "08:00 - 14:00",
+    "products": [{ "name": "Entry/session", "price": "Rs100" }],
+    "note": "Entry tickets can be bought in advance with cash and not tokens during the 26-27th May in the canteen area. Tickets will still be sold on the 28th May but still with cash not tokens.",
+    "location": "In front of Block A",
+    "time": "08:00 - 14:00 (Every 12 minutes)",
     "section": "Amusement Park",
     "image": "../images/9dcinema.png",
     "image_position": "50% 30%"
   },
   {
     "name": "Ball Pit",
-    "products": [{ "name": "Entry", "price": "Rs75" }],
-    "note": "Entry tickets have to be bought in advance with cash and not tokens during the 26-27th May in the canteen area.",
-    "location": "Field",
+    "products": [{ "name": "Entry/session", "price": "Rs75" }],
+    "note": "Entry tickets can be bought in advance with cash and not tokens during the 26-27th May in the canteen area. Tickets will still be sold on the 28th May but still with cash not tokens.",
+    "location": "In front of Block A",
     "time": "08:00 - 14:00",
     "section": "Amusement Park",
     "image": "../images/ballpit.png",
@@ -99,9 +99,9 @@
   },
   {
     "name": "Gyroscope",
-    "products": [{ "name": "Entry", "price": "Rs125" }],
-    "note": "Entry tickets have to be bought in advance with cash and not tokens during the 26-27th May in the canteen area.",
-    "location": "Field",
+    "products": [{ "name": "Entry/session", "price": "Rs125" }],
+    "note": "Entry tickets can be bought in advance with cash and not tokens during the 26-27th May in the canteen area. Tickets will still be sold on the 28th May but still with cash not tokens.",
+    "location": "In front of Block A",
     "time": "08:00 - 14:00",
     "section": "Amusement Park",
     "image": "../images/gyroscope.jpg",
@@ -110,9 +110,9 @@
   {
     "name": "Escape room",
     "products": [
-      { "name": "Entry", "price": "Rs80/person (4-6 per team)" }
+      { "name": "Entry/session", "price": "Rs80/person (4-6 per team)" }
     ],
-    "note": "Entry tickets will be available as from Monday 25th May (During the Afternoon break and Lunch in the canteen area) but will still be sold on the 28th May.",
+    "note": "Entry tickets will be available as from Monday 25th May but will still be sold on the 28th May.",
     "location": "Block B",
     "time": "TBD",
     "section": "Team Games"
@@ -136,10 +136,11 @@
     "section": "Team Games"
   },
   {
-    "name": "Bouncing castle",
+    "name": "Bouncy castle",
     "products": [
-      { "name": "15 mins", "price": "Rs40/person (6-7 per session)" }
+      { "name": "10 minute session", "price": "Rs150/team of 5 people" }
     ],
+    "note": "2-3 teams can play in the same session. Cash only.",
     "location": "Area in front of block A",
     "time": "TBD",
     "section": "Creativity & Relaxation"
