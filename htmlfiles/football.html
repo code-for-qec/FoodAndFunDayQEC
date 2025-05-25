@@ -135,130 +135,12 @@
     <div x-data="{ activeTab: 1 }">
   
       
-      <!-- Tab Buttons -->
-      <div class="flex flex-row flex-wrap justify-center mb-6 gap-2 sm:gap-3 border-b-2 border-[#d5ab6d] overflow-x-auto">
-        <button :class="{ 
-                'text-[#d5ab6d] border-b-2 border-[#d5ab6d]': activeTab === 1,
-                'bg-[#1a3330] text-[#d5ab6d] font-bold': activeTab === 1 
-              }" 
-                @click="activeTab = 1" 
-                class="text-white py-1 px-3 sm:py-2 sm:px-4 md:py-4 md:px-6 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-105 hover:underline text-sm sm:text-base md:text-lg">
-          Group A
-        </button>
-        <button :class="{ 
-                'text-[#d5ab6d] border-b-2 border-[#d5ab6d]': activeTab === 2,
-                'bg-[#1a3330] text-[#d5ab6d] font-bold': activeTab === 2 
-              }" 
-                @click="activeTab = 2" 
-                class="text-white py-1 px-3 sm:py-2 sm:px-4 md:py-4 md:px-6 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-105 hover:underline text-sm sm:text-base md:text-lg">
-          Group B
-        </button>
-        <button :class="{ 
-                'text-[#d5ab6d] border-b-2 border-[#d5ab6d]': activeTab === 3,
-                'bg-[#1a3330] text-[#d5ab6d] font-bold': activeTab === 3 
-              }" 
-                @click="activeTab = 3" 
-                class="text-white py-1 px-3 sm:py-2 sm:px-4 md:py-4 md:px-6 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-105 hover:underline text-sm sm:text-base md:text-lg">
-          Group C
-        </button>
-        <button :class="{ 
-                'text-[#d5ab6d] border-b-2 border-[#d5ab6d]': activeTab === 4,
-                'bg-[#1a3330] text-[#d5ab6d] font-bold': activeTab === 4 
-              }" 
-                @click="activeTab = 4" 
-                class="text-white py-1 px-3 sm:py-2 sm:px-4 md:py-4 md:px-6 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-105 hover:underline text-sm sm:text-base md:text-lg">
-          Group D
-        </button>
-        <button :class="{ 
-                'text-[#d5ab6d] border-b-2 border-[#d5ab6d]': activeTab === 5,
-                'bg-[#1a3330] text-[#d5ab6d] font-bold': activeTab === 5 
-              }" 
-                @click="activeTab = 5" 
-                class="text-white py-1 px-3 sm:py-2 sm:px-4 md:py-4 md:px-6 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-105 hover:underline text-sm sm:text-base md:text-lg">
-          Playoffs
-        </button>
-      </div>
+      <!-- Tab Buttons will be dynamically inserted here -->
+      <div id="tabButtonsContainer" class="flex flex-row flex-wrap justify-center mb-6 gap-2 sm:gap-3 border-b-2 border-[#d5ab6d] overflow-x-auto"></div>
   
-      <!-- Tab Contents -->
-      <!-- Group A -->
-      <div x-show="activeTab === 1" x-transition class="space-y-3">
-        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
-          <div class="font-semibold text-sm md:text-base">Team A vs Team B</div>
-          <div class="text-sm md:text-base mt-1 sm:mt-0">09:00</div>
-        </div>
-        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
-          <div class="font-semibold text-sm md:text-base">Team C vs Team D</div>
-          <div class="text-sm md:text-base mt-1 sm:mt-0">09:20</div>
-        </div>
-        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
-          <div class="font-semibold text-sm md:text-base">Team A vs Team D</div>
-          <div class="text-sm md:text-base mt-1 sm:mt-0">09:40</div>
-        </div>
-      </div>
-  
-      <!-- Group B -->
-      <div x-show="activeTab === 2" x-transition class="space-y-3">
-        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
-          <div class="font-semibold text-sm md:text-base">Team E vs Team F</div>
-          <div class="text-sm md:text-base mt-1 sm:mt-0">10:00</div>
-        </div>
-        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
-          <div class="font-semibold text-sm md:text-base">Team G vs Team H</div>
-          <div class="text-sm md:text-base mt-1 sm:mt-0">10:20</div>
-        </div>
-        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
-          <div class="font-semibold text-sm md:text-base">Team E vs Team H</div>
-          <div class="text-sm md:text-base mt-1 sm:mt-0">10:40</div>
-        </div>
-      </div>
-  
-      <!-- Group C -->
-      <div x-show="activeTab === 3" x-transition class="space-y-3">
-        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
-          <div class="font-semibold text-sm md:text-base">Team I vs Team J</div>
-          <div class="text-sm md:text-base mt-1 sm:mt-0">11:00</div>
-        </div>
-        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
-          <div class="font-semibold text-sm md:text-base">Team K vs Team L</div>
-          <div class="text-sm md:text-base mt-1 sm:mt-0">11:20</div>
-        </div>
-        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
-          <div class="font-semibold text-sm md:text-base">Team I vs Team L</div>
-          <div class="text-sm md:text-base mt-1 sm:mt-0">11:40</div>
-        </div>
-      </div>
-  
-      <!-- Group D -->
-      <div x-show="activeTab === 4" x-transition class="space-y-3">
-        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
-          <div class="font-semibold text-sm md:text-base">Team M vs Team N</div>
-          <div class="text-sm md:text-base mt-1 sm:mt-0">12:00</div>
-        </div>
-        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
-          <div class="font-semibold text-sm md:text-base">Team O vs Team P</div>
-          <div class="text-sm md:text-base mt-1 sm:mt-0">12:20</div>
-        </div>
-        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
-          <div class="font-semibold text-sm md:text-base">Team M vs Team P</div>
-          <div class="text-sm md:text-base mt-1 sm:mt-0">12:40</div>
-        </div>
-      </div>
-  
-      <!-- Playoffs -->
-      <div x-show="activeTab === 5" x-transition class="space-y-3">
-        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
-          <div class="font-semibold text-sm md:text-base">Group A Winner vs Group B Winner</div>
-          <div class="text-sm md:text-base mt-1 sm:mt-0">13:00</div>
-        </div>
-        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
-          <div class="font-semibold text-sm md:text-base">Group C Winner vs Group D Winner</div>
-          <div class="text-sm md:text-base mt-1 sm:mt-0">13:20</div>
-        </div>
-        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
-          <div class="font-semibold text-sm md:text-base">Finalist 1 vs Finalist 2</div>
-          <div class="text-sm md:text-base mt-1 sm:mt-0">13:40</div>
-        </div>
-      </div>
+      <!-- Tab Contents will be dynamically inserted here -->
+      <div id="tabContentsContainer"></div>
+
     </div>
   </section>
   
@@ -270,5 +152,87 @@
   </footer>
 
   <script src="../javascript/navbar.js"></script>
+  <script>
+    async function loadSchedule() {
+        try {
+            const response = await fetch('../htmlfiles/football_schedule.json?' + new Date().getTime(), {
+                headers: {
+                    'Cache-Control': 'no-cache, no-store, must-revalidate',
+                    'Pragma': 'no-cache',
+                    'Expires': '0'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const schedule = await response.json();
+            console.log('Successfully loaded schedule:', schedule);
+
+            const tabButtonsContainer = document.getElementById('tabButtonsContainer');
+            const tabContentsContainer = document.getElementById('tabContentsContainer');
+
+            // Clear existing content
+            tabButtonsContainer.innerHTML = '';
+            tabContentsContainer.innerHTML = '';
+
+            let tabIndex = 1;
+            for (const groupName in schedule) {
+                const matches = schedule[groupName];
+
+                // Create tab button HTML string
+                const buttonHtml = `
+                    <button
+                        x-bind:class="{
+                            'text-[#d5ab6d] border-b-2 border-[#d5ab6d]': activeTab === ${tabIndex},
+                            'bg-[#1a3330] text-[#d5ab6d] font-bold': activeTab === ${tabIndex}
+                        }"
+                        @click="activeTab = ${tabIndex}"
+                        class="text-white py-1 px-3 sm:py-2 sm:px-4 md:py-4 md:px-6 focus:outline-none transform transition duration-300 ease-in-out hover:text-[#d5ab6d] hover:scale-105 hover:underline text-sm sm:text-base md:text-lg">
+                        ${groupName}
+                    </button>
+                `;
+                tabButtonsContainer.innerHTML += buttonHtml; // Append button HTML
+
+                // Create tab content HTML string
+                let contentHtml = `
+                    <div x-show="activeTab === ${tabIndex}" x-transition class="space-y-3">
+                `;
+
+                matches.forEach(match => {
+                    contentHtml += `
+                        <div class="flex flex-col sm:flex-row justify-between text-[#e8d5b5] hover:bg-[#1a3330] p-2 rounded-lg hover:scale-105 transition">
+                            <div class="font-semibold text-sm md:text-base">${match.teams}</div>
+                            <div class="text-sm md:text-base mt-1 sm:mt-0">${match.time}</div>
+                        </div>
+                    `;
+                });
+
+                contentHtml += `
+                    </div>
+                `;
+                tabContentsContainer.innerHTML += contentHtml; // Append content HTML
+
+                tabIndex++;
+            }
+
+            // Re-initialize Alpine.js on the new content
+            if (window.Alpine) {
+                window.Alpine.initTree(tabContentsContainer);
+                // Also re-initialize buttons container if necessary, though tabs x-data is higher up
+                // window.Alpine.initTree(tabButtonsContainer);
+            }
+
+        } catch (error) {
+            console.error('Error loading football schedule:', error);
+            // Optionally display an error message on the page
+            document.getElementById('tabContentsContainer').innerHTML = '<p class="text-red-500">Error loading schedule. Please try again later.</p>';
+        }
+    }
+
+    // Load the schedule when the page loads
+    document.addEventListener('DOMContentLoaded', loadSchedule);
+  </script>
 </body>
 </html>

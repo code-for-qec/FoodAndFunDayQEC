@@ -1,0 +1,27 @@
+{
+  "Group A": [
+    { "teams": "Team A vs Team B", "time": "09:00" },
+    { "teams": "Team C vs Team D", "time": "09:20" },
+    { "teams": "Team A vs Team D", "time": "09:40" }
+  ],
+  "Group B": [
+    { "teams": "Team E vs Team F", "time": "10:00" },
+    { "teams": "Team G vs Team H", "time": "10:20" },
+    { "teams": "Team E vs Team H", "time": "10:40" }
+  ],
+  "Group C": [
+    { "teams": "Team I vs Team J", "time": "11:00" },
+    { "teams": "Team K vs Team L", "time": "11:20" },
+    { "teams": "Team I vs Team L", "time": "11:40" }
+  ],
+  "Group D": [
+    { "teams": "Team M vs Team N", "time": "12:00" },
+    { "teams": "Team O vs Team P", "time": "12:20" },
+    { "teams": "Team M vs Team P", "time": "12:40" }
+  ],
+  "Playoffs": [
+    { "teams": "Group A Winner vs Group B Winner", "time": "13:00" },
+    { "teams": "Group C Winner vs Group D Winner", "time": "13:20" },
+    { "teams": "Finalist 1 vs Finalist 2", "time": "13:40" }
+  ]
+} 
