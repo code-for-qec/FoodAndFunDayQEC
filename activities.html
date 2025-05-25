@@ -6,6 +6,7 @@
     <title>Activities - School Food & Fun Day!</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
     <style>
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
@@ -34,6 +35,10 @@
         h1, h2, h3 {
             font-family: 'Fredoka', sans-serif;
             font-weight: 700;
+        }
+
+        .section-title {
+            font-family: 'Bungee', cursive;
         }
 
         .stall-card {
@@ -214,7 +219,7 @@
 
                     // Create section title
                     const sectionTitle = document.createElement('h2');
-                    sectionTitle.className = 'text-3xl font-bold tracking-wide mb-4 col-span-full mt-6 text-center'; // Added classes for styling
+                    sectionTitle.className = 'text-3xl font-bold tracking-wide mb-4 col-span-full mt-6 text-center section-title'; // Added classes for styling and new font class
                     sectionTitle.style.color = '#d5ab6d'; // Matching existing color style
                     sectionTitle.textContent = sectionName;
                     stallsGrid.appendChild(sectionTitle);
