@@ -108,7 +108,7 @@
     "image_position": "50% 30%"
   },
   {
-    "name": "Escape room",
+    "name": "Escape Room",
     "products": [
       { "name": "Entry/session", "price": "Rs100/person (4-6 per team)" }
     ],
@@ -118,7 +118,7 @@
     "section": "Team Games"
   },
   {
-    "name": "Bouncy castle",
+    "name": "Bouncy Castle",
     "products": [
       { "name": "10 minute session", "price": "Rs150/team of 5 people" }
     ],
@@ -128,7 +128,7 @@
     "section": "Creativity & Relaxation"
   },
   {
-    "name": "Tug of war",
+    "name": "Tug of War",
     "products": [
       { "name": "Entry (5 people per side)", "price": "Rs10/person" }
     ],
@@ -144,7 +144,7 @@
     "section": "Creativity & Relaxation"
   },
   {
-    "name": "Carnival games",
+    "name": "Carnival Games",
     "products": [{ "name": "Games and prices to be confirmed", "price": "TBD" }],
     "location": "Recreational Area",
     "time": "TBD",
