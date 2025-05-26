@@ -118,15 +118,6 @@
     "section": "Team Games"
   },
   {
-    "name": "Karaoke",
-    "products": [
-      { "name": "30 mins session", "price": "Rs40/person" }
-    ],
-    "location": "Physics lab",
-    "time": "TBD",
-    "section": "Creativity & Relaxation"
-  },
-  {
     "name": "Bouncy castle",
     "products": [
       { "name": "10 minute session", "price": "Rs150/team of 5 people" }
@@ -153,8 +144,8 @@
     "section": "Creativity & Relaxation"
   },
   {
-    "name": "Festival games",
-    "products": [{ "name": "TBD", "price": "Rs42" }],
+    "name": "Carnival games",
+    "products": [{ "name": "Games and prices to be confirmed", "price": "TBD" }],
     "location": "Recreational Area",
     "time": "TBD",
     "section": "Team Games"
