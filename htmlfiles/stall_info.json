@@ -127,15 +127,6 @@
     "section": "Creativity & Relaxation"
   },
   {
-    "name": "Outdoor laser tag",
-    "products": [
-      { "name": "Laser tag", "price": "Rs150-200" }
-    ],
-    "location": "Zen Garden",
-    "time": "TBD",
-    "section": "Team Games"
-  },
-  {
     "name": "Bouncy castle",
     "products": [
       { "name": "10 minute session", "price": "Rs150/team of 5 people" }
