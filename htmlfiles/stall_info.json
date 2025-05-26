@@ -110,7 +110,7 @@
   {
     "name": "Escape room",
     "products": [
-      { "name": "Entry/session", "price": "Rs80/person (4-6 per team)" }
+      { "name": "Entry/session", "price": "Rs100/person (4-6 per team)" }
     ],
     "note": "Entry tickets will be available as from Monday 25th May but will still be sold on the 28th May.",
     "location": "Block B",
