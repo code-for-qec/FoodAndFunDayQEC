@@ -72,7 +72,7 @@
   },
   {
     "name": "Pastries",
-    "products": [{ "name": "TBD", "price": "Rs69" }],
+    "products": [{ "name": "TBD", "price": "TBD" }],
     "location": "Canteen",
     "time": "TBD",
     "section": ""
@@ -138,7 +138,37 @@
   },
   {
     "name": "Beauty Parlour",
-    "products": [{ "name": "Henna: 1 Side Simple", "price": "Rs35" }, { "name": "Henna: 1 Side Complex", "price": "Rs50" }, { "name": "Nail Polish: Regular", "price": "Rs30" }, { "name": "Nail Polish: Gel", "price": "Rs50" }, { "name": "Facepainting: Small", "price": "Rs20" }, { "name": "Facepainting: Whole Face", "price": "Rs40" }, { "name": "Temporary Tattoo: Small", "price": "Rs15" }, { "name": "Temporary Tattoo: Big", "price": "Rs25" }],
+    "products": [],
+    "sections": [
+      {
+        "title": "Henna",
+        "items": [
+          { "name": "1 Side Complex", "price": "Rs50" },
+          { "name": "1 Side Simple", "price": "Rs35" }
+        ]
+      },
+      {
+        "title": "Nail Polish",
+        "items": [
+          { "name": "Regular Polish", "price": "Rs30" },
+          { "name": "Gel Polish", "price": "Rs50" }
+        ]
+      },
+      {
+        "title": "Facepainting",
+        "items": [
+          { "name": "Small", "price": "Rs20" },
+          { "name": "Whole Face", "price": "Rs40" }
+        ]
+      },
+      {
+        "title": "Temporary Tattoo",
+        "items": [
+          { "name": "Small", "price": "Rs15" },
+          { "name": "Big", "price": "Rs25" }
+        ]
+      }
+    ],
     "location": "Art room",
     "time": "TBD",
     "section": "Creativity & Relaxation"
