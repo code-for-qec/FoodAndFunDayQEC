@@ -138,7 +138,7 @@
   },
   {
     "name": "Beauty Parlour",
-    "products": [{ "name": "TBD", "price": "Rs420" }],
+    "products": [{ "name": "TBD", "price": "TBD" }],
     "location": "Art room",
     "time": "TBD",
     "section": "Creativity & Relaxation"
