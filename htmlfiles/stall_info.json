@@ -61,7 +61,7 @@
     "section": ""
   },
   {
-    "name": "Snacks (la boutik sinwa)",
+    "name": "La Boutik Sinwa",
     "products": [
       { "name": "Plain mine bouille", "price": "Rs50" },
       { "name": "Add-ons", "price": "Incur additional cost" }
@@ -120,9 +120,9 @@
   {
     "name": "Bouncy Castle",
     "products": [
-      { "name": "10 minute session", "price": "Rs150/team of 5 people" }
+      { "name": "10 minute session", "price": "Rs150/group of 5 people" }
     ],
-    "note": "2-3 teams can play in the same session. Cash only.",
+    "note": "2-3 groups can play in the same session. Cash only.",
     "location": "Area in front of block A",
     "time": "TBD",
     "section": "Creativity & Relaxation"
