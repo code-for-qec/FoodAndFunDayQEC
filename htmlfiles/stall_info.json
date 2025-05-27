@@ -78,11 +78,11 @@
     "section": ""
   },
   {
-    "name": "9D cinema (CANCELLED)",
-    "products": [{ "name": "CANCELLED", "price": "Rs100" }],
+    "name": "~~9D Cinema~~ (CANCELLED)",
+    "products": [{ "name": "~~Entry/session~~", "price": "~~Rs100~~" }],
     "note": "This event has been cancelled due to issues with the cinema van. We apologize for the inconvenience. Please bring in your presale ticket and your student ID to get compensated.",
     "location": "In front of Block A",
-    "time": "08:00 - 14:00 (Every 12 minutes)",
+    "time": "~~08:00 - 14:00 (Every 12 minutes)~~",
     "section": "Amusement Park",
     "image": "../images/9dcinemacancelled.jpg",
     "image_position": "50% 30%"
