@@ -96,7 +96,6 @@
 </head>
 <body class="p-4">
 
-    <!-- Call Navbar -->
     <div id="navbar"></div>
 
     <header class="pt-20 text-center mb-8">
@@ -109,8 +108,7 @@
 
     <main class="max-w-4xl mx-auto space-y-6">
         <div id="stallsGrid" class="grid gap-6 md:grid-cols-2">
-            <!-- Stalls will be dynamically inserted here -->
-        </div>
+            </div>
         <div id="errorDetails" style="display: none;"></div>
     </main>
 
@@ -131,31 +129,62 @@
             if (Array.isArray(value)) {
                 return value.join(', ');
             } else if (typeof value === 'object' && value !== null) {
+                // This generic JSON.stringify is a fallback for unhandled objects.
+                // We've specifically handled 'sections' in renderProducts, so this won't apply to it if excluded properly.
                 return JSON.stringify(value);
             } else {
                 return value.toString();
             }
         }
 
-        function renderProducts(products) {
-            if (!products || products.length === 0) return '';
+        // MODIFIED: Updated to accept 'sections' as a parameter for structured product display
+        function renderProducts(products, sections) {
+            let html = '';
 
-            return `
-                <div>
-                    <h3 class="font-bold mb-2">Prices:</h3>
-                    <ul class="space-y-2">
-                        ${products.map(product => `
-                            <li class="flex items-center">
-                                <img src="../images/bulletpointcrown.png" alt="•" class="w-4 h-4 mr-2 flex-shrink-0" style="filter: brightness(1.2);">
-                                <div class="flex justify-between items-center w-full">
-                                    <span>${product.name}</span>
-                                    <span class="price-tag ml-2 text-center">${product.price}</span>
-                                </div>
-                            </li>
-                        `).join('')}
-                    </ul>
-                </div>
-            `;
+            // Check if there are product sections (for Beauty Parlour type structure)
+            if (sections && sections.length > 0) {
+                html += `<h3 class="font-bold mb-2">Services:</h3>`; // Changed "Prices" to "Services"
+                sections.forEach((section, index) => {
+                    html += `
+                        <h4 class="font-bold mt-3 mb-2 text-[#d5ab6d]">${section.title}:</h4>
+                        <ul class="space-y-2">
+                            ${section.items.map(item => `
+                                <li class="flex items-center">
+                                    <img src="../images/bulletpointcrown.png" alt="•" class="w-4 h-4 mr-2 flex-shrink-0" style="filter: brightness(1.2);">
+                                    <div class="flex justify-between items-center w-full">
+                                        <span>${item.name}</span>
+                                        <span class="price-tag ml-2 text-center">${item.price}</span>
+                                    </div>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    `;
+                    // Add a separator line after each section, except the last one
+                    if (index < sections.length - 1) {
+                        html += `<div class="border-t border-[#d5ab6d] my-4 opacity-50"></div>`;
+                    }
+                });
+            }
+            // Fallback to original product rendering if no sections are defined (for other stalls)
+            else if (products && products.length > 0) {
+                html += `
+                    <div>
+                        <h3 class="font-bold mb-2">Prices:</h3>
+                        <ul class="space-y-2">
+                            ${products.map(product => `
+                                <li class="flex items-center">
+                                    <img src="../images/bulletpointcrown.png" alt="•" class="w-4 h-4 mr-2 flex-shrink-0" style="filter: brightness(1.2);">
+                                    <div class="flex justify-between items-center w-full">
+                                        <span>${product.name}</span>
+                                        <span class="price-tag ml-2 text-center">${product.price}</span>
+                                    </div>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            return html;
         }
 
         async function loadStalls() {
@@ -185,15 +214,15 @@
 
                 // List of food stall names for filtering
                 const FoodStalls = [
-  'Pain Fourré',
-  'Chips',
-  'Fried Noodles',
-  'Ti Puri and Curry',
-  'Juice (Panacon), Soft Drinks and Alouda',
-  'Ice Cream',
-  'Snacks (la boutik sinwa)',
-  'Pastries'
-];
+                    'Pain Fourré',
+                    'Chips',
+                    'Fried Noodles',
+                    'Ti Puri and Curry',
+                    'Juice (Panacon), Soft Drinks and Alouda',
+                    'Ice Cream',
+                    'Snacks (la boutik sinwa)',
+                    'Pastries'
+                ];
 
                 // Filter out food stalls to get only activities
                 const activities = stalls.filter(stall => !FoodStalls.includes(stall.name));
@@ -265,16 +294,18 @@
                             <div class="space-y-4">
                         `;
 
-                        // Add products and other info above the line
-                        if (stall.products && stall.products.length > 0) { // Ensure products exist and are not empty
-                            console.log(`Adding products for ${stall.name}:`, stall.products);
-                            html += renderProducts(stall.products);
+                        // MODIFIED: Updated condition to check for both products AND sections
+                        // MODIFIED: Pass both stall.products and stall.sections to renderProducts
+                        if (stall.products && stall.products.length > 0 || (stall.sections && stall.sections.length > 0)) {
+                            console.log(`Adding products/sections for ${stall.name}:`, stall.products || stall.sections);
+                            html += renderProducts(stall.products, stall.sections);
                         }
 
-                        // Add other fields except name, products, section, location, and time
+                        // MODIFIED: Added 'sections' to the exclusion list to prevent generic rendering
+                        // Add other fields except name, products, sections, section, location, and time
                         let hasExtraInfo = false;
                         Object.entries(stall).forEach(([field, value]) => {
-                            if (['name', 'products', 'section', 'location', 'time', 'image', 'image_position'].includes(field)) return; // Exclude 'section', 'image', and 'image_position'
+                            if (['name', 'products', 'sections', 'section', 'location', 'time', 'image', 'image_position'].includes(field)) return;
                             if (!value || (Array.isArray(value) && value.length === 0) || value === '') return;
                             hasExtraInfo = true;
                             console.log(`Adding extra info for ${stall.name}:`, field, value);
@@ -287,8 +318,9 @@
                             `;
                         });
 
+                        // MODIFIED: Updated condition for separation line to account for new 'sections' field
                         // Add separation line only if there's content above and below
-                        if ((stall.products && stall.products.length > 0 || hasExtraInfo) && (stall.location || stall.time)) { // Updated condition
+                        if ((stall.products && stall.products.length > 0 || (stall.sections && stall.sections.length > 0) || hasExtraInfo) && (stall.location || stall.time)) {
                             html += `<div class="border-t border-[#d5ab6d] my-4 opacity-50"></div>`;
                         }
 
@@ -327,7 +359,7 @@
             } catch (error) {
                 console.error('Error loading stall information:', error);
                 errorDetails.style.display = 'block';
-                errorDetails.innerHTML = `Error loading stall information:\n${error.message}\n\nPlease try the following:\n1. Make sure stall_info.json exists in the same folder as foodstalls.html\n2. Check if the JSON file is properly formatted\n3. Try refreshing the page`;
+                errorDetails.innerHTML = `Error loading stall information:\n${error.message}\n\nPlease try the following:\n1. Make sure stall_info.json exists in the same folder as activities.html\n2. Check if the JSON file is properly formatted\n3. Try refreshing the page`;
 
                 document.getElementById('stallsGrid').innerHTML = `
                     <div class="col-span-2 text-center p-6 stall-card">
