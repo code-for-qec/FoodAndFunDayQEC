@@ -72,7 +72,7 @@
   },
   {
     "name": "Pastries",
-    "products": [{ "name": "TBD", "price": "Rs69" }],
+    "products": [{ "name": "TBD", "price": "TBD" }],
     "location": "Canteen",
     "time": "TBD",
     "section": ""
