@@ -138,10 +138,19 @@
   },
   {
     "name": "Beauty Parlour",
-    "products": [{ "name": "TBD", "price": "TBD" }],
+    "products": [
+      { "name": "Henna - 1 Side Complex", "price": "Rs50" },
+      { "name": "Henna - 1 Side Simple", "price": "Rs35" },
+      { "name": "Nail Polish - Regular Polish", "price": "Rs30" },
+      { "name": "Nail Polish - Gel Polish", "price": "Rs50" },
+      { "name": "Facepainting - Small", "price": "Rs20" },
+      { "name": "Facepainting - Whole Face", "price": "Rs40" },
+      { "name": "Temporary Tattoo - Small", "price": "Rs15" },
+      { "name": "Temporary Tattoo - Big", "price": "Rs25" }
+    ],
     "location": "Art room",
     "time": "TBD",
-    "section": "Creativity & Relaxation"
+    "section": "Creativity & Relaxation",
   },
   {
     "name": "Carnival Games",
