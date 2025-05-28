@@ -62,7 +62,7 @@
   },
   {
     "name": "La Boutik Sinwa",
-    "products":[]
+    "products":[],
     "sections": [
     {
       "title": "Mine Bouilli",
@@ -204,10 +204,10 @@
       {
         "title": "Temporary Tattoo",
         "items": [
-          { "name": "mini", "price": "Rs10" },
-          { "name": "small", "price": "Rs25" },
-          { "name": "medium", "price": "Rs50" },
-          { "name": "large", "price": "Rs75" }
+          { "name": "Mini", "price": "Rs10" },
+          { "name": "Small", "price": "Rs25" },
+          { "name": "Medium", "price": "Rs50" },
+          { "name": "Large", "price": "Rs75" }
         ]
       }
     ],

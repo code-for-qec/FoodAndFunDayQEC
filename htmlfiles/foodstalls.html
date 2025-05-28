@@ -131,25 +131,53 @@
             }
         }
 
-        function renderProducts(products) {
-            if (!products || products.length === 0) return '';
+        function renderProducts(products, sections) {
+            let html = '';
 
-            return `
-                <div>
-                    <h3 class="font-bold mb-2">Menu:</h3>
-                    <ul class="space-y-2">
-                        ${products.map(product => `
-                            <li class="flex items-center">
-                                <img src="../images/bulletpointcrown.png" alt="•" class="w-4 h-4 mr-2 flex-shrink-0" style="filter: brightness(1.2);">
-                                <div class="flex justify-between items-center w-full">
-                                    <span>${product.name}</span>
-                                    <span class="price-tag ml-2 text-center">${product.price}</span>
-                                </div>
-                            </li>
-                        `).join('')}
-                    </ul>
-                </div>
-            `;
+            // Check if there are product sections
+            if (sections && sections.length > 0) {
+                html += `<h3 class="font-bold mb-2">Menu:</h3>`; // Use 'Menu' for food sections
+                sections.forEach((section, index) => {
+                    html += `
+                        <h4 class="font-bold mt-3 mb-2 text-[#d5ab6d]">${section.title}:</h4>
+                        <ul class="space-y-2">
+                            ${section.items.map(item => `
+                                <li class="flex items-center">
+                                    <img src="../images/bulletpointcrown.png" alt="•" class="w-4 h-4 mr-2 flex-shrink-0" style="filter: brightness(1.2);">
+                                    <div class="flex justify-between items-center w-full">
+                                        <span>${item.name}</span>
+                                        <span class="price-tag ml-2 text-center">${item.price}</span>
+                                    </div>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    `;
+                    // Add a separator line after each section, except the last one
+                    if (index < sections.length - 1) {
+                        html += `<div class="border-t border-[#d5ab6d] my-4 opacity-50"></div>`;
+                    }
+                });
+            }
+            // Fallback to original product rendering if no sections are defined
+            else if (products && products.length > 0) {
+                html += `
+                    <div>
+                        <h3 class="font-bold mb-2">Menu:</h3>
+                        <ul class="space-y-2">
+                            ${products.map(product => `
+                                <li class="flex items-center">
+                                    <img src="../images/bulletpointcrown.png" alt="•" class="w-4 h-4 mr-2 flex-shrink-0" style="filter: brightness(1.2);">
+                                    <div class="flex justify-between items-center w-full">
+                                        <span>${product.name}</span>
+                                        <span class="price-tag ml-2 text-center">${product.price}</span>
+                                    </div>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            return html;
         }
 
         async function loadStalls() {
@@ -177,7 +205,7 @@
                 const stallsGrid = document.getElementById('stallsGrid');
                 console.log('Stalls grid element found:', !!stallsGrid);
 
-                const nonFoodStalls = ['Gaming Room', 'Disco', '9D cinema', 'Escape Room', 
+                const nonFoodStalls = ['Gaming Room', 'Disco', '<s>9D Cinema</s> (CANCELLED)', 'Escape Room', 
                     'Karaoke', 'Outdoor laser tag', 'Bouncy Castle', 'Football', 
                     'Tug of War', 'Beauty Parlour', 'Carnival Games', 'Gyroscope', 'Ball Pit'];
                 const foodStalls = stalls.filter(stall => !nonFoodStalls.includes(stall.name));
@@ -201,16 +229,18 @@
                         <div class="space-y-4">
                     `;
 
-                    // Add products and other info above the line
-                    if (stall.products) {
-                        console.log(`Adding products for ${stall.name}:`, stall.products);
-                        html += renderProducts(stall.products);
+                    // MODIFIED: Updated condition to check for both products AND sections
+                    // MODIFIED: Pass both stall.products and stall.sections to renderProducts
+                    if ((stall.products && stall.products.length > 0) || (stall.sections && stall.sections.length > 0)) {
+                        console.log(`Adding products/sections for ${stall.name}:`, stall.products || stall.sections);
+                        html += renderProducts(stall.products, stall.sections);
                     }
 
-                    // Add other fields except location and time
+                    // MODIFIED: Added 'sections' to the exclusion list
+                    // Add other fields except name, products, sections, location, and time
                     let hasExtraInfo = false;
                     Object.entries(stall).forEach(([field, value]) => {
-                        if (field === 'name' || field === 'products' || field === 'location' || field === 'time') return;
+                        if (['name', 'products', 'sections', 'location', 'time'].includes(field)) return;
                         if (!value || (Array.isArray(value) && value.length === 0) || value === '') return;
                         hasExtraInfo = true;
                         console.log(`Adding extra info for ${stall.name}:`, field, value);
@@ -223,8 +253,9 @@
                         `;
                     });
 
+                    // MODIFIED: Updated condition for separation line
                     // Add separation line only if there's content above and below
-                    if ((stall.products || hasExtraInfo) && (stall.location || stall.time)) {
+                    if (((stall.products && stall.products.length > 0) || (stall.sections && stall.sections.length > 0) || hasExtraInfo) && (stall.location || stall.time)) {
                         html += `<div class="border-t border-[#d5ab6d] my-4 opacity-50"></div>`;
                     }
 
