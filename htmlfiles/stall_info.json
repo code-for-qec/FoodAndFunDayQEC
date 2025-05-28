@@ -164,12 +164,14 @@
       {
         "title": "Temporary Tattoo",
         "items": [
-          { "name": "Small", "price": "Rs15" },
-          { "name": "Big", "price": "Rs25" }
+          { "name": "mini", "price": "Rs10" },
+          { "name": "small", "price": "Rs25" },
+          { "name": "medium", "price": "Rs50" },
+          { "name": "large", "price": "Rs75" }
         ]
       }
     ],
-    "location": "Art room",
+    "location": "Temporary Tattoo in the art room. All other products in 10 garnet",
     "time": "09:00-14:00",
     "section": "Creativity & Relaxation"
   },
