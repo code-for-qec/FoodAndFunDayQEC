@@ -62,11 +62,50 @@
   },
   {
     "name": "La Boutik Sinwa",
-    "products": [
-      { "name": "Plain mine bouille", "price": "Rs50" },
-      { "name": "Add-ons", "price": "Incur additional cost" }
-    ],
-    "location": "In the art room. Serve food through the window",
+    "sections": [
+    {
+      "title": "Mine Bouilli",
+      "items": [
+        { "name": "Mine Bouilli Touni", "price": "Rs 35" },
+        { "name": "Mine Bouilli Gros Pois", "price": "Rs 50" },
+        { "name": "Mine Bouilli Satini Pom D'Amûr", "price": "Rs 50" },
+        { "name": "Mine Bouilli Salmi Poulet", "price": "Rs 60" },
+        { "name": "Mine Bouilli Somon", "price": "Rs 60" }
+      ]
+    },
+    {
+      "title": "Add on",
+      "items": [
+        { "name": "Oeuf Roti", "price": "Rs 15" },
+        { "name": "Satini Pom D'Amur", "price": "Rs 15" },
+        { "name": "Gros Pois", "price": "Rs 15" },
+        { "name": "Salmi Poulet", "price": "Rs 25" },
+        { "name": "Somon", "price": "Rs 25" }
+      ]
+    },
+    {
+      "title": "Snacks",
+      "items": [
+        { "name": "Vavang carré / Vavang rond", "price": "Any 2 for Rs 15" },
+        { "name": "Mango", "price": "Rs 5" },
+        { "name": "Coconut Candy", "price": "Rs 5" },
+        { "name": "Peanuts", "price": "Rs 10" },
+        { "name": "Pop Pop", "price": "Rs 10" },
+        { "name": "Rice crackers", "price": "Rs 10" },
+        { "name": "Corntos", "price": "Rs 15" },
+        { "name": "Crix", "price": "Rs 15" },
+        { "name": "Samba", "price": "Rs 15" },
+        { "name": "Tadelle", "price": "Rs 15" },
+        { "name": "Chachos", "price": "Rs 20" },
+        { "name": "Croissant", "price": "Rs 20" },
+        { "name": "Slai Olai", "price": "Rs 20" },
+        { "name": "Twix / Bounty", "price": "Rs 20" },
+        { "name": "Marshmallows - Twisted", "price": "Rs 40" },
+        { "name": "Marshmallows - Blueberry", "price": "Rs 50" }
+      ]
+    }
+  ],
+    "location": "In the art room",
     "time": "TBD",
     "section": ""
   },
@@ -74,7 +113,7 @@
     "name": "Pastries",
     "products": [{ "name": "TBD", "price": "TBD" }],
     "location": "Canteen",
-    "time": "TBD",
+    "time": "9:00-14:00",
     "section": ""
   },
   {
